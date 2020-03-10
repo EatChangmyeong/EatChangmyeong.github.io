@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap'); // 'Noto Sans KR'
+@font-face {
+	font-family: "NanumSquareRound";
+	src: url("/assets/woff/nsr_regular.woff") format('woff');
+	font-weight: normal;
+}
+@font-face {
+	font-family: "NanumSquareRound";
+	src: url("/assets/woff/nsr_bold.woff") format('woff');
+	font-weight: bold;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	font-family: 'Noto Sans KR', sans-serif;
+}
+
+#logo {
+	position: fixed;
+	left: 1rem;
+	top: 1rem;
+	font-size: 0;
+
+	z-index: 1;
+
+	img {
+		width: 4rem;
+	}
+}
+
+#container {
+	position: relative;
+	margin: auto;
+	width: 960px;
+}
+
+header {
+	position: fixed;
+	top: 4em;
+	width: 240px;
+	text-align: right;
+
+	h1 {
+		margin: 0.5rem;
+		color: #564a7e;
+		font-family: 'NanumSquareRound', sans-serif;
+		font-size: 2.4rem;
+		font-weight: normal;
+	}
+}
+
+main {
+	position: absolute;
+	top: 0;
+	right: 0;
+	margin: auto;
+	padding: 12rem 0.5rem 0.5rem;
+	width: 720px;
+}
+
+h1 {
+	font-family: 'NanumSquareRound', sans-serif;
+	font-size: 2rem;
+	font-weight: normal;
+}
+
+.strong {
+	font-weight: bold;
+}
+
+@media not all and (min-width: 960px) {
+	
+}
