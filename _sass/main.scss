@@ -1,13 +1,43 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap'); // 'Noto Sans KR'
 @font-face {
 	font-family: "NanumSquareRound";
-	src: url("/assets/woff/nsr_regular.woff") format('woff');
-	font-weight: normal;
+	font-style: normal;
+	font-weight: 400;
+	font-display: swap;
+	src:
+		local("나눔스퀘어라운드"),
+		url("/assets/fonts/nsr_regular.woff") format('woff');
 }
 @font-face {
 	font-family: "NanumSquareRound";
-	src: url("/assets/woff/nsr_bold.woff") format('woff');
-	font-weight: bold;
+	font-style: normal;
+	font-weight: 700;
+	font-display: swap;
+	src:
+		local("나눔스퀘어라운드"),
+		url("/assets/fonts/nsr_bold.woff") format('woff');
+}
+@font-face { // from https://github.com/wan2land/d2coding
+	font-family: 'D2Coding';
+	font-style: normal;
+	font-weight: 400;
+	font-display: swap;
+	src:
+		local('D2Coding'),
+		url('/assets/fonts/d2c_regular.woff2') format('woff2'),
+		url('/assets/fonts/d2c_regular.woff') format('woff'),
+		url('/assets/fonts/d2c_regular.ttf') format('truetype');
+}
+@font-face {
+	font-family: 'D2Coding';
+	font-style: normal;
+	font-weight: 700;
+	font-display: swap;
+	src:
+		local('D2Coding'),
+		url('/assets/fonts/d2c_bold.woff2') format('woff2'),
+		url('/assets/fonts/d2c_bold.woff') format('woff'),
+		url('/assets/fonts/d2c_bold.ttf') format('truetype');
 }
 
 * {
@@ -21,29 +51,46 @@ body {
 
 #logo {
 	position: fixed;
-	left: 1rem;
-	top: 1rem;
+	top: 0;
+	left: 0;
 	font-size: 0;
-
 	z-index: 1;
 
-	img {
-		width: 4rem;
+	* {
+		vertical-align: middle;
+		line-height: 4rem;
+	}
+
+	a {
+		position: relative;
+		top: 1rem;
+		left: 1rem;
+
+		img {
+			width: 4rem;
+		}
+	}
+
+	.logo-title {
+		position: relative;
+		display: inline-block;
+		top: 1rem;
+		left: 1.5rem;
+		font-size: 1rem;
+		letter-spacing: 0.15em;
+
+		br {
+			display: none;
+		}
 	}
 }
 
 #container {
 	position: relative;
 	margin: auto;
-	width: 960px;
 }
 
 header {
-	position: fixed;
-	top: 4em;
-	width: 240px;
-	text-align: right;
-
 	h1 {
 		margin: 0.5rem;
 		color: #564a7e;
@@ -54,24 +101,138 @@ header {
 }
 
 main {
-	position: absolute;
-	top: 0;
-	right: 0;
 	margin: auto;
-	padding: 12rem 0.5rem 0.5rem;
-	width: 720px;
-}
+	padding: 0.5rem;
 
-h1 {
-	font-family: 'NanumSquareRound', sans-serif;
-	font-size: 2rem;
-	font-weight: normal;
+	a {
+		color: #2e00c7;
+		text-decoration: none;
+	}
+	a:hover {
+		text-decoration: underline;
+	}
+	a:visited {
+		color: #564a7e;
+	}
+
+	blockquote {
+		margin: 0;
+		margin-left: 0.5rem;
+		border-left: 4px solid #564a7e;
+		blockquote {
+			margin-left: 1rem;
+		}
+	}
+
+	code {
+		font-family: "D2Coding";
+	}
+
+	%heading {
+		margin: 1.5rem 0 0;
+		font-family: 'NanumSquareRound', sans-serif;
+		font-weight: normal;
+	}
+	h1 {
+		@extend %heading;
+		font-size: 2.5rem;
+	}
+	h2 {
+		@extend %heading;
+		font-size: 2.08rem;
+	}
+	h3 {
+		@extend %heading;
+		font-size: 1.73rem;
+	}
+	h4 {
+		@extend %heading;
+		font-size: 1.44rem;
+	}
+	h5 {
+		@extend %heading;
+		font-size: 1.2rem;
+	}
+	h6 {
+		@extend %heading;
+		font-size: 1rem;
+	}
+
+	hr {
+		margin: 1em auto;
+		border: none;
+		width: 80%;
+		height: 1px;
+		background-color: black;
+		opacity: 50%;
+	}
+
+	img {
+		display: block;
+		margin: auto;
+		max-width: 100%;
+		max-height: 360px;
+	}
+
+	ol, ul {
+		padding-left: 2rem;
+		ol, ul {
+			padding-left: 1.35rem;
+		}
+	}
+
+	p {
+		margin: 0.8rem 0 0 0.5rem;
+	}
 }
 
 .strong {
 	font-weight: bold;
 }
 
-@media not all and (min-width: 960px) {
-	
+@media     all and (min-width: 1000px) { // Wide
+	#logo .logo-title {
+		display: none;
+	}
+
+	#container {
+		width: 960px;
+	}
+
+	header {
+		position: fixed;
+		top: 4em;
+		width: 240px;
+		text-align: right;
+	}
+
+	main {
+		position: absolute;
+		top: 0;
+		right: 0;
+		padding-top: 12rem;
+		width: 720px;
+	}
+}
+@media not all and (min-width: 1000px) { // Narrow
+	#logo {
+		width: 100%;
+		height: 6rem;
+		background-image: linear-gradient(to bottom, white, rgba(255, 255, 255, 0.50) 100%*5/6, transparent);
+	}
+
+	#container {
+		max-width: 720px;
+		padding: 0 1.5rem;
+	}
+
+	header {
+		position: static;
+		margin-top: 8rem;
+		text-align: left;
+
+		h1 br {
+			display: none;
+		}
+	}
 }

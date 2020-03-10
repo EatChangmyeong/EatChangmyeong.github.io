@@ -9,7 +9,11 @@
 		<link rel="stylesheet" href="assets/css/styles.css">
 	</head>
 	<body>
-		<a id="logo" href="eatch.dev"><img src="https://eatch.dev/ei/s/0" alt="eatch.dev" title="eatch.dev"></a>
+		<div id="logo">
+			<a href="eatch.dev">
+				<img src="https://eatch.dev/ei/s/0" alt="eatch.dev" title="eatch.dev">
+			</a> <span class="logo-title">{{ page.title }}</span>
+		</div>
 		<div id="container">
 			{{ content }}
 		</div>
