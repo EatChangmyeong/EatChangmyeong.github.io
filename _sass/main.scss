@@ -142,9 +142,8 @@ main {
 			code {
 				display: block;
 				font-family: "D2Coding", monospace;
-				white-space: pre;
+				white-space: pre-wrap;
 				overflow-x: auto;
-				word-wrap: normal;
 			}
 		}
 	}
