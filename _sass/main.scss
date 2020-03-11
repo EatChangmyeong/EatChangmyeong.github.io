@@ -1,3 +1,5 @@
+@use 'monokai';
+
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap'); // 'Noto Sans KR'
 @font-face {
 	font-family: "NanumSquareRound";
@@ -42,6 +44,9 @@
 
 * {
 	box-sizing: border-box;
+	tab-size: 4;
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
 }
 
 body {
@@ -100,6 +105,10 @@ header {
 	}
 }
 
+table {
+	border-collapse: collapse;
+}
+
 main {
 	margin: auto;
 	padding: 0.5rem;
@@ -107,12 +116,13 @@ main {
 	a {
 		color: #2e00c7;
 		text-decoration: none;
-	}
-	a:hover {
-		text-decoration: underline;
-	}
-	a:visited {
-		color: #564a7e;
+
+		&:hover {
+			text-decoration: underline;
+		}
+		&:visited {
+			color: #564a7e;
+		}
 	}
 
 	blockquote {
@@ -124,8 +134,85 @@ main {
 		}
 	}
 
-	code {
-		font-family: "D2Coding";
+	code.highlighter-rouge {
+		margin: -0.15em 0.05em;
+		padding: 0.15em;
+		font-family: "D2Coding", monospace;
+		background: #e0e0e0;
+	}
+
+	%codeblock {
+		@extend %monokai;
+		
+		margin: 0.8rem 0 0;
+		color: #f8f8f2;
+		background: #272822;
+	
+		pre {
+			margin: 0;
+			border: none;
+
+			code {
+				display: block;
+				font-family: "D2Coding", monospace;
+				white-space: pre;
+				overflow-x: auto;
+				word-wrap: normal;
+			}
+		}
+	}
+
+	div.highlighter-rouge {
+		@extend %codeblock;
+
+		pre {
+			padding: 0.5rem;
+		}
+	}
+	figure.highlight {
+		@extend %codeblock;
+
+		td {
+			padding: 0.5rem;
+
+			&.gutter {
+				padding-right: 0;
+			}
+		}
+	
+		.lineno {
+			display: inline-block;
+			border-right: 1px solid #ccc;
+			padding: 0;
+			padding-right: 0.5rem;
+			text-align: right;
+			color: #ccc;
+			user-select: none;
+			-moz-user-select: none;
+			-webkit-user-select: none;
+			-ms-user-select: none;
+		}
+	}
+
+	dl {
+		@extend p;
+
+		dt {
+			display: inline-block;
+			margin: 1rem 0 0;
+			padding: 0.15em 0.5em;
+			border-radius: 1em;
+			background-color: #e0e0e0;
+
+			&:first-child {
+				margin: 0;
+			}
+		}
+
+		dd {
+			margin: -0.5rem 0 0;
+			padding: 0 0 0 0.5rem;
+		}
 	}
 
 	%heading {
@@ -159,7 +246,7 @@ main {
 	}
 
 	hr {
-		margin: 1em auto;
+		margin: 1rem auto;
 		border: none;
 		width: 80%;
 		height: 1px;
@@ -174,6 +261,10 @@ main {
 		max-height: 360px;
 	}
 
+	input.task-list-item-checkbox {
+		margin: 0 0.4rem 0 0.25rem;
+	}
+
 	ol, ul {
 		padding-left: 2rem;
 		ol, ul {
@@ -183,6 +274,36 @@ main {
 
 	p {
 		margin: 0.8rem 0 0 0.5rem;
+	}
+
+	table:not(.rouge-table) {
+		margin: 0.8rem 0.5rem 0;
+		width: calc(100% - 1rem);
+
+		%tablecell {
+			padding: 0.2rem 0.5rem;
+		}
+		thead {
+			tr {
+				background-color: #eae4fe;
+
+				&:hover {
+					background-color: #dcd6ed;
+				}
+			}
+			th {
+				@extend %tablecell;
+			}
+		}
+		tbody {
+			tr:hover {
+				background-color: #eee;
+			}
+			td {
+				@extend %tablecell;
+				border-bottom: 1px solid #c0c0c0;
+			}
+		}
 	}
 }
 
