@@ -1,24 +1,7 @@
 @use 'monokai';
 
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap'); // 'Noto Sans KR'
-@font-face {
-	font-family: "NanumSquareRound";
-	font-style: normal;
-	font-weight: 400;
-	font-display: swap;
-	src:
-		local("나눔스퀘어라운드"),
-		url("/assets/fonts/nsr_regular.woff") format('woff');
-}
-@font-face {
-	font-family: "NanumSquareRound";
-	font-style: normal;
-	font-weight: 700;
-	font-display: swap;
-	src:
-		local("나눔스퀘어라운드"),
-		url("/assets/fonts/nsr_bold.woff") format('woff');
-}
+@import url('https://cdn.rawgit.com/innks/NanumSquareRound/master/nanumsquareround.min.css'); // 'NanumSquareRound', from https://github.com/innks/NanumSquareRound
 @font-face { // from https://github.com/wan2land/d2coding
 	font-family: 'D2Coding';
 	font-style: normal;
@@ -123,6 +106,10 @@ main {
 		&:visited {
 			color: #564a7e;
 		}
+
+		&.footnote, &.reversefootnote {
+			color: #c72e00;
+		}
 	}
 
 	blockquote {
@@ -215,6 +202,20 @@ main {
 		}
 	}
 
+	.footnotes ol {
+		padding-left: 0;
+		list-style-position: inside;
+
+		li {
+			margin-top: 0.25rem;
+
+			p {
+				display: inline-block;
+				margin: 0;
+			}
+		}
+	}
+
 	%heading {
 		margin: 1.5rem 0 0;
 		font-family: 'NanumSquareRound', sans-serif;
@@ -283,6 +284,7 @@ main {
 		%tablecell {
 			padding: 0.2rem 0.5rem;
 		}
+
 		thead {
 			tr {
 				background-color: #eae4fe;
@@ -291,14 +293,17 @@ main {
 					background-color: #dcd6ed;
 				}
 			}
+
 			th {
 				@extend %tablecell;
 			}
 		}
+
 		tbody {
 			tr:hover {
 				background-color: #eee;
 			}
+
 			td {
 				@extend %tablecell;
 				border-bottom: 1px solid #c0c0c0;
