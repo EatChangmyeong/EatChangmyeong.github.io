@@ -1,13 +1,33 @@
 ---
-layout: root
 ---
 
-<header>
-	<h1>
-		<span class="strong">잇창명</span><br> 개발 블로그
-	</h1>
-</header>
+{% include template1.html %}
+		<title>잇창명 개발 블로그 (공사 중)</title>
+{% include template2.html %}
+		<span class="logo-title">잇창명 개발 블로그</span>
+{% include template3.html %}
+			<header>
+				<h1>
+					<strong>잇창명</strong><br> 개발 블로그
+				</h1>
+			</header>
 
-<main>
-	{{ content }}
-</main>
+			<main>
+				{{ content }}
+
+				<h1>글 목록</h1>
+				<ul id="post-list"></ul>
+			</main>
+
+			<script>
+				// Postprocess frontpage
+				
+				var postList = {{ site.posts | jsonify | strip_html }};
+
+				document.addEventListener('DOMContentLoaded', function() {
+					document.querySelector('#post-list').innerHTML = postList.slice(0, 5).map(function(x) {
+						return '<li><h2><a href="' + x.url + '">' + x.actual_title + '</a></h2><p>' + x.excerpt + '</p></li>';
+					}).join('');
+				});
+			</script>
+{% include template4.html %}
