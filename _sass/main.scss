@@ -37,6 +37,10 @@ body {
 	font-family: 'Noto Sans KR', sans-serif;
 }
 
+table {
+	border-collapse: collapse;
+}
+
 #logo {
 	position: fixed;
 	top: 0;
@@ -86,10 +90,6 @@ header {
 		font-size: 2.4rem;
 		font-weight: normal;
 	}
-}
-
-table {
-	border-collapse: collapse;
 }
 
 main {
@@ -309,10 +309,36 @@ main {
 			}
 		}
 	}
-}
 
-.strong {
-	font-weight: bold;
+	ul#post-list {
+		margin: 1.2rem 0 0;
+		padding: 0;
+		list-style: none;
+
+		li {
+			margin: 1.2rem 0 0;
+			border-radius: 1rem;
+			padding: 1rem;
+			box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.3);
+
+			transition: box-shadow 0.2s;
+
+			&:hover {
+				box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.6);
+			}
+
+			h2 {
+				margin: 0;
+	
+				br {
+					display: none;
+				}
+				strong {
+					font-weight: normal;
+				}
+			}
+		}
+	}
 }
 
 @media     all and (min-width: 1000px) { // Wide
