@@ -8,10 +8,10 @@
 	font-weight: 400;
 	font-display: swap;
 	src:
-		local('D2Coding'),
-		url('/assets/fonts/d2c_regular.woff2') format('woff2'),
-		url('/assets/fonts/d2c_regular.woff') format('woff'),
-		url('/assets/fonts/d2c_regular.ttf') format('truetype');
+	local('D2Coding'),
+	url('/assets/fonts/d2c_regular.woff2') format('woff2'),
+	url('/assets/fonts/d2c_regular.woff') format('woff'),
+	url('/assets/fonts/d2c_regular.ttf') format('truetype');
 }
 @font-face {
 	font-family: 'D2Coding';
@@ -19,11 +19,13 @@
 	font-weight: 700;
 	font-display: swap;
 	src:
-		local('D2Coding'),
-		url('/assets/fonts/d2c_bold.woff2') format('woff2'),
-		url('/assets/fonts/d2c_bold.woff') format('woff'),
-		url('/assets/fonts/d2c_bold.ttf') format('truetype');
+	local('D2Coding'),
+	url('/assets/fonts/d2c_bold.woff2') format('woff2'),
+	url('/assets/fonts/d2c_bold.woff') format('woff'),
+	url('/assets/fonts/d2c_bold.ttf') format('truetype');
 }
+
+$narrow: 1080px;
 
 * {
 	box-sizing: border-box;
@@ -71,6 +73,10 @@ table {
 		font-size: 1rem;
 		letter-spacing: 0.15em;
 
+		* {
+			vertical-align: initial;
+		}
+
 		br {
 			display: none;
 		}
@@ -94,7 +100,7 @@ header {
 
 main {
 	margin: auto;
-	padding: 0.5rem;
+	padding: 0.5rem 0.5rem 1rem;
 
 	a {
 		color: #2e00c7;
@@ -327,6 +333,20 @@ main {
 				box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.6);
 			}
 
+			span.metadata {
+				display: block;
+				font-size: 0.8rem;
+				
+				span.date {
+					color: #444;
+				}
+				span.tag {
+					margin: 0 0.05em;
+					padding: 0 0.15em;
+					background-color: #e0ffff;
+				}
+			}
+			
 			h2 {
 				margin: 0;
 	
@@ -336,12 +356,19 @@ main {
 				strong {
 					font-weight: normal;
 				}
+				em {
+					font-style: normal;
+				}
+			}
+
+			p {
+				margin: 0;
 			}
 		}
 	}
 }
 
-@media     all and (min-width: 1000px) { // Wide
+@media     all and (min-width: $narrow) { // Wide
 	#logo .logo-title {
 		display: none;
 	}
@@ -365,7 +392,7 @@ main {
 		width: 720px;
 	}
 }
-@media not all and (min-width: 1000px) { // Narrow
+@media not all and (min-width: $narrow) { // Narrow
 	#logo {
 		width: 100%;
 		height: 6rem;
