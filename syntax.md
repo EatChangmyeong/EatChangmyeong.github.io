@@ -267,14 +267,14 @@ is | optional
 : 다람쥐 헌 쳇바퀴에 타고파.
 ```
 
-# MathJax (MathJax 확장)
+# 수식 (MathJax 확장)
 
-LaTeX 문법을 씁니다. 인라인 수식 $$e^{\pi i} = -1$$
+LaTeX 문법을 씁니다. 인라인 수식 $$e^{\pi i} + 1 = 0$$
 
 $$\sum_{i=0}^n i^2 = \frac{n(n+1)(2n+1)}{6}$$
 
 ```
-LaTeX 문법을 씁니다. 인라인 수식 $$e^{\pi i} = -1$$
+LaTeX 문법을 씁니다. 인라인 수식 $$e^{\pi i} + 1 = 0$$
 
 $$\sum_{i=0}^n i^2 = \frac{n(n+1)(2n+1)}{6}$$
 ```
