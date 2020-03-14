@@ -41,12 +41,6 @@ $narrow: 1080px;
 	}
 }
 
-@mixin remove-br() {
-	br {
-		display: none;
-	}
-}
-
 %metadata {
 	font-size: 0.8rem;
 	
@@ -128,8 +122,6 @@ a {
 		font-size: 1rem;
 		letter-spacing: 0.15em;
 
-		@include remove-br();
-
 		@include respond-to(wide) {
 			display: none;
 		}
@@ -167,10 +159,6 @@ header {
 		position: static;
 		margin-top: 8rem;
 		text-align: left;
-
-		h1 {
-			@include remove-br();
-		}
 	}
 
 	a.front-link {
@@ -436,8 +424,6 @@ main {
 			
 			h2 {
 				margin: 0;
-	
-				@include remove-br();
 
 				strong {
 					font-weight: normal;

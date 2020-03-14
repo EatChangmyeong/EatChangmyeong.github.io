@@ -1,7 +1,7 @@
 ---
 layout: post
 author: EatChangmyeong
-actual_title: <strong>Hello</strong>,<br> world!
+actual_title: <strong>Hello</strong>, world!
 excerpt: 공사 중입니다 볼 거 없으니까 지나가셔도 돼요 감사합니다
 ---
 
