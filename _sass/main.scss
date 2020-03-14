@@ -51,6 +51,10 @@ $narrow: 1080px;
 		margin: 0 0.05em;
 		padding: 0 0.15em;
 		background-color: #e0ffff;
+
+		&::before {
+			content: "#";
+		}
 	}
 }
 

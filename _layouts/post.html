@@ -13,7 +13,7 @@
 				</h1>
 				<span class="metadata">
 					<span class="date">{{ page.date | date: "%Y년 %m월 %d일" }}</span>
-					{% for x in page.tags %}<span class="tag">#{{ x }}</span> {% endfor %}
+					{% for x in page.tags %}<span class="tag">{{ x }}</span> {% endfor %}
 				</span>
 			</header>
 
