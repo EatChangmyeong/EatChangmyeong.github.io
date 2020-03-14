@@ -27,6 +27,26 @@
 
 $narrow: 1080px;
 
+@mixin respond-to($name) {
+	@if $name == wide {
+		@media all and (min-width: $narrow) {
+			@content;
+		}
+	}
+
+	@if $name == narrow {
+		@media not all and (min-width: $narrow) {
+			@content;
+		}
+	}
+}
+
+@mixin remove-br() {
+	br {
+		display: none;
+	}
+}
+
 %metadata {
 	font-size: 0.8rem;
 	
@@ -79,6 +99,12 @@ a {
 	font-size: 0;
 	z-index: 1;
 
+	@include respond-to(narrow) {
+		width: 100%;
+		height: 6rem;
+		background-image: linear-gradient(to bottom, white, rgba(255, 255, 255, 0.50) 100%*5/6, transparent);
+	}
+
 	* {
 		vertical-align: middle;
 		line-height: 4rem;
@@ -102,12 +128,14 @@ a {
 		font-size: 1rem;
 		letter-spacing: 0.15em;
 
-		* {
-			vertical-align: initial;
+		@include remove-br();
+
+		@include respond-to(wide) {
+			display: none;
 		}
 
-		br {
-			display: none;
+		* {
+			vertical-align: initial;
 		}
 	}
 }
@@ -115,10 +143,35 @@ a {
 #container {
 	position: relative;
 	margin: auto;
+
+	@include respond-to(wide) {
+		width: 960px;
+	}
+	@include respond-to(narrow) {
+		max-width: 720px;
+		padding: 0 1.5rem;
+	}
 }
 
 header {
 	padding: 0.5rem;
+
+	@include respond-to(wide) {
+		position: fixed;
+		top: 4rem;
+		width: 240px;
+		text-align: right;
+	}
+
+	@include respond-to(narrow) {
+		position: static;
+		margin-top: 8rem;
+		text-align: left;
+
+		h1 {
+			@include remove-br();
+		}
+	}
 
 	a.front-link {
 		color: #444;
@@ -144,6 +197,14 @@ main {
 	margin: auto;
 	padding: 0.5rem;
 	padding-bottom: 1rem;
+	
+	@include respond-to(wide) {
+		position: absolute;
+		top: 0;
+		right: 0;
+		padding-top: 12rem;
+		width: 720px;
+	}
 
 	blockquote {
 		margin: 0;
@@ -376,9 +437,8 @@ main {
 			h2 {
 				margin: 0;
 	
-				br {
-					display: none;
-				}
+				@include remove-br();
+
 				strong {
 					font-weight: normal;
 				}
@@ -390,53 +450,6 @@ main {
 			p {
 				margin: 0;
 			}
-		}
-	}
-}
-
-@media     all and (min-width: $narrow) { // Wide
-	#logo .logo-title {
-		display: none;
-	}
-
-	#container {
-		width: 960px;
-	}
-
-	header {
-		position: fixed;
-		top: 4rem;
-		width: 240px;
-		text-align: right;
-	}
-
-	main {
-		position: absolute;
-		top: 0;
-		right: 0;
-		padding-top: 12rem;
-		width: 720px;
-	}
-}
-@media not all and (min-width: $narrow) { // Narrow
-	#logo {
-		width: 100%;
-		height: 6rem;
-		background-image: linear-gradient(to bottom, white, rgba(255, 255, 255, 0.50) 100%*5/6, transparent);
-	}
-
-	#container {
-		max-width: 720px;
-		padding: 0 1.5rem;
-	}
-
-	header {
-		position: static;
-		margin-top: 8rem;
-		text-align: left;
-
-		h1 br {
-			display: none;
 		}
 	}
 }
