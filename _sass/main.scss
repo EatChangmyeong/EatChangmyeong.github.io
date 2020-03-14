@@ -188,6 +188,20 @@ header {
 
 		display: block;
 	}
+
+	.toc {
+		margin-top: 1rem;
+
+		@include respond-to(narrow) {
+			display: none;
+		}
+
+		@for $i from 1 through 5 {
+			.toc-#{$i} {
+				margin-right: 0.5rem*$i;
+			}
+		}
+	}
 }
 
 main {
