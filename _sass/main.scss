@@ -178,8 +178,10 @@ header {
 		font-size: 2.4rem;
 		font-weight: normal;
 
-		br.front-br {
-			display: none;
+		@include respond-to(narrow) {
+			br.front-br {
+				display: none;
+			}
 		}
 	}
 
