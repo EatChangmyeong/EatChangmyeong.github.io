@@ -1,7 +1,7 @@
 ---
 layout: post
 author: EatChangmyeong
-actual_title: <strong>Hello</strong>,<br> world! (2)
+actual_title: <strong>Hello</strong>,<br> world!<br> (2)
 excerpt: 글 여러 개 테스트
 tags:
 - 태그1
