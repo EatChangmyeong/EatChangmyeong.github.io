@@ -190,6 +190,31 @@ header {
 
 		display: block;
 	}
+
+	.toc {
+		margin-top: 1rem;
+
+		@include respond-to(narrow) {
+			display: none;
+		}
+
+		.toc-node .toc-node {
+			margin-right: calc(0.5rem - 1px);
+			border-right: 1px solid rgba(0, 0, 0, 0.1);
+		}
+
+		.toc-leaf {
+			display: block;
+			padding: 0.2rem;
+			padding-right: 0.5rem;
+			color: #404040;
+			text-decoration: none;
+
+			&:hover {
+				background-color: rgba(0, 0, 0, 0.05);
+			}
+		}
+	}
 }
 
 main {
