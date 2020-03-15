@@ -18,8 +18,6 @@ document.addEventListener('DOMContentLoaded', function() {
 				here = x, to,
 				minLvl = Infinity, level = list[here].level, r = '',
 				isLeaf = level == shift;
-			
-			console.log(depth, shift);
 
 			r += '<div class="toc-node">';
 
