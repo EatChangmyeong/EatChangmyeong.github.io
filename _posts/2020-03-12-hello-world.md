@@ -2,7 +2,10 @@
 layout: post
 author: EatChangmyeong
 actual_title: <strong>Hello</strong>, world!
-excerpt: 공사 중입니다 볼 거 없으니까 지나가셔도 돼요 감사합니다
+excerpt: 공사 중이긴 한데 혹시 구경이라도 해보실래요 근데 볼 건 없어요
+tags:
+- Jekyll
+- GithubPages
 ---
 
 # 이거는 테스트용 포스트예요!
