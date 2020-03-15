@@ -152,6 +152,7 @@ a {
 
 header {
 	padding: 0.5rem;
+	word-break: keep-all;
 
 	@include respond-to(wide) {
 		position: fixed;
@@ -172,7 +173,6 @@ header {
 
 	h1 {
 		margin: 0;
-		word-break: keep-all;
 		color: #564a7e;
 		font-family: 'NanumSquareRound', sans-serif;
 		font-size: 2.4rem;
