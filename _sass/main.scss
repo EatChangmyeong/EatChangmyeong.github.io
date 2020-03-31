@@ -208,6 +208,9 @@ header {
 			padding: 0.2rem;
 			padding-right: 0.5rem;
 			color: #404040;
+			overflow-x: hidden;
+			white-space: nowrap;
+			text-overflow: ellipsis;
 			text-decoration: none;
 
 			&:hover {
