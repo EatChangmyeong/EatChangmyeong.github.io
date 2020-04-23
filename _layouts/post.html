@@ -20,12 +20,14 @@
 						{% endfor %}
 					{% endif %}
 				</span>
-				<div class="toc"></div>
+				<div class="toc">
+					{% include toc.html html=content %}
+				</div>
 			</header>
 
 			<main>
 				{{ content }}
 			</main>
 
-			<script src="/assets/js/postprocess.js"></script>
+			<!-- <script src="/assets/js/postprocess.js"></script> -->
 {% include template4.html %}

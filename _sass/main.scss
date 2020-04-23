@@ -26,6 +26,8 @@
 }
 
 $narrow: 1080px;
+$left: 300px;
+$right: 720px;
 
 @mixin respond-to($name) {
 	@if $name == wide {
@@ -149,10 +151,12 @@ a {
 	@include respond-to(wide) {
 		flex-flow: row nowrap;
 		width: 960px;
+		width: $left + $right;
 	}
 	@include respond-to(narrow) {
 		flex-flow: column nowrap;
 		max-width: 720px;
+		max-width: $right;
 		padding: 0 1.5rem;
 	}
 }
@@ -168,6 +172,7 @@ header {
 		position: fixed;
 		padding-top: 4.5rem;
 		width: 240px;
+		width: $left;
 		height: 100%;
 		text-align: right;
 	}
@@ -211,20 +216,28 @@ header {
 			display: none;
 		}
 
-		.toc-node .toc-node {
-			margin-right: calc(0.5rem - 1px);
-			border-right: 1px solid rgba(0, 0, 0, 0.1);
+		ul {
+			padding: 0;
+
+			ul {
+				margin-right: calc(0.5rem - 1px);
+				border-right: 1px solid rgba(0, 0, 0, 0.1);
+			}
 		}
 
-		.toc-leaf {
-			display: block;
-			padding: 0.2rem;
-			padding-right: 0.5rem;
-			color: #404040;
-			text-decoration: none;
+		li {
+			list-style-type: none;
 
-			&:hover {
-				background-color: rgba(0, 0, 0, 0.05);
+			a {
+				display: block;
+				padding: 0.2rem;
+				padding-right: 0.5rem;
+				color: #404040;
+				text-decoration: none;
+
+				&:hover {
+					background-color: rgba(0, 0, 0, 0.05);
+				}
 			}
 		}
 	}
@@ -241,7 +254,7 @@ main {
 		top: 0;
 		right: 0;
 		padding-top: 12rem;
-		width: 720px;
+		width: $right;
 	}
 
 	blockquote {
@@ -402,10 +415,47 @@ main {
 		margin: 0 0.4rem 0 0.25rem;
 	}
 
-	ol, ul {
-		padding-left: 2rem;
-		ol, ul {
-			padding-left: 1.35rem;
+	#markdown-toc {
+		margin-top: 1rem;
+
+		// @include respond-to(narrow) {
+		// 	display: none;
+		// }
+
+		&, ol {
+			padding: 0;
+
+			ol {
+				margin-left: calc(0.5rem - 1px);
+				border-left: 1px solid rgba(0, 0, 0, 0.1);
+			}
+		}
+		
+		li {
+			list-style-type: none;
+
+			a {
+				display: block;
+				padding: 0.2rem;
+				padding-left: 0.5rem;
+				color: #404040;
+				text-decoration: none;
+	
+				&:hover {
+					background-color: rgba(0, 0, 0, 0.05);
+				}
+			}
+		}
+		
+
+	}
+
+	:not(#markdown-toc) {
+		&ol, &ul {
+			padding-left: 2rem;
+			ol, ul {
+				padding-left: 1.35rem;
+			}
 		}
 	}
 
