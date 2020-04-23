@@ -445,16 +445,12 @@ main {
 				}
 			}
 		}
-		
-
 	}
 
 	ol, ul {
-		&:not(#markdown-toc) {
-			padding-left: 2rem;
-			ol, ul {
-				padding-left: 1.35rem;
-			}
+		padding-left: 2rem;
+		ol, ul {
+			padding-left: 1.35rem;
 		}
 	}
 
