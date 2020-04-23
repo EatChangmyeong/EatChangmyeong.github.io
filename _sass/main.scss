@@ -66,6 +66,10 @@ $narrow: 1080px;
 	-o-tab-size: 4;
 }
 
+html, body, #container {
+	height: 100%;
+}
+
 body {
 	margin: 0;
 	font-family: 'Noto Sans KR', sans-serif;
@@ -138,29 +142,36 @@ a {
 }
 
 #container {
+	display: flex;
 	position: relative;
 	margin: auto;
 
 	@include respond-to(wide) {
+		flex-flow: row nowrap;
 		width: 960px;
 	}
 	@include respond-to(narrow) {
+		flex-flow: column nowrap;
 		max-width: 720px;
 		padding: 0 1.5rem;
 	}
 }
 
 header {
+	display: flex;
+	flex-flow: column nowrap;
+	flex: none;
 	padding: 0.5rem;
 	word-break: keep-all;
-
+	
 	@include respond-to(wide) {
 		position: fixed;
-		top: 4rem;
+		padding-top: 4.5rem;
 		width: 240px;
+		height: 100%;
 		text-align: right;
 	}
-
+	
 	@include respond-to(narrow) {
 		position: static;
 		margin-top: 8rem;
@@ -193,6 +204,8 @@ header {
 
 	.toc {
 		margin-top: 1rem;
+		flex: auto;
+		overflow-y: auto;
 
 		@include respond-to(narrow) {
 			display: none;
@@ -218,6 +231,7 @@ header {
 }
 
 main {
+	flex: none;
 	margin: auto;
 	padding: 0.5rem;
 	padding-bottom: 1rem;
