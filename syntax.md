@@ -5,6 +5,9 @@ actual_title: "마크다운 문법 <strong>치트시트</strong>"
 
 제가 기억을 못 할 것 같아서 쓰는 페이지입니다. 이 블로그 기준으로 작성되어 있으니 참고할 때 주의해주세요!
 
+1. a
+{:toc}
+
 # 헤더
 
 # H1
@@ -21,6 +24,14 @@ actual_title: "마크다운 문법 <strong>치트시트</strong>"
 #### H4
 ##### H5
 ###### H6
+```
+
+## 커스텀 ID (kramdown 확장)
+
+#### Another H4 {#with_custom_id}
+
+```
+#### Another H4 {#with_custom_id}
 ```
 
 # 글자 효과
@@ -166,27 +177,32 @@ String.raw`왼쪽에 줄 번호가 있다!
 | THEAD | area |
 | ----- | ---- |
 | TBODY | area |
+| ===== | ==== |
+| TFOOT | area |
 
-\| character | on each side
-- | -
-is | optional
+| THEAD and TFOOT are optional! |
 
 | align | align  | align |
 | ----: | :----: | :---- |
 | right | center | left |
+| ====: | :====: | :==== |
+| align | align  | align |
 
 ```
+
 | THEAD | area |
 | ----- | ---- |
 | TBODY | area |
+| ===== | ==== |
+| TFOOT | area |
 
-\| character | on each side
-- | -
-is | optional
+| THEAD and TFOOT are optional! |
 
 | align | align  | align |
-| :---- | :----: | ----: |
-| left  | center | right |
+| ----: | :----: | :---- |
+| right | center | left |
+| ====: | :====: | :==== |
+| align | align  | align |
 ```
 
 # 체크박스
@@ -247,7 +263,7 @@ is | optional
 [^fnrepeat]: 각주 아이디는 한글로 못 씁니다. 아쉽다
 ```
 
-# 설명 목록
+# 설명 목록 (kramdown 확장)
 
 아무 단어
 
@@ -267,7 +283,7 @@ is | optional
 : 다람쥐 헌 쳇바퀴에 타고파.
 ```
 
-# 수식 (MathJax 확장)
+# 수식 (kramdown + MathJax 확장)
 
 LaTeX 문법을 씁니다. 인라인 수식 $$e^{\pi i} + 1 = 0$$
 
