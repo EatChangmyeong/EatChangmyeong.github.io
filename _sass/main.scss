@@ -451,8 +451,8 @@ main {
 
 	}
 
-	:not(#markdown-toc) {
-		&ol, &ul {
+	ol, ul {
+		&:not(#markdown-toc) {
 			padding-left: 2rem;
 			ol, ul {
 				padding-left: 1.35rem;
