@@ -2,7 +2,7 @@
 layout: post
 author: EatChangmyeong
 actual_title: <strong>Hello</strong>, world!
-excerpt: 공사 중이긴 한데 혹시 구경이라도 해보실래요 근데 볼 건 없어요
+excerpt: 블로그 공사할 때 테스트용으로 썼던 글이에요
 tags:
 - Jekyll
 - GithubPages
@@ -10,7 +10,7 @@ tags:
 
 # 이거는 테스트용 포스트예요!
 
-아마 테스트가 끝나면 지워질지도 모릅니다. 왼쪽에 목차를 넣을 예정이니 내용을 좀 추가해보겠습니다.
+일단 중요한 거는 다 만들어놓긴 했지만 아직 글이 너무 적으니 당분간 남겨놓기로 했습니다. 언젠가 이 글을 지울 수 있으면 좋겠네요.
 
 ## H2
 
