@@ -1,0 +1,31 @@
+---
+---
+
+{% include template1.html %}
+		<title>{{ page.actual_title | strip_html }} · 잇창명 개발 블로그 (공사 중)</title>
+{% include template2.html %}
+		<span class="logo-title">{{ page.actual_title }}</span>
+{% include template3.html %}
+			<header>
+				<a href="/" class="front-link">잇창명 개발 블로그</a>
+				<h1>
+					{{ page.actual_title }}
+				</h1>
+				<span class="metadata">
+					<span class="date">{{ page.date | date: "%Y년 %m월 %d일 업데이트" }}</span>
+					{% if page.tags.size != 0 %}
+						<br>
+						{% for x in page.tags %}
+							<span class="tag">{{ x }}</span>
+						{% endfor %}
+					{% endif %}
+				</span>
+				<div class="toc"></div>
+			</header>
+
+			<main>
+				{{ content }}
+			</main>
+
+			<script src="/assets/js/postprocess.js"></script>
+{% include template4.html %}
