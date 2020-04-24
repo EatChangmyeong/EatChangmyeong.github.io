@@ -6,6 +6,8 @@ layout: front
 
 [마크다운 문법 치트시트](/syntax)
 
+[외부 리소스](/thirdparty-license)
+
 ## TODO
 
 * 글 진행 바
