@@ -102,6 +102,7 @@ a {
 	top: 0;
 	left: 0;
 	font-size: 0;
+	white-space: nowrap;
 	z-index: 1;
 
 	@include respond-to(narrow) {
