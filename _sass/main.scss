@@ -464,10 +464,16 @@ main {
 
 		%tablecell {
 			padding: 0.2rem 0.5rem;
+			text-align: left;
 		}
 
-		thead {
+		th, td {
+			@extend %tablecell;
+		}
+
+		thead, tfoot {
 			tr {
+				font-weight: bold;
 				background-color: #eae4fe;
 
 				&:hover {
@@ -475,8 +481,8 @@ main {
 				}
 			}
 
-			th {
-				@extend %tablecell;
+			th, td {
+				border: 1px solid #564a7e;
 			}
 		}
 
@@ -486,8 +492,11 @@ main {
 			}
 
 			td {
-				@extend %tablecell;
-				border-bottom: 1px solid #c0c0c0;
+				border: 1px solid #c0c0c0;
+			}
+
+			&:not(:last-child) tr:last-child td  {
+				border-bottom: none;
 			}
 		}
 	}
