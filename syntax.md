@@ -5,8 +5,15 @@ actual_title: "마크다운 문법 <strong>치트시트</strong>"
 
 제가 기억을 못 할 것 같아서 쓰는 페이지입니다. 이 블로그 기준으로 작성되어 있으니 참고할 때 주의해주세요!
 
-1. a
+# 목차 (kramdown 확장)
+
+1. 제물로 바쳐질 ol
 {:toc}
+
+```
+1. 제물로 바쳐질 ol
+{:toc}
+```
 
 # 헤더
 
@@ -177,6 +184,10 @@ String.raw`왼쪽에 줄 번호가 있다!
 | THEAD | area |
 | ----- | ---- |
 | TBODY | area |
+| multiline | text |
+| multiline | text |
+| multiline | text |
+| multiline | text |
 | ===== | ==== |
 | TFOOT | area |
 
@@ -189,10 +200,13 @@ String.raw`왼쪽에 줄 번호가 있다!
 | align | align  | align |
 
 ```
-
 | THEAD | area |
 | ----- | ---- |
 | TBODY | area |
+| multiline | text |
+| multiline | text |
+| multiline | text |
+| multiline | text |
 | ===== | ==== |
 | TFOOT | area |
 
@@ -285,12 +299,29 @@ String.raw`왼쪽에 줄 번호가 있다!
 
 # 수식 (kramdown + MathJax 확장)
 
-LaTeX 문법을 씁니다. 인라인 수식 $$e^{\pi i} + 1 = 0$$
+## 인라인 수식
+
+$ 두 개로 감싸서 수식을 표시합니다. $$\sum_{i=0}^n i^2 = \frac{n(n+1)(2n+1)}{6}$$
+
+↓ 강제 인라인 수식
+
+\$$\sum_{i=0}^n i^2 = \frac{n(n+1)(2n+1)}{6}$$
+
+```
+$ 두 개로 감싸서 수식을 표시합니다. $$\sum_{i=0}^n i^2 = \frac{n(n+1)(2n+1)}{6}$$
+
+↓ 강제 인라인 수식
+
+\$$\sum_{i=0}^n i^2 = \frac{n(n+1)(2n+1)}{6}$$
+```
+
+## 블록 수식
+별도의 줄에 작성해야 합니다.
 
 $$\sum_{i=0}^n i^2 = \frac{n(n+1)(2n+1)}{6}$$
 
 ```
-LaTeX 문법을 씁니다. 인라인 수식 $$e^{\pi i} + 1 = 0$$
+별도의 줄에 작성해야 합니다.
 
 $$\sum_{i=0}^n i^2 = \frac{n(n+1)(2n+1)}{6}$$
 ```
