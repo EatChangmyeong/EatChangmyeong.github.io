@@ -1,1 +1,9 @@
 timezone: Asia/Seoul
+
+markdown: kramdown
+kramdown:
+  math_engine: mathjax
+  remove_line_breaks_for_cjk: true
+  smart_quotes: ["apos", "apos", "quot", "quot"]
+  typographic_symbols: 
+    hellip: ...
