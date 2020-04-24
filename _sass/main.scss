@@ -292,7 +292,6 @@ main {
 			}
 		}
 	}
-
 	div.highlighter-rouge {
 		@extend %codeblock;
 
@@ -322,6 +321,14 @@ main {
 			-moz-user-select: none;
 			-webkit-user-select: none;
 			-ms-user-select: none;
+		}
+	}
+
+	del {
+		color: #666;
+
+		&:hover {
+			text-decoration: none;
 		}
 	}
 
