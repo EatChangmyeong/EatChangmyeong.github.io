@@ -250,6 +250,7 @@ main {
 	justify-content: flex-start;
 	padding: 0.5rem;
 	padding-bottom: 1rem;
+	word-break: keep-all;
 	
 	@include respond-to(wide) {
 		position: absolute;
