@@ -1,0 +1,24 @@
+@charset 'UTF-8';
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap'); // 'Noto Sans KR'
+@import url('https://cdn.rawgit.com/innks/NanumSquareRound/master/nanumsquareround.min.css'); // 'NanumSquareRound', from https://github.com/innks/NanumSquareRound
+@font-face { // from https://github.com/wan2land/d2coding
+	font-family: 'D2Coding';
+	font-style: normal;
+	font-weight: 400;
+	font-display: swap;
+	src:
+	url('/assets/fonts/d2c_regular.woff2') format('woff2'),
+	url('/assets/fonts/d2c_regular.woff') format('woff'),
+	url('/assets/fonts/d2c_regular.ttf') format('truetype');
+}
+@font-face {
+	font-family: 'D2Coding';
+	font-style: normal;
+	font-weight: 700;
+	font-display: swap;
+	src:
+	url('/assets/fonts/d2c_bold.woff2') format('woff2'),
+	url('/assets/fonts/d2c_bold.woff') format('woff'),
+	url('/assets/fonts/d2c_bold.ttf') format('truetype');
+}
