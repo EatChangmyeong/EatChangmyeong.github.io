@@ -56,8 +56,24 @@ function tableOfContents() {
 	$('.toc').innerHTML = generateToc(headingNodes);
 }
 
+function progressBar() {
+	window.addEventListener('resize', progressBarResize);
+	document.addEventListener('scroll', progressBarScroll);
+	progressBarResize();
+}
+
+function progressBarResize() {
+	$('#progress-bar').style.display = innerHeight < document.body.scrollHeight ? '' : 'none';
+	progressBarScroll();
+}
+
+function progressBarScroll() {
+	$('#progress-bar').style.width = scrollY/(document.body.scrollHeight - innerHeight)*100 + '%';
+}
+
 document.addEventListener('DOMContentLoaded', function() {
 	tableOfContents();
+	progressBar();
 });
 
 })();
