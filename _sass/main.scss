@@ -156,31 +156,29 @@ table {
 }
 
 a {
-	// color: #0032c7;
-	color: #2e00c7;
+	color: #0036c8;
 	text-decoration: none;
 
 	&:hover {
 		text-decoration: underline;
 	}
 	&:visited {
-		// color: #4a577d;
-		color: #564a7e;
+		color: #4a587e;
 	}
 
 	&.footnote, &.reversefootnote {
-		color: #c72e00;
+		color: #c82e00;
 	}
 
 	@include respond-to(dark) {
-		color: #ab94fc;
+		color: #91b0ff;
 
 		&:visited {
-			color: #d5cafe;
+			color: #cad9fe;
 		}
 
 		&.footnote, &.reversefootnote {
-			color: #ff6333;
+			color: #ff5b2d;
 		}
 	}
 }
