@@ -36,10 +36,10 @@ function tableOfContents() {
 			}
 			
 			if(scanPos < to) {
-				result += '<ul>';
+				result += '<ol>';
 				while(scanPos < to)
 					result += generateToc_internal(depth + 1, minLevel);
-				result += '</ul>';
+				result += '</ol>';
 			}
 
 			result += '</li>';
@@ -50,7 +50,7 @@ function tableOfContents() {
 
 		while(scanPos < length)
 			result += generateToc_internal(0, globalMinLevel);
-		return '<ul>' + result + '</ul>';
+		return '<ol>' + result + '</ol>';
 	};
 
 	$('.toc').innerHTML = generateToc(headingNodes);

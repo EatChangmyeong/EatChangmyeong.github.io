@@ -5,6 +5,10 @@
 %monokai {
 	color: #f8f8f2;
 	background: #272822;
+
+	@media all and (prefers-color-scheme: dark) {
+		background: #383838;
+	}
 	
 	.c     { color: #75715e; font-style: italic } // Comment
 	.err   { color: #960050; background-color: #1e0010 } // Error

@@ -39,12 +39,20 @@ $right: 720px;
 	}
 }
 
+@function white-shade($opacity) {
+	@return rgba(255, 255, 255, $opacity);
+}
+@function black-shade($opacity) {
+	@return rgba(0, 0, 0, $opacity);
+}
+
 %metadata {
 	font-size: 0.8rem;
 	
 	span.date {
 		color: #444;
 	}
+
 	span.tag {
 		margin: 0 0.05em;
 		padding: 0 0.15em;
@@ -53,6 +61,57 @@ $right: 720px;
 
 		&::before {
 			content: "#";
+		}
+	}
+
+	@include respond-to(dark) {
+		span.date {
+			color: #bbb;
+		}
+
+		span.tag {
+			background-color: #002020;
+		}
+	}
+}
+
+%toc-container {
+	margin-top: 1rem;
+
+	li {
+		list-style-type: none;
+
+		a {
+			display: block;
+			padding: 0.2rem;
+			padding-right: 0.5rem;
+			color: black-shade(0.75);
+			text-decoration: none;
+
+			&:hover {
+				background-color: black-shade(0.05);
+			}
+
+			@include respond-to(dark) {
+				color: white-shade(0.75);
+
+				&:hover {
+					background-color: white-shade(0.05);
+				}
+			}
+		}
+	}
+}
+
+@mixin toc-list($direction) {
+	padding: 0;
+
+	ol {
+		margin-#{$direction}: calc(0.5rem - 1px);
+		border-#{$direction}: 1px solid black-shade(0.1);
+
+		@include respond-to(dark) {
+			border-#{$direction}-color: white-shade(0.1);
 		}
 	}
 }
@@ -70,13 +129,20 @@ html, body, #container {
 
 html {
 	scroll-padding-top: 1rem;
+	color: black;
+	background-color: white;
+
+	@include respond-to(narrow) {
+		scroll-padding-top: 6rem;
+	}
 	
 	@include respond-to(motion) {
 		scroll-behavior: smooth;
 	}
 
-	@include respond-to(narrow) {
-		scroll-padding-top: 6rem;
+	@include respond-to(dark) {
+		color: white;
+		background-color: #202020;
 	}
 }
 
@@ -105,6 +171,18 @@ a {
 	&.footnote, &.reversefootnote {
 		color: #c72e00;
 	}
+
+	@include respond-to(dark) {
+		color: #ab94fc;
+
+		&:visited {
+			color: #d5cafe;
+		}
+
+		&.footnote, &.reversefootnote {
+			color: #ff6333;
+		}
+	}
 }
 
 #logo {
@@ -117,9 +195,17 @@ a {
 	white-space: nowrap;
 	z-index: 1;
 
+	--logo-gradient-color-top: white;
+	--logo-gradient-color-bottom: rgba(255, 255, 255, 0.8);
+
+	@include respond-to(dark) {
+		--logo-gradient-color-top: black;
+		--logo-gradient-color-bottom: rgba(32, 32, 32, 0.8);
+	}
+
 	@include respond-to(narrow) {
 		height: 6rem;
-		background-image: linear-gradient(to bottom, white, rgba(255, 255, 255, 0.8) 80%, transparent);
+		background-image: linear-gradient(to bottom, var(--logo-gradient-color-top), var(--logo-gradient-color-bottom) 80%, transparent);
 	}
 
 	* {
@@ -131,7 +217,7 @@ a {
 		position: absolute;
 		height: 6px;
 		background: #ab94fc;
-		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+		box-shadow: 0 2px 4px black-shade(0.25);
 	}
 
 	a {
@@ -141,6 +227,18 @@ a {
 
 		img {
 			width: 4rem;
+		}
+
+		@include respond-to(light) {
+			#logo-dark {
+				display: none;
+			}
+		}
+
+		@include respond-to(dark) {
+			#logo-light {
+				display: none;
+			}
 		}
 	}
 
@@ -204,6 +302,10 @@ header {
 
 	a.front-link {
 		color: #444;
+
+		@include respond-to(dark) {
+			color: #bbb;
+		}
 	}
 
 	h1 {
@@ -218,6 +320,10 @@ header {
 				display: none;
 			}
 		}
+
+		@include respond-to(dark) {
+			color: #d5cafe;
+		}
 	}
 
 	span.metadata {
@@ -227,7 +333,7 @@ header {
 	}
 
 	.toc {
-		margin-top: 1rem;
+		@extend %toc-container;
 		flex: auto;
 		overflow-y: auto;
 
@@ -235,30 +341,9 @@ header {
 			display: none;
 		}
 
-		ul {
+		ol {
+			@include toc-list(right);
 			margin: 0;
-			padding: 0;
-
-			ul {
-				margin-right: calc(0.5rem - 1px);
-				border-right: 1px solid rgba(0, 0, 0, 0.1);
-			}
-		}
-
-		li {
-			list-style-type: none;
-
-			a {
-				display: block;
-				padding: 0.2rem;
-				padding-right: 0.5rem;
-				color: #404040;
-				text-decoration: none;
-
-				&:hover {
-					background-color: rgba(0, 0, 0, 0.05);
-				}
-			}
 		}
 	}
 }
@@ -282,8 +367,20 @@ main {
 		margin: 0;
 		margin-left: 0.5rem;
 		border-left: 4px solid #564a7e;
+		padding-bottom: 1px;
+		background-color: rgba(171, 148, 252, 0.2);
+
 		blockquote {
 			margin-left: 1rem;
+		}
+
+		:last-child:not(p) {
+			margin-bottom: 0.5rem;
+		}
+
+		@include respond-to(dark) {
+			border-left: 4px solid #ab94fc;
+			background-color: rgba(213, 202, 254, 0.2);
 		}
 	}
 
@@ -291,7 +388,11 @@ main {
 		margin: -0.15em 0.05em;
 		padding: 0.15em;
 		font-family: "D2Coding", monospace;
-		background: #e0e0e0;
+		background-color: #e0e0e0;
+
+		@include respond-to(dark) {
+			background-color: #505050;
+		}
 	}
 
 	%codeblock {
@@ -350,6 +451,10 @@ main {
 		&:hover {
 			text-decoration: none;
 		}
+
+		@include respond-to(dark) {
+			color: #aaa;
+		}
 	}
 
 	dl {
@@ -365,6 +470,10 @@ main {
 
 			&:first-child {
 				margin: 0;
+			}
+
+			@include respond-to(dark) {
+				background-color: #505050;
 			}
 		}
 
@@ -428,6 +537,10 @@ main {
 		height: 1px;
 		background-color: black;
 		opacity: 50%;
+
+		@include respond-to(dark) {
+			background-color: white;
+		}
 	}
 
 	img {
@@ -442,40 +555,16 @@ main {
 	}
 
 	#markdown-toc {
-		margin-top: 1rem;
-
-		// @include respond-to(narrow) {
-		// 	display: none;
-		// }
+		@extend %toc-container;
 
 		&, ol {
-			padding: 0;
-
-			ol {
-				margin-left: calc(0.5rem - 1px);
-				border-left: 1px solid rgba(0, 0, 0, 0.1);
-			}
-		}
-		
-		li {
-			list-style-type: none;
-
-			a {
-				display: block;
-				padding: 0.2rem;
-				padding-left: 0.5rem;
-				color: #404040;
-				text-decoration: none;
-	
-				&:hover {
-					background-color: rgba(0, 0, 0, 0.05);
-				}
-			}
+			@include toc-list(left);
 		}
 	}
 
 	ol, ul {
 		padding-left: 2rem;
+
 		ol, ul {
 			padding-left: 1.35rem;
 		}
@@ -504,7 +593,7 @@ main {
 				background-color: #eae4fe;
 
 				&:hover {
-					background-color: #dcd6ed;
+					background-color: #d3cde5;
 				}
 			}
 
@@ -515,7 +604,7 @@ main {
 
 		tbody {
 			tr:hover {
-				background-color: #eee;
+				background-color: black-shade(0.1);
 			}
 
 			td {
@@ -524,6 +613,36 @@ main {
 
 			&:not(:last-child) tr:last-child td  {
 				border-bottom: none;
+			}
+		}
+
+		@include respond-to(dark) {
+			thead, tfoot {
+				tr {
+					background-color: #2b253f;
+	
+					&:hover {
+						background-color: #403b52;
+					}
+				}
+	
+				th, td {
+					border: 1px solid #ab94fc;
+				}
+			}
+	
+			tbody {
+				tr:hover {
+					background-color: white-shade(0.1);
+				}
+	
+				td {
+					border: 1px solid #404040;
+				}
+	
+				&:not(:last-child) tr:last-child td  {
+					border-bottom: none;
+				}
 			}
 		}
 	}
@@ -539,12 +658,18 @@ main {
 			margin-top: 1.2rem;
 			border-radius: 1rem;
 			padding: 1rem;
-			box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.3);
+			box-shadow: 0 0.2rem 0.5rem black-shade(0.3);
 
-			transition: box-shadow 0.2s;
+			@include respond-to(motion) {
+				transition: box-shadow 0.2s, background-color 0.2s;
+			}
 
 			&:hover {
-				box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.6);
+				box-shadow: 0 0.2rem 0.5rem black-shade(0.6);
+
+				@include respond-to(dark) {
+					background-color: white-shade(0.1);
+				}
 			}
 
 			span.metadata {
