@@ -107,7 +107,7 @@ $right: 720px;
 	padding: 0;
 
 	ol {
-		margin-#{$direction}: calc(0.5rem - 1px);
+		margin-#{$direction}: calc(0.64rem - 1px);
 		border-#{$direction}: 1px solid black-shade(0.1);
 
 		@include respond-to(dark) {
@@ -149,6 +149,7 @@ html {
 body {
 	margin: 0;
 	font-family: 'Noto Sans KR', sans-serif;
+	overflow-wrap: break-word;
 }
 
 table {
@@ -366,7 +367,7 @@ main {
 		margin-left: 0.5rem;
 		border-left: 4px solid #564a7e;
 		padding-bottom: 1px;
-		background-color: rgba(171, 148, 252, 0.2);
+		background-color: rgba(171, 148, 252, 0.1);
 
 		blockquote {
 			margin-left: 1rem;
@@ -378,7 +379,7 @@ main {
 
 		@include respond-to(dark) {
 			border-left: 4px solid #ab94fc;
-			background-color: rgba(213, 202, 254, 0.2);
+			background-color: rgba(213, 202, 254, 0.1);
 		}
 	}
 
@@ -643,6 +644,10 @@ main {
 				}
 			}
 		}
+	}
+
+	.twitter-tweet-rendered {
+		margin: 0.8rem auto !important;
 	}
 
 	ul#post-list {
