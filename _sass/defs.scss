@@ -30,6 +30,18 @@
 	}
 }
 
+// @mixin if-transparency-reduced($reduced: true) {
+// 	@include media-query-match(prefers-reduced-transparency, reduce, $reduced) {
+// 		@content;
+// 	}
+// }
+
+// @mixin if-high-contrast($high: true) {
+// 	@include media-query-match(prefers-contrast, high, $high) {
+// 		@content;
+// 	}
+// }
+
 %unselectable {
 	user-select: none;
 	-moz-user-select: none;
@@ -128,4 +140,4 @@ $header-sublink-dark: #bbb;
 $progress-bar-color: $eatchy-purple;
 $progress-bar-dark: $eatchy-purple;
 $tag-color: #e0ffff;
-$tag-dark: #002020;
+$tag-dark: #004040;
