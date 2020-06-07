@@ -169,16 +169,16 @@ console.info('코드 테마는 무난하게 Monokai를 썼습니다.');
 String.raw`왼쪽에 줄 번호가 있다!
 언어 이름을 반드시 명시해야 합니다.
 왜 마크다운 문법으로는 줄 번호가 안 나와 개빢쵸
-저 아래에서도 리퀴드 문법 탈출시키느라 고생했어 더빢쵸`
+지금 보니까 리퀴드 문법에 raw가 있네 으`
 {% endhighlight %}
 
 ```
-{{ "{% highlight javascript linenos " }}%}
+{% raw %}{% highlight javascript linenos %}
 String.raw`왼쪽에 줄 번호가 있다!
 언어 이름을 반드시 명시해야 합니다.
 왜 마크다운 문법으로는 줄 번호가 안 나와 개빢쵸
-저 아래에서도 리퀴드 문법 탈출시키느라 고생했어 더빢쵸`
-{{ "{% endhighlight " }}%}
+지금 보니까 리퀴드 문법에 raw가 있네 으`
+{% endhighlight %}{% endraw %}
 ```
 
 # 테이블
