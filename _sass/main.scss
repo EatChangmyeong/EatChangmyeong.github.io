@@ -19,7 +19,7 @@
 		}
 	}
 
-	@include respond-to(dark) {
+	@include if-dark() {
 		span.date {
 			color: $header-sublink-dark;
 		}
@@ -43,15 +43,15 @@ html {
 	color: $light-mode-foreground;
 	background-color: $light-mode-background;
 
-	@include respond-to(narrow) {
+	@include if-wide(false) {
 		scroll-padding-top: 6rem;
 	}
 	
-	@include respond-to(motion) {
+	@include if-motion-reduced(false) {
 		scroll-behavior: smooth;
 	}
 
-	@include respond-to(dark) {
+	@include if-dark() {
 		color: $dark-mode-foreground;
 		background-color: $dark-mode-background;
 	}
@@ -81,7 +81,7 @@ a {
 		color: $footnote-link-color;
 	}
 	
-	@include respond-to(dark) {
+	@include if-dark() {
 		color: $link-dark;
 
 		&:visited {
@@ -106,12 +106,12 @@ a {
 	--logo-gradient-color-top: white;
 	--logo-gradient-color-bottom: rgba(255, 255, 255, 0.8);
 
-	@include respond-to(dark) {
+	@include if-dark() {
 		--logo-gradient-color-top: black;
 		--logo-gradient-color-bottom: rgba(32, 32, 32, 0.8);
 	}
 
-	@include respond-to(narrow) {
+	@include if-wide(false) {
 		height: 6rem;
 		background-image: linear-gradient(to bottom, var(--logo-gradient-color-top), var(--logo-gradient-color-bottom) 80%, transparent);
 	}
@@ -127,7 +127,7 @@ a {
 		background: $progress-bar-color;
 		box-shadow: 0 2px 4px black-shade(0.25);
 
-		@include respond-to(dark) {
+		@include if-dark() {
 			background: $progress-bar-dark;
 		}
 	}
@@ -141,13 +141,13 @@ a {
 			width: $logo-size;
 		}
 
-		@include respond-to(light) {
+		@include if-dark(false) {
 			#logo-dark {
 				display: none;
 			}
 		}
 
-		@include respond-to(dark) {
+		@include if-dark() {
 			#logo-light {
 				display: none;
 			}
@@ -162,7 +162,7 @@ a {
 		font-size: 1rem;
 		letter-spacing: $logo-letter-spacing;
 
-		@include respond-to(wide) {
+		@include if-wide() {
 			display: none;
 		}
 
@@ -177,11 +177,11 @@ a {
 	position: relative;
 	margin: auto;
 
-	@include respond-to(wide) {
+	@include if-wide() {
 		flex-flow: row nowrap;
 		width: $left + $right;
 	}
-	@include respond-to(narrow) {
+	@include if-wide(false) {
 		flex-flow: column nowrap;
 		max-width: $right;
 		padding: 0 1.5rem;
@@ -195,7 +195,7 @@ header {
 	padding: 0.5rem;
 	word-break: keep-all;
 	
-	@include respond-to(wide) {
+	@include if-wide() {
 		position: fixed;
 		padding-top: 4.5rem;
 		width: $left;
@@ -203,7 +203,7 @@ header {
 		text-align: right;
 	}
 	
-	@include respond-to(narrow) {
+	@include if-wide(false) {
 		position: static;
 		margin-top: 8rem;
 		text-align: left;
@@ -212,7 +212,7 @@ header {
 	a.front-link {
 		color: $header-sublink-color;
 
-		@include respond-to(dark) {
+		@include if-dark() {
 			color: $header-sublink-dark;
 		}
 	}
@@ -224,13 +224,13 @@ header {
 		font-size: $post-title-size;
 		font-weight: normal;
 
-		@include respond-to(narrow) {
+		@include if-wide(false) {
 			br.front-br {
 				display: none;
 			}
 		}
 
-		@include respond-to(dark) {
+		@include if-dark() {
 			color: $post-title-dark;
 		}
 	}
@@ -246,7 +246,7 @@ header {
 		flex: auto;
 		overflow-y: auto;
 
-		@include respond-to(narrow) {
+		@include if-wide(false) {
 			display: none;
 		}
 
@@ -264,7 +264,7 @@ main {
 	padding-bottom: 1rem;
 	word-break: keep-all;
 	
-	@include respond-to(wide) {
+	@include if-wide() {
 		position: absolute;
 		top: 0;
 		right: 0;

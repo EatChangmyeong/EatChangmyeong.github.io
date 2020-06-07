@@ -11,7 +11,7 @@
 	-moz-tab-size: $tab-size;
 	-o-tab-size: $tab-size;
 
-	@include respond-to(dark) {
+	@include if-dark() {
 		background: $dark-mode-code-background;
 	}
 }

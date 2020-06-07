@@ -17,7 +17,7 @@
 			margin-bottom: 0.5rem;
 		}
 	
-		@include respond-to(dark) {
+		@include if-dark() {
 			border-left: 4px solid $blockquote-border-dark;
 			background-color: $blockquote-background-dark;
 		}
@@ -82,7 +82,7 @@
 			text-decoration: none;
 		}
 	
-		@include respond-to(dark) {
+		@include if-dark() {
 			color: $deleted-dark;
 		}
 	}
@@ -102,7 +102,7 @@
 				margin: 0;
 			}
 	
-			@include respond-to(dark) {
+			@include if-dark() {
 				background-color: $decl-term-dark;
 			}
 		}
@@ -168,7 +168,7 @@
 		background-color: $light-mode-foreground;
 		opacity: 50%;
 	
-		@include respond-to(dark) {
+		@include if-dark() {
 			background-color: $dark-mode-foreground;
 		}
 	}
@@ -251,7 +251,7 @@
 			}
 		}
 	
-		@include respond-to(dark) {
+		@include if-dark() {
 			thead, tfoot {
 				tr {
 					background-color: $table-head-background-dark;
@@ -304,14 +304,14 @@
 			padding: 1rem;
 			box-shadow: 0 0.2rem 0.5rem black-shade(0.3);
 	
-			@include respond-to(motion) {
+			@include if-motion-reduced() {
 				transition: box-shadow 0.2s, background-color 0.2s;
 			}
 	
 			&:hover {
 				box-shadow: 0 0.2rem 0.5rem black-shade(0.6);
 	
-				@include respond-to(dark) {
+				@include if-dark() {
 					background-color: white-shade(0.1);
 				}
 			}

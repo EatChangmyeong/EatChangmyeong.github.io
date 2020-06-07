@@ -1,37 +1,32 @@
 @charset "UTF-8";
 
-@mixin respond-to($name) {
-	@if $name == wide {
-		@media all and (min-width: $narrow-threshold) {
+@mixin media-query-match($key, $value, $match) {
+	@if $match {
+		@media all and ($key: $value) {
+			@content;
+		}
+	} @else {
+		@media not all and ($key: $value) {
 			@content;
 		}
 	}
-	@if $name == narrow {
-		@media not all and (min-width: $narrow-threshold) {
-			@content;
-		}
-	}
+}
 
-	@if $name == reduced-motion {
-		@media all and (prefers-reduced-motion: reduce) {
-			@content;
-		}
+@mixin if-wide($wide: true) {
+	@include media-query-match(min-width, $narrow-threshold, $wide) {
+		@content;
 	}
-	@if $name == motion {
-		@media not all and (prefers-reduced-motion: reduce) {
-			@content;
-		}
-	}
+}
 
-	@if $name == dark {
-		@media all and (prefers-color-scheme: dark) {
-			@content;
-		}
+@mixin if-motion-reduced($reduced: true) {
+	@include media-query-match(prefers-reduced-motion, reduce, $reduced) {
+		@content;
 	}
-	@if $name == light {
-		@media not all and (prefers-color-scheme: dark) {
-			@content;
-		}
+}
+
+@mixin if-dark($dark: true) {
+	@include media-query-match(prefers-color-scheme, dark, $dark) {
+		@content;
 	}
 }
 

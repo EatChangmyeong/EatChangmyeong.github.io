@@ -17,7 +17,7 @@
 				background-color: black-shade(0.05);
 			}
 
-			@include respond-to(dark) {
+			@include if-dark() {
 				color: white-shade(0.75);
 
 				&:hover {
@@ -35,7 +35,7 @@
 		margin-#{$direction}: calc(0.64rem - 1px);
 		border-#{$direction}: 1px solid black-shade(0.1);
 
-		@include respond-to(dark) {
+		@include if-dark() {
 			border-#{$direction}-color: white-shade(0.1);
 		}
 	}
