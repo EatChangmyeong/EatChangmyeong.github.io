@@ -141,3 +141,11 @@ $progress-bar-color: $eatchy-purple;
 $progress-bar-dark: $eatchy-purple;
 $tag-color: #e0ffff;
 $tag-dark: #004040;
+$category-gradient-left-color: #e8e800;
+$category-gradient-right-color: change-color(
+	$category-gradient-left-color,
+	$alpha: 0);
+$category-gradient-left-dark: #808000;
+$category-gradient-right-dark: change-color(
+	$category-gradient-left-dark,
+	$alpha: 0.25);

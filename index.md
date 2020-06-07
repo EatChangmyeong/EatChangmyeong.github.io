@@ -20,9 +20,13 @@ layout: front
 
 <ul id="post-list">
 	{% for x in site.posts %}
+		{% unless x.categories contains "Beta" %}
 		<li>
 			<span class="metadata">
 				<span class="date">{{ x.date | date: "%Y년 %m월 %d일" }}</span>
+				{% for y in x.categories %}
+					<span class="category">{{ y }}</span>
+				{% endfor %}
 				{% for y in x.tags %}
 					<span class="tag">{{ y }}</span>
 				{% endfor %}
@@ -32,5 +36,6 @@ layout: front
 				{{ x.excerpt }}
 			</p>
 		</li>
+		{% endunless %}
 	{% endfor %}
 </ul>

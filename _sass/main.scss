@@ -8,15 +8,25 @@
 		color: $header-sublink-color;
 	}
 
-	span.tag {
+	%hashtag {
 		margin: 0 0.05em;
 		padding: 0 0.15em;
-		background-color: $tag-color;
 		word-break: keep-all;
 
 		&::before {
 			content: "#";
 		}
+	}
+
+	span.tag {
+		@extend %hashtag;
+		background-color: $tag-color;
+	}
+	span.category {
+		@extend %hashtag;
+		background-image: linear-gradient(to right,
+			$category-gradient-left-color,
+			$category-gradient-right-color);
 	}
 
 	@include if-dark() {
@@ -26,6 +36,11 @@
 
 		span.tag {
 			background-color: $tag-dark;
+		}
+		span.category {
+			background-image: linear-gradient(to right,
+			$category-gradient-left-dark,
+			$category-gradient-right-dark);
 		}
 	}
 }
