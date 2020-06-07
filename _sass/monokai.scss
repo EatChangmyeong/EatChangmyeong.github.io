@@ -1,14 +1,23 @@
-@charset 'UTF-8';
+@charset "UTF-8";
+@import "defs";
 
 // modified from https://gist.github.com/phoinixi/c82317c831371a0807e1
 
-%monokai {
-	color: #f8f8f2;
-	background: #272822;
+%code {
+	color: $code-color;
+	background: $light-mode-code-background;
+	font-family: $mono-font-set;
+	tab-size: $tab-size;
+	-moz-tab-size: $tab-size;
+	-o-tab-size: $tab-size;
 
-	@media all and (prefers-color-scheme: dark) {
-		background: #383838;
+	@include respond-to(dark) {
+		background: $dark-mode-code-background;
 	}
+}
+
+%monokai {
+	@extend %code;
 	
 	.c     { color: #75715e; font-style: italic } // Comment
 	.err   { color: #960050; background-color: #1e0010 } // Error

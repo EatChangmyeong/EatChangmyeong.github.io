@@ -1,0 +1,136 @@
+@charset "UTF-8";
+
+@mixin respond-to($name) {
+	@if $name == wide {
+		@media all and (min-width: $narrow-threshold) {
+			@content;
+		}
+	}
+	@if $name == narrow {
+		@media not all and (min-width: $narrow-threshold) {
+			@content;
+		}
+	}
+
+	@if $name == reduced-motion {
+		@media all and (prefers-reduced-motion: reduce) {
+			@content;
+		}
+	}
+	@if $name == motion {
+		@media not all and (prefers-reduced-motion: reduce) {
+			@content;
+		}
+	}
+
+	@if $name == dark {
+		@media all and (prefers-color-scheme: dark) {
+			@content;
+		}
+	}
+	@if $name == light {
+		@media not all and (prefers-color-scheme: dark) {
+			@content;
+		}
+	}
+}
+
+%unselectable {
+	user-select: none;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+}
+
+@function white-shade($opacity) {
+	@return rgba(255, 255, 255, $opacity);
+}
+@function black-shade($opacity) {
+	@return rgba(0, 0, 0, $opacity);
+}
+
+@function eatchy-purple-shade($lightness: 50%) {
+	@if $lightness > 50% {
+		@return mix(#ab94fc, white, 200% - 2*$lightness);
+	} @else {
+		@return mix(#ab94fc, black, 2*$lightness)
+	}
+}
+
+@function eatchy-purple-alter($lightness, $hue, $saturation: null) {
+	$color: adjust-color(eatchy-purple-shade($lightness), $hue: $hue);
+	@if $saturation != null {
+		$color: change-color($color, $saturation: $saturation);
+	}
+	@return $color;
+}
+
+$narrow-threshold: 1080px;
+$left: 300px;
+$right: 720px;
+
+$font-set: "Noto Sans KR", sans-serif;
+$alt-font-set: "NanumSquareRound", sans-serif;
+$mono-font-set: "D2Coding", monospace;
+
+$post-title-size: 2.4rem;
+$tab-size: 4;
+$horizontal-rule-width: 80%;
+$horizontal-rule-margin: 2.5rem;
+$image-max-height: 360px;
+$list-padding: 2rem;
+$list-subsequent-padding: 1.35rem;
+
+$logo-size: 4rem;
+$logo-margin: 1rem;
+$logo-letter-spacing: 0.15rem;
+
+$eatchy-purple: eatchy-purple-shade();
+
+$light-mode-foreground: black;
+$light-mode-background: white;
+$dark-mode-foreground: white;
+$dark-mode-background: #202020;
+$code-color: #f8f8f2;
+$line-number-color: #ccc;
+$light-mode-code-background: #272822;
+$dark-mode-code-background: #383838;
+$deleted-color: #666;
+$deleted-dark: #aaa;
+
+$table-head-background-color: eatchy-purple-shade(87.5%);
+$table-head-background-dark: eatchy-purple-shade(12.5%);
+$table-head-border-color: eatchy-purple-shade(25%);
+$table-head-border-dark: $eatchy-purple;
+$table-border-color: #c0c0c0;
+$table-border-dark: #404040;
+$table-highlight-alpha: 10%;
+
+$post-title-color: eatchy-purple-shade(25%);
+$post-title-dark: eatchy-purple-shade(75%);
+$link-color: eatchy-purple-alter(25%, -30deg, 100%);
+$link-dark: eatchy-purple-alter(50%, -30deg, 100%);
+$visited-link-color: eatchy-purple-alter(25%, -30deg);
+$visited-link-dark: eatchy-purple-alter(75%, -30deg);
+$footnote-link-color: eatchy-purple-alter(25%, 120deg, 100%);
+$footnote-link-dark: eatchy-purple-alter(37.5%, 120deg, 100%);
+$decl-term-color: #e0e0e0;
+$decl-term-dark: #505050;
+
+$blockquote-border-color: eatchy-purple-shade(25%);
+$blockquote-border-dark: $eatchy-purple;
+$blockquote-background-color:
+	change-color(
+		$eatchy-purple,
+		$alpha: 0.1);
+$blockquote-background-dark:
+	change-color(
+		eatchy-purple-shade(75%),
+		$alpha: 0.1);
+
+$header-sublink-color: #444;
+$header-sublink-dark: #bbb;
+$progress-bar-color: $eatchy-purple;
+$progress-bar-dark: $eatchy-purple;
+$tag-color: #e0ffff;
+$tag-dark: #002020;

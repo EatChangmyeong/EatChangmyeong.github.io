@@ -3,4 +3,10 @@
 
 @charset "UTF-8";
 
-@import "monokai", "fonts", "main";
+@import
+	"monokai",
+	"fonts",
+	"defs",
+	"toc",
+	"post",
+	"main";

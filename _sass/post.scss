@@ -1,0 +1,341 @@
+@charset "UTF-8";
+@import "defs";
+
+%post {
+	blockquote {
+		margin: 0;
+		margin-left: 0.5rem;
+		border-left: 4px solid $blockquote-border-color;
+		padding-bottom: 1px;
+		background-color: $blockquote-background-color;
+	
+		blockquote {
+			margin-left: 1rem;
+		}
+	
+		:last-child:not(p) {
+			margin-bottom: 0.5rem;
+		}
+	
+		@include respond-to(dark) {
+			border-left: 4px solid $blockquote-border-dark;
+			background-color: $blockquote-background-dark;
+		}
+	}
+	
+	code.highlighter-rouge {
+		@extend %code;
+		margin: -0.15em 0.05em;
+		padding: 0.15em;
+	}
+	
+	%codeblock {
+		@extend %monokai;
+		
+		margin: 0;
+		margin-top: 0.8rem;
+	
+		pre {
+			margin: 0;
+			border: none;
+	
+			code {
+				display: block;
+				white-space: pre-wrap;
+				overflow-x: auto;
+			}
+		}
+	}
+	div.highlighter-rouge {
+		@extend %codeblock;
+	
+		pre {
+			padding: 0.5rem;
+		}
+	}
+	figure.highlight {
+		@extend %codeblock;
+	
+		td {
+			padding: 0.5rem;
+	
+			&.gutter {
+				padding-right: 0;
+			}
+		}
+	
+		.lineno {
+			@extend %unselectable;
+			display: inline-block;
+			border-right: 1px solid $line-number-color;
+			padding: 0;
+			padding-right: 0.5rem;
+			text-align: right;
+			color: $line-number-color;
+		}
+	}
+	
+	del {
+		color: $deleted-color;
+	
+		&:hover {
+			text-decoration: none;
+		}
+	
+		@include respond-to(dark) {
+			color: $deleted-dark;
+		}
+	}
+	
+	dl {
+		@extend p;
+	
+		dt {
+			display: inline-block;
+			margin: 0;
+			margin-top: 1rem;
+			padding: 0.15em 0.5em;
+			border-radius: 1em;
+			background-color: $decl-term-color;
+	
+			&:first-child {
+				margin: 0;
+			}
+	
+			@include respond-to(dark) {
+				background-color: $decl-term-dark;
+			}
+		}
+	
+		dd {
+			margin: 0;
+			margin-top: -0.5rem;
+			padding: 0;
+			padding-left: 0.5rem;
+		}
+	}
+	
+	.footnotes ol {
+		padding-left: 0;
+		list-style-position: inside;
+	
+		li {
+			margin-top: 0.25rem;
+	
+			p {
+				display: inline-block;
+				margin: 0;
+			}
+		}
+	}
+	
+	%heading {
+		margin: 0;
+		margin-top: 1.5rem;
+		font-family: $alt-font-set;
+		font-weight: normal;
+	}
+	h1 {
+		@extend %heading;
+		font-size: 2.5rem;
+	}
+	h2 {
+		@extend %heading;
+		font-size: 2.08rem;
+	}
+	h3 {
+		@extend %heading;
+		font-size: 1.73rem;
+	}
+	h4 {
+		@extend %heading;
+		font-size: 1.44rem;
+	}
+	h5 {
+		@extend %heading;
+		font-size: 1.2rem;
+	}
+	h6 {
+		@extend %heading;
+		font-size: 1rem;
+	}
+	
+	hr {
+		margin: $horizontal-rule-margin auto;
+		border: none;
+		width: $horizontal-rule-width;
+		height: 1px;
+		background-color: $light-mode-foreground;
+		opacity: 50%;
+	
+		@include respond-to(dark) {
+			background-color: $dark-mode-foreground;
+		}
+	}
+	
+	img {
+		display: block;
+		margin: auto;
+		max-width: 100%;
+		max-height: $image-max-height;
+	}
+	
+	input.task-list-item-checkbox {
+		margin: 0 0.4rem 0 0.25rem;
+	}
+	
+	#markdown-toc {
+		@extend %toc-container;
+	
+		&, ol {
+			@include toc-list(left);
+		}
+	}
+	
+	ol, ul {
+		padding-left: $list-padding;
+	
+		ol, ul {
+			padding-left: $list-subsequent-padding;
+		}
+	}
+	
+	p {
+		margin: 0.8rem 0 0 0.5rem;
+	}
+	
+	table:not(.rouge-table) {
+		margin: 0.8rem 0.5rem 0;
+		width: calc(100% - 1rem);
+	
+		%tablecell {
+			padding: 0.2rem 0.5rem;
+			text-align: left;
+		}
+	
+		th, td {
+			@extend %tablecell;
+		}
+	
+		thead, tfoot {
+			tr {
+				font-weight: bold;
+				background-color: $table-head-background-color;
+	
+				&:hover {
+					background-color: mix(
+						$light-mode-foreground,
+						$table-head-background-color,
+						$table-highlight-alpha);
+				}
+			}
+	
+			th, td {
+				border: 1px solid $table-head-border-color;
+			}
+		}
+	
+		tbody {
+			tr:hover {
+				background-color: change-color(
+					$light-mode-foreground,
+					$alpha: $table-highlight-alpha/100%);
+			}
+	
+			td {
+				border: 1px solid $table-border-color;
+			}
+	
+			&:not(:last-child) tr:last-child td  {
+				border-bottom: none;
+			}
+		}
+	
+		@include respond-to(dark) {
+			thead, tfoot {
+				tr {
+					background-color: $table-head-background-dark;
+	
+					&:hover {
+						background-color: mix(
+							$dark-mode-foreground,
+							$table-head-background-dark,
+							$table-highlight-alpha);
+					}
+				}
+	
+				th, td {
+					border: 1px solid $table-head-border-dark;
+				}
+			}
+	
+			tbody {
+				tr:hover {
+					background-color: change-color(
+						$dark-mode-foreground,
+						$alpha: $table-highlight-alpha/100%);
+				}
+	
+				td {
+					border: 1px solid $table-border-dark;
+				}
+	
+				&:not(:last-child) tr:last-child td  {
+					border-bottom: none;
+				}
+			}
+		}
+	}
+	
+	.twitter-tweet-rendered {
+		margin: 0.8rem auto !important;
+	}
+	
+	ul#post-list {
+		margin: 0;
+		margin-top: 1.2rem;
+		padding: 0;
+		list-style: none;
+	
+		li {
+			margin: 0;
+			margin-top: 1.2rem;
+			border-radius: 1rem;
+			padding: 1rem;
+			box-shadow: 0 0.2rem 0.5rem black-shade(0.3);
+	
+			@include respond-to(motion) {
+				transition: box-shadow 0.2s, background-color 0.2s;
+			}
+	
+			&:hover {
+				box-shadow: 0 0.2rem 0.5rem black-shade(0.6);
+	
+				@include respond-to(dark) {
+					background-color: white-shade(0.1);
+				}
+			}
+	
+			span.metadata {
+				@extend %metadata;
+	
+				display: block;
+			}
+			
+			h2 {
+				margin: 0;
+	
+				strong {
+					font-weight: normal;
+				}
+				em {
+					font-style: normal;
+				}
+			}
+	
+			p {
+				margin: 0;
+			}
+		}
+	}
+}

@@ -1,62 +1,17 @@
-@charset 'UTF-8';
-
-$narrow: 1080px;
-$left: 300px;
-$right: 720px;
-
-@mixin respond-to($name) {
-	@if $name == wide {
-		@media all and (min-width: $narrow) {
-			@content;
-		}
-	}
-	@if $name == narrow {
-		@media not all and (min-width: $narrow) {
-			@content;
-		}
-	}
-
-	@if $name == reduced-motion {
-		@media all and (prefers-reduced-motion: reduce) {
-			@content;
-		}
-	}
-	@if $name == motion {
-		@media not all and (prefers-reduced-motion: reduce) {
-			@content;
-		}
-	}
-
-	@if $name == dark {
-		@media all and (prefers-color-scheme: dark) {
-			@content;
-		}
-	}
-	@if $name == light {
-		@media not all and (prefers-color-scheme: dark) {
-			@content;
-		}
-	}
-}
-
-@function white-shade($opacity) {
-	@return rgba(255, 255, 255, $opacity);
-}
-@function black-shade($opacity) {
-	@return rgba(0, 0, 0, $opacity);
-}
+@charset "UTF-8";
+@import "defs";
 
 %metadata {
 	font-size: 0.8rem;
 	
 	span.date {
-		color: #444;
+		color: $header-sublink-color;
 	}
 
 	span.tag {
 		margin: 0 0.05em;
 		padding: 0 0.15em;
-		background-color: #e0ffff;
+		background-color: $tag-color;
 		word-break: keep-all;
 
 		&::before {
@@ -66,61 +21,17 @@ $right: 720px;
 
 	@include respond-to(dark) {
 		span.date {
-			color: #bbb;
+			color: $header-sublink-dark;
 		}
 
 		span.tag {
-			background-color: #002020;
-		}
-	}
-}
-
-%toc-container {
-	margin-top: 1rem;
-
-	li {
-		list-style-type: none;
-
-		a {
-			display: block;
-			padding: 0.2rem;
-			padding-right: 0.5rem;
-			color: black-shade(0.75);
-			text-decoration: none;
-
-			&:hover {
-				background-color: black-shade(0.05);
-			}
-
-			@include respond-to(dark) {
-				color: white-shade(0.75);
-
-				&:hover {
-					background-color: white-shade(0.05);
-				}
-			}
-		}
-	}
-}
-
-@mixin toc-list($direction) {
-	padding: 0;
-
-	ol {
-		margin-#{$direction}: calc(0.64rem - 1px);
-		border-#{$direction}: 1px solid black-shade(0.1);
-
-		@include respond-to(dark) {
-			border-#{$direction}-color: white-shade(0.1);
+			background-color: $tag-dark;
 		}
 	}
 }
 
 * {
 	box-sizing: border-box;
-	tab-size: 4;
-	-moz-tab-size: 4;
-	-o-tab-size: 4;
 }
 
 html, body, #container {
@@ -129,8 +40,8 @@ html, body, #container {
 
 html {
 	scroll-padding-top: 1rem;
-	color: black;
-	background-color: white;
+	color: $light-mode-foreground;
+	background-color: $light-mode-background;
 
 	@include respond-to(narrow) {
 		scroll-padding-top: 6rem;
@@ -141,14 +52,14 @@ html {
 	}
 
 	@include respond-to(dark) {
-		color: white;
-		background-color: #202020;
+		color: $dark-mode-foreground;
+		background-color: $dark-mode-background;
 	}
 }
 
 body {
 	margin: 0;
-	font-family: 'Noto Sans KR', sans-serif;
+	font-family: $font-set;
 	overflow-wrap: break-word;
 }
 
@@ -157,29 +68,27 @@ table {
 }
 
 a {
-	color: #0036c8;
+	color: $link-color;
 	text-decoration: none;
 
 	&:hover {
 		text-decoration: underline;
 	}
 	&:visited {
-		color: #4a587e;
+		color: $visited-link-color;
 	}
-
 	&.footnote, &.reversefootnote {
-		color: #c82e00;
+		color: $footnote-link-color;
 	}
-
+	
 	@include respond-to(dark) {
-		color: #91b0ff;
+		color: $link-dark;
 
 		&:visited {
-			color: #cad9fe;
+			color: $visited-link-dark;
 		}
-
 		&.footnote, &.reversefootnote {
-			color: #ff5b2d;
+			color: $footnote-link-dark;
 		}
 	}
 }
@@ -209,23 +118,27 @@ a {
 
 	* {
 		vertical-align: middle;
-		line-height: 4rem;
+		line-height: $logo-size;
 	}
 
 	#progress-bar {
 		position: absolute;
 		height: 6px;
-		background: #ab94fc;
+		background: $progress-bar-color;
 		box-shadow: 0 2px 4px black-shade(0.25);
+
+		@include respond-to(dark) {
+			background: $progress-bar-dark;
+		}
 	}
 
 	a {
 		position: relative;
-		top: 1rem;
-		left: 1rem;
+		top: $logo-margin;
+		left: $logo-margin;
 
 		img {
-			width: 4rem;
+			width: $logo-size;
 		}
 
 		@include respond-to(light) {
@@ -244,10 +157,10 @@ a {
 	.logo-title {
 		position: relative;
 		display: inline-block;
-		top: 1rem;
-		left: 1.5rem;
+		top: $logo-margin;
+		left: $logo-margin + 0.5rem;
 		font-size: 1rem;
-		letter-spacing: 0.15em;
+		letter-spacing: $logo-letter-spacing;
 
 		@include respond-to(wide) {
 			display: none;
@@ -266,12 +179,10 @@ a {
 
 	@include respond-to(wide) {
 		flex-flow: row nowrap;
-		width: 960px;
 		width: $left + $right;
 	}
 	@include respond-to(narrow) {
 		flex-flow: column nowrap;
-		max-width: 720px;
 		max-width: $right;
 		padding: 0 1.5rem;
 	}
@@ -287,7 +198,6 @@ header {
 	@include respond-to(wide) {
 		position: fixed;
 		padding-top: 4.5rem;
-		width: 240px;
 		width: $left;
 		height: 100%;
 		text-align: right;
@@ -300,18 +210,18 @@ header {
 	}
 
 	a.front-link {
-		color: #444;
+		color: $header-sublink-color;
 
 		@include respond-to(dark) {
-			color: #bbb;
+			color: $header-sublink-dark;
 		}
 	}
 
 	h1 {
 		margin: 0;
-		color: #564a7e;
-		font-family: 'NanumSquareRound', sans-serif;
-		font-size: 2.4rem;
+		color: $post-title-color;
+		font-family: $alt-font-set;
+		font-size: $post-title-size;
 		font-weight: normal;
 
 		@include respond-to(narrow) {
@@ -321,7 +231,7 @@ header {
 		}
 
 		@include respond-to(dark) {
-			color: #d5cafe;
+			color: $post-title-dark;
 		}
 	}
 
@@ -362,339 +272,5 @@ main {
 		width: $right;
 	}
 
-	blockquote {
-		margin: 0;
-		margin-left: 0.5rem;
-		border-left: 4px solid #564a7e;
-		padding-bottom: 1px;
-		background-color: rgba(171, 148, 252, 0.1);
-
-		blockquote {
-			margin-left: 1rem;
-		}
-
-		:last-child:not(p) {
-			margin-bottom: 0.5rem;
-		}
-
-		@include respond-to(dark) {
-			border-left: 4px solid #ab94fc;
-			background-color: rgba(213, 202, 254, 0.1);
-		}
-	}
-
-	code.highlighter-rouge {
-		margin: -0.15em 0.05em;
-		padding: 0.15em;
-		font-family: "D2Coding", monospace;
-		background-color: #e0e0e0;
-
-		@include respond-to(dark) {
-			background-color: #505050;
-		}
-	}
-
-	%codeblock {
-		@extend %monokai;
-		
-		margin: 0;
-		margin-top: 0.8rem;
-	
-		pre {
-			margin: 0;
-			border: none;
-
-			code {
-				display: block;
-				font-family: "D2Coding", monospace;
-				white-space: pre-wrap;
-				overflow-x: auto;
-			}
-		}
-	}
-	div.highlighter-rouge {
-		@extend %codeblock;
-
-		pre {
-			padding: 0.5rem;
-		}
-	}
-	figure.highlight {
-		@extend %codeblock;
-
-		td {
-			padding: 0.5rem;
-
-			&.gutter {
-				padding-right: 0;
-			}
-		}
-	
-		.lineno {
-			display: inline-block;
-			border-right: 1px solid #ccc;
-			padding: 0;
-			padding-right: 0.5rem;
-			text-align: right;
-			color: #ccc;
-			user-select: none;
-			-moz-user-select: none;
-			-webkit-user-select: none;
-			-ms-user-select: none;
-		}
-	}
-
-	del {
-		color: #666;
-
-		&:hover {
-			text-decoration: none;
-		}
-
-		@include respond-to(dark) {
-			color: #aaa;
-		}
-	}
-
-	dl {
-		@extend p;
-
-		dt {
-			display: inline-block;
-			margin: 0;
-			margin-top: 1rem;
-			padding: 0.15em 0.5em;
-			border-radius: 1em;
-			background-color: #e0e0e0;
-
-			&:first-child {
-				margin: 0;
-			}
-
-			@include respond-to(dark) {
-				background-color: #505050;
-			}
-		}
-
-		dd {
-			margin: 0;
-			margin-top: -0.5rem;
-			padding: 0;
-			padding-left: 0.5rem;
-		}
-	}
-
-	.footnotes ol {
-		padding-left: 0;
-		list-style-position: inside;
-
-		li {
-			margin-top: 0.25rem;
-
-			p {
-				display: inline-block;
-				margin: 0;
-			}
-		}
-	}
-
-	%heading {
-		margin: 0;
-		margin-top: 1.5rem;
-		font-family: 'NanumSquareRound', sans-serif;
-		font-weight: normal;
-	}
-	h1 {
-		@extend %heading;
-		font-size: 2.5rem;
-	}
-	h2 {
-		@extend %heading;
-		font-size: 2.08rem;
-	}
-	h3 {
-		@extend %heading;
-		font-size: 1.73rem;
-	}
-	h4 {
-		@extend %heading;
-		font-size: 1.44rem;
-	}
-	h5 {
-		@extend %heading;
-		font-size: 1.2rem;
-	}
-	h6 {
-		@extend %heading;
-		font-size: 1rem;
-	}
-
-	hr {
-		margin: 2.5rem auto;
-		border: none;
-		width: 80%;
-		height: 1px;
-		background-color: black;
-		opacity: 50%;
-
-		@include respond-to(dark) {
-			background-color: white;
-		}
-	}
-
-	img {
-		display: block;
-		margin: auto;
-		max-width: 100%;
-		max-height: 360px;
-	}
-
-	input.task-list-item-checkbox {
-		margin: 0 0.4rem 0 0.25rem;
-	}
-
-	#markdown-toc {
-		@extend %toc-container;
-
-		&, ol {
-			@include toc-list(left);
-		}
-	}
-
-	ol, ul {
-		padding-left: 2rem;
-
-		ol, ul {
-			padding-left: 1.35rem;
-		}
-	}
-
-	p {
-		margin: 0.8rem 0 0 0.5rem;
-	}
-
-	table:not(.rouge-table) {
-		margin: 0.8rem 0.5rem 0;
-		width: calc(100% - 1rem);
-
-		%tablecell {
-			padding: 0.2rem 0.5rem;
-			text-align: left;
-		}
-
-		th, td {
-			@extend %tablecell;
-		}
-
-		thead, tfoot {
-			tr {
-				font-weight: bold;
-				background-color: #eae4fe;
-
-				&:hover {
-					background-color: #d3cde5;
-				}
-			}
-
-			th, td {
-				border: 1px solid #564a7e;
-			}
-		}
-
-		tbody {
-			tr:hover {
-				background-color: black-shade(0.1);
-			}
-
-			td {
-				border: 1px solid #c0c0c0;
-			}
-
-			&:not(:last-child) tr:last-child td  {
-				border-bottom: none;
-			}
-		}
-
-		@include respond-to(dark) {
-			thead, tfoot {
-				tr {
-					background-color: #2b253f;
-	
-					&:hover {
-						background-color: #403b52;
-					}
-				}
-	
-				th, td {
-					border: 1px solid #ab94fc;
-				}
-			}
-	
-			tbody {
-				tr:hover {
-					background-color: white-shade(0.1);
-				}
-	
-				td {
-					border: 1px solid #404040;
-				}
-	
-				&:not(:last-child) tr:last-child td  {
-					border-bottom: none;
-				}
-			}
-		}
-	}
-
-	.twitter-tweet-rendered {
-		margin: 0.8rem auto !important;
-	}
-
-	ul#post-list {
-		margin: 0;
-		margin-top: 1.2rem;
-		padding: 0;
-		list-style: none;
-
-		li {
-			margin: 0;
-			margin-top: 1.2rem;
-			border-radius: 1rem;
-			padding: 1rem;
-			box-shadow: 0 0.2rem 0.5rem black-shade(0.3);
-
-			@include respond-to(motion) {
-				transition: box-shadow 0.2s, background-color 0.2s;
-			}
-
-			&:hover {
-				box-shadow: 0 0.2rem 0.5rem black-shade(0.6);
-
-				@include respond-to(dark) {
-					background-color: white-shade(0.1);
-				}
-			}
-
-			span.metadata {
-				@extend %metadata;
-
-				display: block;
-			}
-			
-			h2 {
-				margin: 0;
-
-				strong {
-					font-weight: normal;
-				}
-				em {
-					font-style: normal;
-				}
-			}
-
-			p {
-				margin: 0;
-			}
-		}
-	}
+	@extend %post;
 }

@@ -1,0 +1,42 @@
+@charset "UTF-8";
+
+%toc-container {
+	margin-top: 1rem;
+
+	li {
+		list-style-type: none;
+
+		a {
+			display: block;
+			padding: 0.2rem;
+			padding-right: 0.5rem;
+			color: black-shade(0.75);
+			text-decoration: none;
+
+			&:hover {
+				background-color: black-shade(0.05);
+			}
+
+			@include respond-to(dark) {
+				color: white-shade(0.75);
+
+				&:hover {
+					background-color: white-shade(0.05);
+				}
+			}
+		}
+	}
+}
+
+@mixin toc-list($direction) {
+	padding: 0;
+
+	ol {
+		margin-#{$direction}: calc(0.64rem - 1px);
+		border-#{$direction}: 1px solid black-shade(0.1);
+
+		@include respond-to(dark) {
+			border-#{$direction}-color: white-shade(0.1);
+		}
+	}
+}
