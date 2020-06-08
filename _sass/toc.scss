@@ -31,7 +31,7 @@
 @mixin toc-list($direction) {
 	padding: 0;
 
-	ol {
+	ol, ul {
 		margin-#{$direction}: calc(0.64rem - 1px);
 		border-#{$direction}: 1px solid black-shade(0.1);
 

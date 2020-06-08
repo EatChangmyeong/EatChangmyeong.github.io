@@ -187,7 +187,7 @@
 	#markdown-toc {
 		@extend %toc-container;
 	
-		&, ol {
+		&, ol, ul {
 			@include toc-list(left);
 		}
 	}
@@ -206,7 +206,7 @@
 	
 	table:not(.rouge-table) {
 		margin: 0.8rem 0.5rem 0;
-		width: calc(100% - 1rem);
+		width: calc(100% - 0.5rem);
 	
 		%tablecell {
 			padding: 0.2rem 0.5rem;
