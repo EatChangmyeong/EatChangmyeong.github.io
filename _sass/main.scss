@@ -29,7 +29,7 @@
 			$category-gradient-right-color);
 	}
 
-	@include if-dark() {
+	@include if-dark {
 		span.date {
 			color: $header-sublink-dark;
 		}
@@ -66,7 +66,7 @@ html {
 		scroll-behavior: smooth;
 	}
 
-	@include if-dark() {
+	@include if-dark {
 		color: $dark-mode-foreground;
 		background-color: $dark-mode-background;
 	}
@@ -97,7 +97,7 @@ a {
 		color: $footnote-link-color;
 	}
 
-	@include if-dark() {
+	@include if-dark {
 		color: $link-dark;
 
 		&:visited {
@@ -122,7 +122,7 @@ a {
 	--logo-gradient-color-top: white;
 	--logo-gradient-color-bottom: rgba(255, 255, 255, 0.8);
 
-	@include if-dark() {
+	@include if-dark {
 		--logo-gradient-color-top: black;
 		--logo-gradient-color-bottom: rgba(32, 32, 32, 0.8);
 	}
@@ -141,9 +141,9 @@ a {
 		position: absolute;
 		height: 6px;
 		background: $progress-bar-color;
-		box-shadow: 0 2px 4px black-shade(0.25);
+		@include shadow;
 
-		@include if-dark() {
+		@include if-dark {
 			background: $progress-bar-dark;
 		}
 	}
@@ -163,7 +163,7 @@ a {
 			}
 		}
 
-		@include if-dark() {
+		@include if-dark {
 			#logo-light {
 				display: none;
 			}
@@ -178,7 +178,7 @@ a {
 		font-size: 1rem;
 		letter-spacing: $logo-letter-spacing;
 
-		@include if-wide() {
+		@include if-wide {
 			display: none;
 		}
 
@@ -188,12 +188,29 @@ a {
 	}
 }
 
+#top-button {
+	position: fixed;
+	right: $top-button-margin;
+	bottom: $top-button-margin;
+	border-radius: $top-button-size/2;
+	width: $top-button-size;
+	height: $top-button-size;
+	line-height: $top-button-size;
+	text-align: center;
+	text-decoration: none;
+	color: black;
+	background-color: $top-button-color;
+	@include shadow;
+
+	@include transition-for(opacity);
+}
+
 #container {
 	display: flex;
 	position: relative;
 	margin: auto;
 
-	@include if-wide() {
+	@include if-wide {
 		flex-flow: row nowrap;
 		width: $left + $right;
 	}
@@ -211,7 +228,7 @@ header {
 	padding: 0.5rem;
 	word-break: keep-all;
 	
-	@include if-wide() {
+	@include if-wide {
 		position: fixed;
 		padding-top: 4.5rem;
 		width: $left;
@@ -228,7 +245,7 @@ header {
 	a.front-link {
 		color: $header-sublink-color;
 
-		@include if-dark() {
+		@include if-dark {
 			color: $header-sublink-dark;
 		}
 	}
@@ -246,7 +263,7 @@ header {
 			}
 		}
 
-		@include if-dark() {
+		@include if-dark {
 			color: $post-title-dark;
 		}
 	}
@@ -280,12 +297,62 @@ main {
 	padding-bottom: 1rem;
 	word-break: keep-all;
 	
-	@include if-wide() {
+	@include if-wide {
 		position: absolute;
 		top: 0;
 		right: 0;
 		padding-top: 12rem;
 		width: $right;
+	}
+	
+	ul#post-list {
+		margin: 0;
+		margin-top: 1.2rem;
+		padding: 0;
+		list-style: none;
+	
+		li {
+			margin: 0;
+			margin-top: 1.2rem;
+			border-radius: 1rem;
+			padding: 1rem;
+			background-color: $post-background-color;
+			@include shadow($post-shadow-metrics, $post-shadow-color, $post-shadow-dark);
+			
+			@include if-dark {
+				background-color: $post-background-dark;
+			}
+			
+			@include hover(box-shadow, background-color) {
+				@include shadow($post-shadow-metrics, $post-shadow-hover-color, $post-shadow-hover-dark);
+				background-color: $post-background-hover-color;
+				
+				@include if-dark {
+					background-color: $post-background-hover-dark;
+				}
+			}
+	
+			span.metadata {
+				@extend %metadata;
+	
+				display: block;
+			}
+			
+			h2 {
+				margin: 0;
+	
+				strong {
+					font-weight: normal;
+				}
+				em {
+					font-style: normal;
+				}
+			}
+	
+			p {
+				margin: 0;
+			}
+		}
 	}
 
 	@extend %post;

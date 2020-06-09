@@ -10,17 +10,22 @@
 			display: block;
 			padding: 0.2rem;
 			padding-right: 0.5rem;
-			color: black-shade(0.75);
 			text-decoration: none;
+
+			&, &:hover, &:visited {
+				color: black-shade(0.75);
+			}
+
+			@include if-dark {
+				&, &:hover, &:visited {
+					color: white-shade(0.75);
+				}
+			}
 
 			@include hover(background-color) {
 				background-color: black-shade(0.05);
-			}
 
-			@include if-dark() {
-				color: white-shade(0.75);
-
-				&:hover {
+				@include if-dark {
 					background-color: white-shade(0.05);
 				}
 			}
@@ -35,7 +40,7 @@
 		margin-#{$direction}: calc(0.64rem - 1px);
 		border-#{$direction}: 1px solid black-shade(0.1);
 
-		@include if-dark() {
+		@include if-dark {
 			border-#{$direction}-color: white-shade(0.1);
 		}
 	}

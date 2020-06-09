@@ -26,7 +26,7 @@
 			margin-bottom: 0.5rem;
 		}
 	
-		@include if-dark() {
+		@include if-dark {
 			border-left: 4px solid $blockquote-border-dark;
 			background-color: $blockquote-background-dark;
 		}
@@ -93,7 +93,7 @@
 			text-decoration: none;
 		}
 	
-		@include if-dark() {
+		@include if-dark {
 			color: $deleted-dark;
 		}
 	}
@@ -113,7 +113,7 @@
 				margin: 0;
 			}
 	
-			@include if-dark() {
+			@include if-dark {
 				background-color: $decl-term-dark;
 			}
 		}
@@ -178,7 +178,7 @@
 		background-color: $light-mode-foreground;
 		opacity: 50%;
 	
-		@include if-dark() {
+		@include if-dark {
 			background-color: $dark-mode-foreground;
 		}
 	}
@@ -265,7 +265,7 @@
 			}
 		}
 	
-		@include if-dark() {
+		@include if-dark {
 			thead, tfoot {
 				tr {
 					background-color: $table-head-background-dark;
@@ -300,52 +300,6 @@
 	
 	.twitter-tweet-rendered {
 		margin: 0.8rem auto !important;
-	}
-
-	// index.md specific
-	
-	ul#post-list {
-		margin: 0;
-		margin-top: 1.2rem;
-		padding: 0;
-		list-style: none;
-	
-		li {
-			margin: 0;
-			margin-top: 1.2rem;
-			border-radius: 1rem;
-			padding: 1rem;
-			box-shadow: 0 0.2rem 0.5rem black-shade(0.3);
-	
-			@include hover(box-shadow, background-color) {
-				box-shadow: 0 0.2rem 0.5rem black-shade(0.6);
-	
-				@include if-dark() {
-					background-color: white-shade(0.1);
-				}
-			}
-	
-			span.metadata {
-				@extend %metadata;
-	
-				display: block;
-			}
-			
-			h2 {
-				margin: 0;
-	
-				strong {
-					font-weight: normal;
-				}
-				em {
-					font-style: normal;
-				}
-			}
-	
-			p {
-				margin: 0;
-			}
-		}
 	}
 
 	// Custom components!

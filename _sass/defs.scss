@@ -42,15 +42,27 @@
 // 	}
 // }
 
-@mixin hover($properties...) {
+@mixin transition-for($properties...) {
 	@include if-motion-reduced(false) {
 		transition-property: $properties;
 		transition-duration: $transition-duration;
 		transition-timing-function: $transition-timing-function;
 	}
+}
+
+@mixin hover($properties...) {
+	@include transition-for($properties);
 
 	&:hover {
 		@content;
+	}
+}
+
+@mixin shadow($metrics: $box-shadow-metrics, $color: $box-shadow-color, $dark: $box-shadow-dark) {
+	box-shadow: $metrics $color;
+
+	@include if-dark {
+		box-shadow: $metrics $dark;
 	}
 }
 
@@ -99,12 +111,16 @@ $horizontal-rule-margin: 2.5rem;
 $image-max-height: 360px;
 $list-padding: 2rem;
 $list-subsequent-padding: 1.35rem;
+$box-shadow-metrics: 0 2px 4px;
+$post-shadow-metrics: 0 0.2rem 0.5rem;
 $transition-duration: 0.2s;
 $transition-timing-function: ease;
 
 $logo-size: 4rem;
 $logo-margin: 1rem;
 $logo-letter-spacing: 0.15rem;
+$top-button-margin: 1.5rem;
+$top-button-size: 3rem;
 
 $eatchy-purple: eatchy-purple-shade();
 
@@ -163,3 +179,16 @@ $category-gradient-left-dark: #808000;
 $category-gradient-right-dark: change-color(
 	$category-gradient-left-dark,
 	$alpha: 0.25);
+
+$post-background-color: $light-mode-background;
+$post-background-dark: $dark-mode-background;
+$post-background-hover-color: $post-background-color;
+$post-background-hover-dark: mix($post-background-dark, white, 90%);
+$post-shadow-color: black-shade(0.3);
+$post-shadow-dark: black-shade(0.3);
+$post-shadow-hover-color: black-shade(0.6);
+$post-shadow-hover-dark: black-shade(0.6);
+$box-shadow-color: black-shade(0.25);
+$box-shadow-dark: black-shade(0.75);
+
+$top-button-color: $eatchy-purple;
