@@ -2,7 +2,11 @@
 
 var $ = document.querySelector.bind(document), $s = document.querySelectorAll.bind(document);
 
-function tableOfContents() {
+var fnlist = {}, required = [];
+
+function noop() {}
+
+fnlist.tableOfContents = function() {
 	var
 		headingNodes = []
 			.map.call($s('main h1, main h2, main h3, main h4, main h5, main h6'),
@@ -54,13 +58,19 @@ function tableOfContents() {
 	};
 
 	$('.toc').innerHTML = generateToc(headingNodes);
-}
+};
 
-function progressBar() {
+fnlist.progressBar = function() {
 	window.addEventListener('resize', progressBarResize);
 	document.addEventListener('scroll', progressBarScroll);
 	progressBarResize();
-}
+};
+
+fnlist.topButton = function() {
+	window.addEventListener('resize', topButtonUpdate);
+	document.addEventListener('scroll', topButtonUpdate);
+	topButtonUpdate();
+};
 
 function progressBarResize() {
 	$('#progress-bar').style.display = innerHeight < document.body.scrollHeight ? '' : 'none';
@@ -71,9 +81,25 @@ function progressBarScroll() {
 	$('#progress-bar').style.width = scrollY/(document.body.scrollHeight - innerHeight)*100 + '%';
 }
 
+function topButtonUpdate() {
+	var activated = !!scrollY;
+	$('#top-button').style.opacity = activated ? 1 : 0;
+	$('#top-button').style.pointerEvents = activated ? '' : 'none';
+}
+
+window.require = function() {
+	for(var i in arguments)
+		if(arguments[i] in fnlist)
+			required.push(fnlist[arguments[i]]);
+};
+window.requireAll = function() {
+	for(var i in fnlist)
+		required.push(fnlist[i]);
+}
+
 document.addEventListener('DOMContentLoaded', function() {
-	tableOfContents();
-	progressBar();
+	for(var i in required)
+		required[i]();
 });
 
 })();
