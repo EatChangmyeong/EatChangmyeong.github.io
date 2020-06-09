@@ -84,10 +84,11 @@ table {
 
 a {
 	color: $link-color;
-	text-decoration: none;
+	text-decoration: 1px solid transparent underline;
+	text-decoration-skip-ink: all;
 
-	&:hover {
-		text-decoration: underline;
+	@include hover(text-decoration-color) {
+		text-decoration-color: currentcolor;
 	}
 	&:visited {
 		color: $visited-link-color;
@@ -95,7 +96,7 @@ a {
 	&.footnote, &.reversefootnote {
 		color: $footnote-link-color;
 	}
-	
+
 	@include if-dark() {
 		color: $link-dark;
 

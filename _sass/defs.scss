@@ -42,6 +42,18 @@
 // 	}
 // }
 
+@mixin hover($properties...) {
+	@include if-motion-reduced(false) {
+		transition-property: $properties;
+		transition-duration: $transition-duration;
+		transition-timing-function: $transition-timing-function;
+	}
+
+	&:hover {
+		@content;
+	}
+}
+
 %unselectable {
 	user-select: none;
 	-moz-user-select: none;
@@ -87,6 +99,8 @@ $horizontal-rule-margin: 2.5rem;
 $image-max-height: 360px;
 $list-padding: 2rem;
 $list-subsequent-padding: 1.35rem;
+$transition-duration: 0.2s;
+$transition-timing-function: ease;
 
 $logo-size: 4rem;
 $logo-margin: 1rem;
@@ -101,7 +115,7 @@ $dark-mode-background: #202020;
 $code-color: #f8f8f2;
 $line-number-color: #ccc;
 $light-mode-code-background: #272822;
-$dark-mode-code-background: #383838;
+$dark-mode-code-background: black;
 $deleted-color: #666;
 $deleted-dark: #aaa;
 

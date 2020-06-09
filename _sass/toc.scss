@@ -13,7 +13,7 @@
 			color: black-shade(0.75);
 			text-decoration: none;
 
-			&:hover {
+			@include hover(background-color) {
 				background-color: black-shade(0.05);
 			}
 

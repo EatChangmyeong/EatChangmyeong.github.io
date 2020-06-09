@@ -4,6 +4,8 @@
 // modified from https://gist.github.com/phoinixi/c82317c831371a0807e1
 
 %code {
+	@extend %monokai;
+	
 	color: $code-color;
 	background: $light-mode-code-background;
 	font-family: $mono-font-set;
@@ -17,8 +19,6 @@
 }
 
 %monokai {
-	@extend %code;
-	
 	.c     { color: #75715e; font-style: italic } // Comment
 	.err   { color: #960050; background-color: #1e0010 } // Error
 	.k     { color: #66d9ef; font-weight: bold } // Keyword

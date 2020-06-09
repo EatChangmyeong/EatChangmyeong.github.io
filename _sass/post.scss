@@ -2,6 +2,15 @@
 @import "defs";
 
 %post {
+	abbr {
+		text-decoration: 2px dotted currentcolor underline;
+		text-decoration-skip-ink: all;
+
+		@include hover(text-decoration-color) {
+			text-decoration-color: transparent;
+		}
+	}
+
 	blockquote {
 		margin: 0;
 		margin-left: 0.5rem;
@@ -30,7 +39,7 @@
 	}
 	
 	%codeblock {
-		@extend %monokai;
+		@extend %code;
 		
 		margin: 0;
 		margin-top: 0.8rem;
@@ -111,7 +120,6 @@
 	
 		dd {
 			margin: 0;
-			margin-top: -0.5rem;
 			padding: 0;
 			padding-left: 0.5rem;
 		}
@@ -209,27 +217,31 @@
 	table:not(.rouge-table) {
 		margin: 0.8rem 0.5rem 0 0;
 		width: 100%;
-	
-		%tablecell {
+
+		tr {
+			--hover-background-color: #{mix(
+				$light-mode-foreground,
+				$light-mode-background,
+				$table-highlight-alpha)};
+
+			@include hover(background-color) {
+				background-color: var(--hover-background-color);
+			}
+		}
+
+		th, td {
 			padding: 0.2rem 0.5rem;
 			text-align: left;
-		}
-	
-		th, td {
-			@extend %tablecell;
 		}
 	
 		thead, tfoot {
 			tr {
 				font-weight: bold;
 				background-color: $table-head-background-color;
-	
-				&:hover {
-					background-color: mix(
-						$light-mode-foreground,
-						$table-head-background-color,
-						$table-highlight-alpha);
-				}
+				--hover-background-color: #{mix(
+					$light-mode-foreground,
+					$table-head-background-color,
+					$table-highlight-alpha)};
 			}
 	
 			th, td {
@@ -238,10 +250,10 @@
 		}
 	
 		tbody {
-			tr:hover {
-				background-color: change-color(
+			tr {
+				--hover-background-color: #{change-color(
 					$light-mode-foreground,
-					$alpha: $table-highlight-alpha/100%);
+					$alpha: $table-highlight-alpha/100%)};
 			}
 	
 			td {
@@ -257,13 +269,10 @@
 			thead, tfoot {
 				tr {
 					background-color: $table-head-background-dark;
-	
-					&:hover {
-						background-color: mix(
-							$dark-mode-foreground,
-							$table-head-background-dark,
-							$table-highlight-alpha);
-					}
+					--hover-background-color: #{mix(
+						$dark-mode-foreground,
+						$table-head-background-dark,
+						$table-highlight-alpha)};
 				}
 	
 				th, td {
@@ -272,10 +281,10 @@
 			}
 	
 			tbody {
-				tr:hover {
-					background-color: change-color(
+				tr {
+					--hover-background-color: #{change-color(
 						$dark-mode-foreground,
-						$alpha: $table-highlight-alpha/100%);
+						$alpha: $table-highlight-alpha/100%)};
 				}
 	
 				td {
@@ -292,6 +301,8 @@
 	.twitter-tweet-rendered {
 		margin: 0.8rem auto !important;
 	}
+
+	// index.md specific
 	
 	ul#post-list {
 		margin: 0;
@@ -306,11 +317,7 @@
 			padding: 1rem;
 			box-shadow: 0 0.2rem 0.5rem black-shade(0.3);
 	
-			@include if-motion-reduced() {
-				transition: box-shadow 0.2s, background-color 0.2s;
-			}
-	
-			&:hover {
+			@include hover(box-shadow, background-color) {
 				box-shadow: 0 0.2rem 0.5rem black-shade(0.6);
 	
 				@include if-dark() {
@@ -342,6 +349,15 @@
 	}
 
 	// Custom components!
+
+	.u {
+		text-decoration: underline;
+		font-style: normal;
+	}
+	.ui {
+		text-decoration: underline;
+		font-style: italic;
+	}
 
 	.split {
 		display: grid;
