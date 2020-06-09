@@ -180,7 +180,9 @@ __굵게__, _기울임체_, ___굵은 기울임체___
 ```
 </div>
 
+<div class="split-block">
 *<...> 안에 scheme이 포함된 주소나 이메일 주소를 입력하면 오토링크가 걸립니다. <...> 없이 주소만 입력하면 변환되지 않습니다.*
+</div>
 
 <div class="split-column">
 <https://eatch.dev/> <example@example.com>
@@ -271,7 +273,9 @@ cf. https://eatch.dev/ example@example.com
 ````
 </div>
 
+<div class="split-block">
 *백틱 스타일 코드 블록 안쪽에 백틱을 3개 이상 넣어야 할 경우 바깥쪽의 백틱 수를 늘리면 됩니다. 코드 시작 부분보다 적은 수의 백틱이 나오면 코드 블록의 끝으로 인식하지 않습니다.*
+</div>
 
 <div class="split-column">
 ````
@@ -308,15 +312,12 @@ console.info('코드 테마는 무난하게 Monokai를 썼습니다.');
 
 ## 줄 번호가 있는 코드 블록 (리퀴드 확장)
 
-*이상하게 table은 flex를 적용해도 내용물 이상으로 줄어들지 않네요... 아래쪽 [테이블](#테이블)에서도 똑같은 문제가 생기고 있는데(창 크기를 충분히 줄이면 깨짐) 일단 이 페이지 바깥에서는 문제가 없으니 당장 고치지는 않겠지만 혹시 이 부분만 해결하고 풀리퀘 보내주신다면 대환영입니다 감사합니다* 🙇‍♂️
-
 <div class="split">
 <div class="split-column">
 {% highlight javascript linenos %}
 String.raw`왼쪽에 줄 번호가 있다!
 언어 이름을 반드시 명시해야 합니다.
-왜 마크다운 문법으로는 줄 번호가 안 나와 개빢쵸
-지금 보니까 리퀴드 문법에 raw가 있네 으`
+예전에는 여기 좀 경박한 단어를 썼었는데 좀 수정하자면... 어차피 안 쓸 기능이긴 한데 공은 제일 많이 들인 것 같은 느낌이네요 으`
 {% endhighlight %}
 </div>
 <div class="split-column">
@@ -324,8 +325,7 @@ String.raw`왼쪽에 줄 번호가 있다!
 {% raw %}{% highlight javascript linenos %}
 String.raw`왼쪽에 줄 번호가 있다!
 언어 이름을 반드시 명시해야 합니다.
-왜 마크다운 문법으로는 줄 번호가 안 나와 개빢쵸
-지금 보니까 리퀴드 문법에 raw가 있네 으`
+예전에는 여기 좀 경박한 단어를 썼었는데 좀 수정하자면... 어차피 안 쓸 기능이긴 한데 공은 제일 많이 들인 것 같은 느낌이네요 으`
 {% endhighlight %}{% endraw %}
 ```
 </div>
