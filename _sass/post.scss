@@ -88,9 +88,10 @@
 	
 	del {
 		color: $deleted-color;
-	
-		&:hover {
-			text-decoration: none;
+		text-decoration: 1px solid currentcolor line-through;
+
+		@include hover(text-decoration-color) {
+			text-decoration-color: transparent;
 		}
 	
 		@include if-dark {
