@@ -11,8 +11,9 @@ permalink: /thirdparty-license/
 
 # 글꼴
 
-* **[나눔스퀘어라운드](https://hangeul.naver.com/2017/nanum)**: 제목체; [나눔글꼴 라이선스 aka SIL Open Font License](https://help.naver.com/support/contents/contents.help?serviceNo=1074&categoryNo=3497)
-* **[D2Coding](https://github.com/naver/d2codingfont)**: 코드 전용 글꼴; [SIL Open Font License](https://github.com/naver/d2codingfont/wiki/Open-Font-License)
+* **[나눔스퀘어라운드](https://hangeul.naver.com/2017/nanum)**: 제목체; [나눔글꼴 라이선스 aka SIL Open Font License](https://help.naver.com/support/contents/contents.help?serviceNo=1074&categoryNo=3497), [Font Squirrel Webfont Generator](https://www.fontsquirrel.com/tools/webfont-generator)로 생성
+* **[Noto Sans KR](https://www.google.com/get/noto/)**: 본문체; [SIL Open Font License](https://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL), 파일 제공 [Google Fonts](https://fonts.google.com/specimen/Noto+Sans+KR)
+* **[D2Coding](https://github.com/naver/d2codingfont)**: 코드 전용 글꼴; [SIL Open Font License](https://github.com/naver/d2codingfont/wiki/Open-Font-License), 파일 제공 [wan2land](https://github.com/wan2land/d2coding)
 
 # 스타일시트
 
