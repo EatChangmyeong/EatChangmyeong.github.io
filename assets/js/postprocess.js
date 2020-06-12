@@ -83,7 +83,7 @@ function progressBarScroll() {
 
 function topButtonUpdate() {
 	var activated = !!scrollY;
-	$('#top-button').style.opacity = activated ? 1 : 0;
+	$('#top-button').style.opacity = activated ? 0.5 : 0;
 	$('#top-button').style.pointerEvents = activated ? '' : 'none';
 }
 

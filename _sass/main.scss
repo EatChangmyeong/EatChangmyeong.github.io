@@ -195,14 +195,15 @@ a {
 	border-radius: $top-button-size/2;
 	width: $top-button-size;
 	height: $top-button-size;
-	line-height: $top-button-size;
-	text-align: center;
-	text-decoration: none;
-	color: black;
-	background-color: $top-button-color;
+	opacity: 0.5;
 	@include shadow;
-
+	
 	@include transition-for(opacity);
+
+	img {
+		width: 100%;
+		height: 100%;
+	}
 }
 
 #container {
