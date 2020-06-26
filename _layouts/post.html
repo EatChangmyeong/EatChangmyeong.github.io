@@ -13,7 +13,7 @@
 				</h1>
 				<span class="metadata">
 					<span class="date">{{ page.date | date: "%Y년 %m월 %d일" }}</span>
-					{% if page.categories.size != 0 and page.tags.size != 0 %}
+					{% if page.categories.size != 0 or page.tags.size != 0 %}
 						<br>
 						{% for x in page.categories %}
 							<span class="category">{{ x }}</span>
