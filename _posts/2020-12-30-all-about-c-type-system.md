@@ -3,13 +3,9 @@ layout: post
 author: EatChangmyeong
 actual_title: "C 타입 시스템 제대로 알고 가기"
 excerpt: "왜 그렇게나 헷갈리던지"
-categories:
-- Beta
 tags:
 - Programming
 ---
-
-*거의 다 썼다! 퇴고 끝나면 공개할게요*
 
 C 코딩을 할 때, 다음 중 가장 "올바른" 코딩 스타일은 무엇일까요?
 
