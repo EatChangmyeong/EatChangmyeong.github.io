@@ -1,7 +1,19 @@
 @charset "UTF-8";
 
-%toc-container {
-	margin-top: 1rem;
+@mixin toc($direction) {
+	padding: 0;
+	text-align: $direction;
+
+	ol, ul {
+		padding: 0;
+
+		margin-#{$direction}: calc(0.64rem - 1px);
+		border-#{$direction}: 1px solid change-color($light-foreground, $alpha: 0.1);
+
+		@include if-dark {
+			border-#{$direction}-color: change-color($dark-foreground, $alpha: 0.1);
+		}
+	}
 
 	li {
 		list-style-type: none;
@@ -9,39 +21,23 @@
 		a {
 			display: block;
 			padding: 0.2rem;
-			padding-right: 0.5rem;
+			padding-#{$direction}: 0.5rem;
 			text-decoration: none;
 
-			&, &:hover, &:visited {
-				color: black-shade(0.75);
+			color: change-color($light-foreground, $alpha: 0.75);
+
+			&:hover {
+				background-color: change-color($light-foreground, $alpha: 0.05);
 			}
 
 			@include if-dark {
-				&, &:hover, &:visited {
-					color: white-shade(0.75);
+				color: change-color($dark-foreground, $alpha: 0.75);
+				&:hover {
+					background-color: change-color($dark-foreground, $alpha: 0.05);
 				}
 			}
 
-			@include hover(background-color) {
-				background-color: black-shade(0.05);
-
-				@include if-dark {
-					background-color: white-shade(0.05);
-				}
-			}
-		}
-	}
-}
-
-@mixin toc-list($direction) {
-	padding: 0;
-
-	ol, ul {
-		margin-#{$direction}: calc(0.64rem - 1px);
-		border-#{$direction}: 1px solid black-shade(0.1);
-
-		@include if-dark {
-			border-#{$direction}-color: white-shade(0.1);
+			@include transits(background-color);
 		}
 	}
 }

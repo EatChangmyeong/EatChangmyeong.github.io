@@ -1,5 +1,5 @@
 ---
-layout: new_page
+layout: page
 actual_title: "블로그에 사용한 외부 리소스"
 date: 2020-06-13
 permalink: /thirdparty/

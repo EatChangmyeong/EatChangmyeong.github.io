@@ -13,7 +13,7 @@
 }
 
 @mixin if-wide($wide: true) {
-	@include media-query-match(min-width, $narrow-threshold, $wide) {
+	@include media-query-match(min-width, 70rem, $wide) {
 		@content;
 	}
 }
@@ -30,6 +30,14 @@
 	}
 }
 
+@mixin transits($properties...) {
+	@include if-motion-reduced(false) {
+		transition-property: $properties;
+		transition-duration: 0.2s;
+		transition-timing-function: ease;
+	}
+}
+
 // @mixin if-transparency-reduced($reduced: true) {
 // 	@include media-query-match(prefers-reduced-transparency, reduce, $reduced) {
 // 		@content;
@@ -42,28 +50,36 @@
 // 	}
 // }
 
-@mixin transition-for($properties...) {
-	@include if-motion-reduced(false) {
-		transition-property: $properties;
-		transition-duration: $transition-duration;
-		transition-timing-function: $transition-timing-function;
-	}
-}
-
-@mixin hover($properties...) {
-	@include transition-for($properties);
-
-	&:hover {
-		@content;
-	}
-}
-
-@mixin shadow($metrics: $box-shadow-metrics, $color: $box-shadow-color, $dark: $box-shadow-dark) {
-	box-shadow: $metrics $color;
+@mixin shadow($color: change-color(black, $alpha: 0.25), $dark: change-color(white, $alpha: 0.25)) {
+	box-shadow: 0 0.1875rem 0.375rem $color;
 
 	@include if-dark {
-		box-shadow: $metrics $dark;
+		box-shadow: 0 0.1875rem 0.375rem $dark;
 	}
+}
+
+@mixin intense-shadow {
+	@include shadow(change-color(black, $alpha: 0.5), change-color(white, $alpha: 0.5));
+}
+
+@function eatchy-purple($lightness: 50%) {
+	@if $lightness > 50% {
+		@return mix(#ab94fc, white, 200% - 2*$lightness);
+	} @else {
+		@return mix(#ab94fc, black, 2*$lightness);
+	}
+}
+
+@function rotate($color, $hue) {
+	@return adjust-color($color, $hue: $hue);
+}
+
+@function eatchy($lightness: 50%, $delta-hue: 0deg) {
+	@return rotate(eatchy-purple($lightness), $delta-hue);
+}
+
+@function vivid($color) {
+	@return change-color($color, $saturation: 100%);
 }
 
 %unselectable {
@@ -73,122 +89,14 @@
 	-ms-user-select: none;
 }
 
-@function white-shade($opacity) {
-	@return rgba(255, 255, 255, $opacity);
-}
-@function black-shade($opacity) {
-	@return rgba(0, 0, 0, $opacity);
-}
-
-@function eatchy-purple-shade($lightness: 50%) {
-	@if $lightness > 50% {
-		@return mix(#ab94fc, white, 200% - 2*$lightness);
-	} @else {
-		@return mix(#ab94fc, black, 2*$lightness)
-	}
-}
-
-@function eatchy-purple-alter($lightness, $hue, $saturation: null) {
-	$color: adjust-color(eatchy-purple-shade($lightness), $hue: $hue);
-	@if $saturation != null {
-		$color: change-color($color, $saturation: $saturation);
-	}
-	@return $color;
-}
-
-$narrow-threshold: 1080px;
-$left: 300px;
-$right: 720px;
-
 $font-set: "Noto Sans KR", sans-serif;
 $alt-font-set: "NanumSquareRound", sans-serif;
 $mono-font-set: "D2Coding", monospace;
 
-$post-title-size: 2.4rem;
-$tab-size: 4;
-$horizontal-rule-width: 80%;
-$horizontal-rule-margin: 2.5rem;
-$image-max-height: 360px;
-$list-padding: 2rem;
-$list-subsequent-padding: 1.35rem;
-$box-shadow-metrics: 0 2px 4px;
-$post-shadow-metrics: 0 0.2rem 0.5rem;
-$transition-duration: 0.2s;
-$transition-timing-function: ease;
+$heading-size: 2.5rem, 2.1rem, 1.8rem, 1.5rem, 1.2rem, 1rem;
+$heading-bold-threshold: 2;
 
-$logo-size: 4rem;
-$logo-margin: 1rem;
-$logo-letter-spacing: 0.15rem;
-$top-button-margin: 1.5rem;
-$top-button-size: 3rem;
-
-$eatchy-purple: eatchy-purple-shade();
-
-$light-mode-foreground: black;
-$light-mode-background: white;
-$dark-mode-foreground: white;
-$dark-mode-background: #202020;
-$code-color: #f8f8f2;
-$line-number-color: #ccc;
-$light-mode-code-background: #272822;
-$dark-mode-code-background: #383838;
-$deleted-color: #666;
-$deleted-dark: #aaa;
-
-$table-head-background-color: eatchy-purple-shade(87.5%);
-$table-head-background-dark: eatchy-purple-shade(12.5%);
-$table-head-border-color: eatchy-purple-shade(25%);
-$table-head-border-dark: $eatchy-purple;
-$table-border-color: #c0c0c0;
-$table-border-dark: #404040;
-$table-highlight-alpha: 10%;
-
-$post-title-color: eatchy-purple-shade(25%);
-$post-title-dark: eatchy-purple-shade(75%);
-$link-color: eatchy-purple-alter(25%, -30deg, 100%);
-$link-dark: eatchy-purple-alter(50%, -30deg, 100%);
-$visited-link-color: eatchy-purple-alter(25%, -30deg);
-$visited-link-dark: eatchy-purple-alter(75%, -30deg);
-$footnote-link-color: eatchy-purple-alter(25%, 120deg, 100%);
-$footnote-link-dark: eatchy-purple-alter(37.5%, 120deg, 100%);
-$decl-term-color: #e0e0e0;
-$decl-term-dark: #505050;
-
-$blockquote-border-color: eatchy-purple-shade(25%);
-$blockquote-border-dark: $eatchy-purple;
-$blockquote-background-color:
-	change-color(
-		$eatchy-purple,
-		$alpha: 0.1);
-$blockquote-background-dark:
-	change-color(
-		eatchy-purple-shade(75%),
-		$alpha: 0.1);
-
-$header-sublink-color: #444;
-$header-sublink-dark: #bbb;
-$progress-bar-color: $eatchy-purple;
-$progress-bar-dark: $eatchy-purple;
-$tag-color: #e0ffff;
-$tag-dark: #004040;
-$category-gradient-left-color: #e8e800;
-$category-gradient-right-color: change-color(
-	$category-gradient-left-color,
-	$alpha: 0);
-$category-gradient-left-dark: #808000;
-$category-gradient-right-dark: change-color(
-	$category-gradient-left-dark,
-	$alpha: 0.25);
-
-$post-background-color: $light-mode-background;
-$post-background-dark: $dark-mode-background;
-$post-background-hover-color: $post-background-color;
-$post-background-hover-dark: mix($post-background-dark, white, 90%);
-$post-shadow-color: black-shade(0.3);
-$post-shadow-dark: black-shade(0.3);
-$post-shadow-hover-color: black-shade(0.6);
-$post-shadow-hover-dark: black-shade(0.6);
-$box-shadow-color: black-shade(0.25);
-$box-shadow-dark: black-shade(0.75);
-
-$top-button-color: $eatchy-purple;
+$light-background: white;
+$light-foreground: black;
+$dark-background: #202020;
+$dark-foreground: white;

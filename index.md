@@ -1,5 +1,5 @@
 ---
-layout: new_front
+layout: front
 ---
 
 스파게티 CSS는 제가 전부 치웠습니다. 😉

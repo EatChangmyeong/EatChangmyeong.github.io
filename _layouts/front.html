@@ -1,21 +1,51 @@
 ---
 ---
 
-{% include template1.html %}
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>잇창명 개발 블로그</title>
-{% include template2.html %}
-		<span class="logo-title">잇창명 개발 블로그</span>
-{% include template3.html %}
+
+		<link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon-16x16.png">
+		<link rel="mask-icon" href="/assets/images/safari-pinned-tab.svg" color="#564a7e">
+		<link rel="shortcut icon" href="/assets/images/favicon.ico">
+		<meta name="theme-color" content="#d5cafe">
+		
+		<link rel="stylesheet" href="/assets/css/styles.css">
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.5.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+	</head>
+	
+	<body>
+		<main class="front-page">
 			<header>
-				<h1>
-					<strong>잇창명</strong><br class="front-br"> 개발 블로그
-				</h1>
+				<h1>잇창명 개발 블로그</h1>
 			</header>
 
-			<main>
+			<article>
 				{{ content }}
-			</main>
 
-			<script src="/assets/js/postprocess.js"></script>
-			<script>require('top_button');</script>
-{% include template4.html %}
+				<div id="end-of-post">
+					<img src="https://eatch.dev/ei/s/80" alt="">
+				</div>
+			</article>
+		</main>
+		
+		<div id="top-bar">
+			<a href="https://eatch.dev/">
+				<img id="logo-dark" class="logo" src="https://eatch.dev/ei/-f" alt="eatch.dev로">
+				<img id="logo-light" class="logo" src="https://eatch.dev/ei/-0" alt="eatch.dev로">
+			</a>
+			<span id="top-bar-title">잇창명 개발 블로그</span>
+		</div>
+
+		<a id="top-button" href="#"><img src="/assets/svg/top.svg"></a>
+
+		<script src="/assets/js/postprocess.js"></script>
+		<script>require('top_button');</script>
+	</body>
+</html>

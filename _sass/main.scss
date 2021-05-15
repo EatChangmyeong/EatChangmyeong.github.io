@@ -1,360 +1,385 @@
 @charset "UTF-8";
 @import "defs";
 
-%metadata {
-	font-size: 0.8rem;
-	
-	span.date {
-		color: $header-sublink-color;
-	}
-
-	%hashtag {
-		margin: 0 0.05em;
-		padding: 0 0.15em;
-		word-break: keep-all;
-
-		&::before {
-			content: "#";
-		}
-	}
-
-	span.tag {
-		@extend %hashtag;
-		background-color: $tag-color;
-	}
-	span.category {
-		@extend %hashtag;
-		background-image: linear-gradient(to right,
-			$category-gradient-left-color,
-			$category-gradient-right-color);
-	}
-
-	@include if-dark {
-		span.date {
-			color: $header-sublink-dark;
-		}
-
-		span.tag {
-			background-color: $tag-dark;
-		}
-		span.category {
-			background-image: linear-gradient(to right,
-			$category-gradient-left-dark,
-			$category-gradient-right-dark);
-		}
-	}
-}
-
+// enforce border box model
 * {
 	box-sizing: border-box;
 }
 
-html, body, #container {
+// take full height
+html, body {
 	height: 100%;
 }
 
+// scroll padding
 html {
-	scroll-padding-top: 1rem;
-	color: $light-mode-foreground;
-	background-color: $light-mode-background;
+	overflow-x: hidden;
+	scroll-padding-top: 6rem;
 
-	@include if-wide(false) {
-		scroll-padding-top: 6rem;
-	}
-	
 	@include if-motion-reduced(false) {
 		scroll-behavior: smooth;
-	}
-
-	@include if-dark {
-		color: $dark-mode-foreground;
-		background-color: $dark-mode-background;
 	}
 }
 
 body {
 	margin: 0;
 	font-family: $font-set;
-	overflow-wrap: break-word;
+	word-break: keep-all;
+	color: $light-foreground;
+	background-color: $light-background;
+
+	@include if-dark {
+		color: $dark-foreground;
+		background-color: $dark-background;
+	}
 }
 
-table {
-	border-collapse: collapse;
+h1, h2, h3, h4, h5, h6 {
+	font-family: $alt-font-set;
 }
 
 a {
-	color: $link-color;
-	text-decoration: 1px solid transparent underline;
+	color: vivid(eatchy(25%, -30deg));
 	text-decoration-skip-ink: all;
 
-	@include hover(text-decoration-color) {
-		text-decoration-color: currentcolor;
-	}
 	&:visited {
-		color: $visited-link-color;
+		color: eatchy(25%, -30deg);
 	}
 	&.footnote, &.reversefootnote {
-		color: $footnote-link-color;
+		color: vivid(eatchy(25%, 120deg));
+
+		&:not(:hover) {
+			text-decoration-color: transparent;
+		}
+
+		@include transits(text-decoration-color);
 	}
 
 	@include if-dark {
-		color: $link-dark;
+		color: vivid(eatchy(50%, -30deg));
 
 		&:visited {
-			color: $visited-link-dark;
+			color: eatchy(75%, -30deg);
 		}
 		&.footnote, &.reversefootnote {
-			color: $footnote-link-dark;
+			color: vivid(eatchy(37.5%, 120deg));
 		}
 	}
 }
 
-#logo {
+#progress-bar {
 	position: fixed;
-	top: 0;
 	left: 0;
+	top: 0;
+	width: 0;
+	height: 0.375rem /*6px*/;
+	background-color: eatchy-purple();
+	z-index: 11;
+
+	@include shadow;
+}
+
+#top-bar {
+	position: fixed;
+	left: 0;
+	top: 0;
+	padding: 1rem;
 	width: 100%;
-	height: 0;
-	font-size: 0;
+	background-image: linear-gradient(to bottom,
+		$light-background,
+		change-color($light-background, $alpha: 0.8) 80%,
+		transparent
+	);
 	white-space: nowrap;
-	z-index: 1;
+	z-index: 10;
 
-	--logo-gradient-color-top: white;
-	--logo-gradient-color-bottom: rgba(255, 255, 255, 0.8);
-
-	@include if-dark {
-		--logo-gradient-color-top: black;
-		--logo-gradient-color-bottom: rgba(32, 32, 32, 0.8);
-	}
-
-	@include if-wide(false) {
-		height: 6rem;
-		background-image: linear-gradient(to bottom, var(--logo-gradient-color-top), var(--logo-gradient-color-bottom) 80%, transparent);
-	}
-
+	// vertical alignment
 	* {
 		vertical-align: middle;
-		line-height: $logo-size;
+		line-height: 4rem;
 	}
 
-	#progress-bar {
-		position: absolute;
-		height: 6px;
-		background: $progress-bar-color;
-		@include shadow;
-
-		@include if-dark {
-			background: $progress-bar-dark;
-		}
-	}
-
+	// dirty method to eliminate extra height
 	a {
-		position: relative;
-		top: $logo-margin;
-		left: $logo-margin;
+		font-size: 0;
+	}
 
-		img {
-			width: $logo-size;
+	.logo {
+		display: none;
+		width: 4rem;
+		height: 4rem;
+	}
+
+	@include if-dark {
+		#logo-dark {
+			display: inline;
 		}
-
-		@include if-dark(false) {
-			#logo-dark {
-				display: none;
-			}
-		}
-
-		@include if-dark {
-			#logo-light {
-				display: none;
-			}
+	}
+	@include if-dark(false) {
+		#logo-light {
+			display: inline;
 		}
 	}
 
-	.logo-title {
-		position: relative;
-		display: inline-block;
-		top: $logo-margin;
-		left: $logo-margin + 0.5rem;
-		font-size: 1rem;
-		letter-spacing: $logo-letter-spacing;
+	#top-bar-title {
+		margin-left: 0.5rem;
+	}
 
-		@include if-wide {
-			display: none;
-		}
-
-		* {
-			vertical-align: initial;
-		}
+	@include if-dark {
+		background-image: linear-gradient(to bottom,
+			$dark-background,
+			change-color($dark-background, $alpha: 0.8) 80%,
+			transparent
+		);
 	}
 }
 
+// back to top button
 #top-button {
 	position: fixed;
-	right: $top-button-margin;
-	bottom: $top-button-margin;
-	border-radius: $top-button-size/2;
-	width: $top-button-size;
-	height: $top-button-size;
+	right: 1.5rem;
+	bottom: 1.5rem;
+	border-radius: 1.5rem;
+	width: 3rem;
+	height: 3rem;
 	opacity: 0.5;
-	@include shadow;
-	
-	@include transition-for(opacity);
 
 	img {
 		width: 100%;
 		height: 100%;
 	}
+
+	@include shadow;
+	@include transits(opacity);
 }
 
-#container {
+#end-of-post {
 	display: flex;
-	position: relative;
-	margin: auto;
+	flex-direction: row;
+	align-items: center;
 
-	@include if-wide {
-		flex-flow: row nowrap;
-		width: $left + $right;
+	&::before, &::after {
+		content: "";
+		flex: 1 1;
+		margin: auto;
+		height: 1px;
+		background-color: #808080;
 	}
-	@include if-wide(false) {
-		flex-flow: column nowrap;
-		max-width: $right;
-		padding: 0 1.5rem;
+
+	img {
+		width: 5rem;
 	}
 }
 
-header {
-	display: flex;
-	flex-flow: column nowrap;
-	flex: none;
-	padding: 0.5rem;
+// tags and categories
+%hashtag {
+	margin: 0 0.05em;
+	padding: 0 0.15em;
 	word-break: keep-all;
-	
-	@include if-wide {
-		position: fixed;
-		padding-top: 4.5rem;
-		width: $left;
-		height: 100%;
-		text-align: right;
-	}
-	
-	@include if-wide(false) {
-		position: static;
-		margin-top: 8rem;
-		text-align: left;
-	}
 
-	a.front-link {
-		color: $header-sublink-color;
+	&::before {
+		content: "#";
+	}
+}
+
+// date and tags
+%metadata {
+	font-size: 0.8rem;
+
+	.tag {
+		@extend %hashtag;
+		color: $light-foreground;
+		background-color: #e0ffff;
 
 		@include if-dark {
-			color: $header-sublink-dark;
+			color: $dark-foreground;
+			background-color: #004040;
 		}
 	}
-
-	h1 {
-		margin: 0;
-		color: $post-title-color;
-		font-family: $alt-font-set;
-		font-size: $post-title-size;
-		font-weight: normal;
-
-		@include if-wide(false) {
-			br.front-br {
-				display: none;
-			}
-		}
+	.category {
+		@extend %hashtag;
+		color: $light-foreground;
+		background-image: linear-gradient(to right,
+			#e8e800,
+			transparent
+		);
 
 		@include if-dark {
-			color: $post-title-dark;
-		}
-	}
-
-	span.metadata {
-		@extend %metadata;
-
-		display: block;
-	}
-
-	.toc {
-		@extend %toc-container;
-		flex: auto;
-		overflow-y: auto;
-
-		@include if-wide(false) {
-			display: none;
-		}
-
-		ol {
-			@include toc-list(right);
-			margin: 0;
+			color: $dark-foreground;
+			background-image: linear-gradient(to right,
+				#808000,
+				change-color(#808000, $alpha: 0.25)
+			);
 		}
 	}
 }
 
 main {
-	flex: none;
-	justify-content: flex-start;
-	padding: 0.5rem;
-	padding-bottom: 1rem;
-	word-break: keep-all;
-	
-	@include if-wide {
-		position: absolute;
-		top: 0;
-		right: 0;
-		padding-top: 12rem;
-		width: $right;
+	// grid definition
+	display: grid;
+	grid-template-rows: auto;
+	column-gap: 0.5rem;
+	place-items: start stretch;
+	place-content: start center;
+
+	@mixin wide-layout {
+		grid-template-columns: 15rem 45rem;
+		grid-template-areas:
+			"header header "
+			"toc    article";
 	}
 	
-	ul#post-list {
-		margin: 0;
-		margin-top: 1.2rem;
-		padding: 0;
-		list-style: none;
+	@mixin narrow-layout {
+		grid-template-columns: auto;
+		grid-template-areas:
+			"header "
+			"article";
+		
+		margin: auto;
+		width: 80vw;
+		max-width: 45rem;
+	}
+
+	header {
+		grid-area: header;
+
+		// upper margin
+		margin-top: 8rem;
+
+		.front-link {
+			color: #444;
+
+			&:not(:hover) {
+				text-decoration-color: transparent;
+			}
 	
-		li {
+			@include if-dark {
+				color: #bbb;
+			}
+
+			@include transits(text-decoration-color);
+		}
+
+		h1 {
+			margin: 0;
+			font-size: 2.5rem;
+			color: eatchy-purple(25%);
+
+			@include if-dark {
+				color: eatchy-purple(75%);
+			}
+		}
+
+		// date and tags
+		.metadata {
+			@extend %metadata;
+		}
+	}
+
+	.toc {
+		grid-area: toc;
+
+		position: sticky;
+		top: 6rem;
+		max-height: calc(100vh - 6rem);
+		overflow-y: auto;
+
+		ol {
+			@include toc(right);
+			margin: 0;
+		}
+
+		@include if-wide(false) {
+			display: none;
+		}
+	}
+
+	article {
+		grid-area: article;
+
+		width: 80vw;
+		max-width: 45rem;
+
+		@extend %post;
+	}
+
+	&.front-page {
+		@include narrow-layout;
+
+		header h1 {
+			margin-bottom: 1rem;
+		}
+
+		ul#post-list {
+			display: grid;
+			grid-template-columns: repeat(2, 1fr);
+			grid-template-rows: auto;
+			gap: 1rem;
+			align-items: start;
+
 			margin: 0;
 			margin-top: 1.2rem;
-			border-radius: 1rem;
-			padding: 1rem;
-			background-color: $post-background-color;
-			@include shadow($post-shadow-metrics, $post-shadow-color, $post-shadow-dark);
-			
-			@include if-dark {
-				background-color: $post-background-dark;
-			}
-			
-			@include hover(box-shadow, background-color) {
-				@include shadow($post-shadow-metrics, $post-shadow-hover-color, $post-shadow-hover-dark);
-				background-color: $post-background-hover-color;
-				
-				@include if-dark {
-					background-color: $post-background-hover-dark;
-				}
-			}
-	
-			span.metadata {
-				@extend %metadata;
-	
+			padding: 0;
+			list-style: none;
+		
+			li {
 				display: block;
-			}
-			
-			h2 {
-				margin: 0;
-	
-				strong {
-					font-weight: normal;
+				position: relative;
+				border-radius: 0.8rem;
+				height: 16rem;
+				background-color: mix(gray, eatchy-purple(), 70%);
+				background-size: cover;
+				background-position: 50% 40%;
+				contain: content; // prevent overflowing
+
+				@include shadow;
+				&:hover {
+					@include intense-shadow;
 				}
-				em {
-					font-style: normal;
+				@include transits(box-shadow);
+		
+				span.metadata {
+					@extend %metadata;
+		
+					display: block;
+					position: absolute;
+					left: 0;
+					bottom: 0;
+					padding: 0.5rem;
+					padding-top: 2rem;
+					width: 100%;
+					background-image: linear-gradient(to bottom,
+						transparent,
+						change-color(eatchy-purple(87.5%), $alpha: 0.85) 2rem
+					);
+
+					@include if-dark {
+						background-image: linear-gradient(to bottom,
+							transparent,
+							change-color(eatchy-purple(12.5%), $alpha: 0.85) 2rem
+						);
+					}
 				}
-			}
-	
-			p {
-				margin: 0;
+				
+				h2 {
+					margin: 0;
+					font-size: 1.8rem;
+				}
+		
+				p {
+					margin: 0;
+				}
 			}
 		}
 	}
 
-	@extend %post;
+	&:not(.front-page) {
+		@include if-wide(false) {
+			@include narrow-layout;
+		}
+	
+		@include if-wide {
+			@include wide-layout;
+		}
+	}
 }

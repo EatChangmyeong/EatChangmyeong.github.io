@@ -1,5 +1,5 @@
 @charset "UTF-8";
-@import "new-defs";
+@import "defs";
 
 @mixin code-languages($selector) {
 	&.language-plaintext:not(.markdown) {

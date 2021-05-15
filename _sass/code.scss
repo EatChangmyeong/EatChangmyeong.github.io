@@ -6,15 +6,15 @@
 %code {
 	@extend %monokai;
 	
-	color: $code-color;
-	background: $light-mode-code-background;
+	color: #f8f8f2;
+	background: #272822;
 	font-family: $mono-font-set;
-	tab-size: $tab-size;
-	-moz-tab-size: $tab-size;
-	-o-tab-size: $tab-size;
+	tab-size: 4;
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
 
 	@include if-dark {
-		background: $dark-mode-code-background;
+		background: #383838;
 	}
 }
 

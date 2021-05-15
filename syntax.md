@@ -1,5 +1,5 @@
 ---
-layout: new_page
+layout: page
 actual_title: "마크다운 문법 치트시트"
 date: 2021-05-15
 permalink: /syntax/
