@@ -2,7 +2,7 @@
 layout: pseudopost
 actual_title: "블로그에 사용한 <strong>외부 리소스</strong>"
 date: 2020-06-13
-permalink: /thirdparty-license/
+permalink: /thirdparty/
 ---
 
 이 블로그에서는 직접 제작한 리소스 이외에도 외부에서 제작한 리소스나 도구 등을 일부 사용하였습니다.

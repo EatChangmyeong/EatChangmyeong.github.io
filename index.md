@@ -6,7 +6,7 @@ layout: front
 
 [마크다운 문법 치트시트](/syntax)
 
-[외부 리소스](/thirdparty-license)
+[외부 리소스](/thirdparty)
 
 ## TODO
 
