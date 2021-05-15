@@ -1,7 +1,7 @@
 ---
-layout: post
+layout: new_post
 author: EatChangmyeong
-actual_title: <strong>Hello</strong>, world!
+actual_title: Hello, world!
 excerpt: 블로그 공사할 때 테스트용으로 썼던 글이에요
 tags:
 - Jekyll

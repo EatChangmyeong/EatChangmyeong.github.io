@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: new_post
 author: EatChangmyeong
 actual_title: "Honeyhouse 어떻게 만들었는가"
 excerpt: "겜스2 안구데기"
