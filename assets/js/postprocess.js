@@ -29,7 +29,7 @@ const
 					return toc_from(split[0], level + 1);
 				
 				const ol = document.createElement('ol');
-				for(const x of split) {
+				for(let x of split) {
 					const li = document.createElement('li');
 					if(x[0].level === level) {
 						li.appendChild(toc_leaf(x[0]));
