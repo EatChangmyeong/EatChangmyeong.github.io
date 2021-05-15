@@ -184,28 +184,29 @@ a {
 
 // date and tags
 %metadata {
+	color: $light-foreground;
 	font-size: 0.8rem;
+
+	@include if-dark {
+		color: $dark-foreground;
+	}
 
 	.tag {
 		@extend %hashtag;
-		color: $light-foreground;
 		background-color: #e0ffff;
 
 		@include if-dark {
-			color: $dark-foreground;
 			background-color: #004040;
 		}
 	}
 	.category {
 		@extend %hashtag;
-		color: $light-foreground;
 		background-image: linear-gradient(to right,
 			#e8e800,
 			transparent
 		);
 
 		@include if-dark {
-			color: $dark-foreground;
 			background-image: linear-gradient(to right,
 				#808000,
 				change-color(#808000, $alpha: 0.25)
@@ -327,10 +328,15 @@ main {
 				position: relative;
 				border-radius: 0.8rem;
 				height: 16rem;
+				color: vivid(eatchy(25%, -30deg));
 				background-color: mix(gray, eatchy-purple(), 70%);
 				background-size: cover;
 				background-position: 50% 40%;
 				contain: content; // prevent overflowing
+
+				@include if-dark {
+					color: vivid(eatchy(50%, -30deg));
+				}
 
 				@include shadow;
 				&:hover {
@@ -338,9 +344,7 @@ main {
 				}
 				@include transits(box-shadow);
 		
-				span.metadata {
-					@extend %metadata;
-		
+				span.post-list-title {
 					display: block;
 					position: absolute;
 					left: 0;
@@ -358,6 +362,10 @@ main {
 							transparent,
 							change-color(eatchy-purple(12.5%), $alpha: 0.85) 2rem
 						);
+					}
+
+					.metadata {
+						@extend %metadata;
 					}
 				}
 				

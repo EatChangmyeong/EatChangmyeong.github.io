@@ -26,17 +26,17 @@ layout: front
 					style="background-image: url({{ x.cover_image }});"
 				{% endif %}
 			>
-				<span class="metadata">
+				<span class="post-list-title">
 					<h2>{{ x.actual_title }}</h2>
-					<time class="date" datetime="{{ x.date | date: '%F' }}">
-						{{ x.date | date: "%Y년 %m월 %d일" }}
-					</time>
-					{% for y in x.categories %}
-						<span class="category">{{ y }}</span>
-					{% endfor %}
-					{% for y in x.tags %}
-						<span class="tag">{{ y }}</span>
-					{% endfor %}
+					<span class="metadata">
+						<time class="date" datetime="{{ x.date | date: '%F' }}">{{ x.date | date: "%Y년 %m월 %d일" }}</time>
+						{% for y in x.categories %}
+							<span class="category">{{ y }}</span>
+						{% endfor %}
+						{% for y in x.tags %}
+							<span class="tag">{{ y }}</span>
+						{% endfor %}
+					</span>
 				</span>
 			</li>
 		</a>
