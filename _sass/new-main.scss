@@ -188,20 +188,24 @@ a {
 
 	.tag {
 		@extend %hashtag;
+		color: $light-foreground;
 		background-color: #e0ffff;
 
 		@include if-dark {
+			color: $dark-foreground;
 			background-color: #004040;
 		}
 	}
 	.category {
 		@extend %hashtag;
+		color: $light-foreground;
 		background-image: linear-gradient(to right,
 			#e8e800,
 			transparent
 		);
 
 		@include if-dark {
+			color: $dark-foreground;
 			background-image: linear-gradient(to right,
 				#808000,
 				change-color(#808000, $alpha: 0.25)
