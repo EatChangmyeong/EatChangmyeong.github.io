@@ -1,0 +1,7 @@
+<svg viewBox="0 0 13 13" xmlns="http://www.w3.org/2000/svg">
+	<path id="check" d="
+		M 0 4
+		0 0
+		8 0
+	" fill="none" stroke="#d5cafe" stroke-width="2" transform="matrix(0.7071067811865476 -0.7071067811865476 -0.7071067811865476 -0.7071067811865476 5 9)" />
+</svg>

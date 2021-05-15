@@ -1,0 +1,419 @@
+@charset "UTF-8";
+@import "new-defs";
+
+// https://eatchangmyeong.github.io/syntax/ order, with the exception of <p>
+
+%post {
+	@mixin global-margin {
+		margin: 0.8rem 0 0 0.5rem;
+	}
+
+	// kramdown ToC
+	#markdown-toc {
+		@include toc(left);
+	}
+
+	// <p>
+	p {
+		@include global-margin;
+	}
+	
+	// heading
+	%heading {
+		margin: 0;
+		margin-top: 2rem;
+		font-family: $alt-font-set;
+	}
+	@for $i from 1 through 6 {
+		h#{$i} {
+			@extend %heading;
+			font-size: nth($heading-size, $i);
+		}
+	}
+
+	// thin heading
+	%heading-thin {
+		font-weight: normal;
+	}
+	@for $i from $heading-bold-threshold + 1 through 6 {
+		h#{$i} {
+			@extend %heading-thin;
+		}
+	}
+
+	// immediately descending group of headings
+	%heading-descending {
+		margin-top: 1rem;
+	}
+	@for $i from 1 through 5 {
+		@for $j from $i + 1 through 6 {
+			h#{$i} + h#{$j} {
+				@extend %heading-descending;
+			}
+		}
+	}
+
+	del {
+		color: #666;
+
+		&:hover {
+			text-decoration-color: transparent;
+		}
+
+		@include if-dark {
+			color: #bbb;
+		}
+
+		@include transits(text-decoration-color);
+	}
+	
+	ol, ul {
+		padding-left: 2rem;
+	
+		ol, ul {
+			padding-left: 1.35rem;
+		}
+	}
+	
+	dl {
+		@include global-margin;
+	
+		dt {
+			display: inline-block;
+			margin: 0;
+			margin-top: 1rem;
+			padding: 0.15em 0.5em;
+			border-radius: 1em;
+			background-color: #e0e0e0;
+	
+			&:first-child {
+				margin-top: 0;
+			}
+	
+			@include if-dark {
+				background-color: #505050;
+			}
+		}
+	
+		dd {
+			margin: 0;
+			padding: 0;
+			padding-left: 0.5rem;
+		}
+	}
+
+	blockquote {
+		@include global-margin;
+
+		border-left: 0.25rem solid eatchy-purple(25%);
+		// prevent margin collapsing
+		contain: content;
+		// dirty fallback for contain: content;
+		padding-top: 0.01px;
+		padding-bottom: 0.01px;
+		background-color: change-color(eatchy-purple(), $alpha: 0.1);
+	
+		blockquote {
+			margin-left: 0.8rem;
+		}
+
+		p:first-child {
+			margin-top: 0;
+		}
+	
+		:last-child:not(p) {
+			margin-bottom: 0.8rem;
+		}
+	
+		@include if-dark {
+			border-left-color: eatchy-purple();
+			background-color: change-color(eatchy-purple(75%), $alpha: 0.1);
+		}
+	}
+	
+	%codeblock {
+		@extend %code;
+		@include global-margin;
+	
+		pre {
+			margin: 0;
+			border: none;
+			// dirty method to eliminate extra height
+			font-size: 0;
+			// scrolling rather than wrapping
+			overflow-x: auto;
+			
+			code {
+				display: inline-block;
+				margin: 0.5rem;
+				font-size: 1rem;
+				white-space: pre;
+			}
+
+			pre {
+				font-size: 1rem;
+			}
+		}
+	}
+	@mixin codeblock-language($selector) {
+		@include code-languages($selector);
+		
+		#{$selector}::before {
+			content: "<unknown language>";
+			display: block;
+			font-family: $font-set;
+			font-size: 0.8rem;
+			color: white;
+			opacity: 0.6;
+		}
+	}
+	div.highlighter-rouge {
+		@extend %codeblock;
+		@include codeblock-language(pre);
+
+		pre::before {
+			margin: 0.5rem;
+			margin-bottom: 0;
+		}
+	}
+	figure.highlight {
+		@extend %codeblock;
+
+		code {
+			@include codeblock-language("&");
+
+			&::before {
+				margin-bottom: 0.5rem;
+			}
+		}
+	
+		pre pre {
+			// I don't know how to properly vertical-align
+			vertical-align: bottom;
+		}
+		td.gutter {
+			$lineno-color: #f8f8f2;
+
+			border-right: 1px solid $lineno-color;
+			padding-right: 0.5rem;
+			opacity: 0.75;
+
+			.lineno {
+				@extend %unselectable;
+				display: inline-block;
+				padding: 0;
+				text-align: right;
+				color: $lineno-color;
+			}
+		
+		}
+		td.code {
+			padding-left: 0.5rem;
+		}
+	}
+
+	@mixin table-hover($fg, $bg) {
+		&:hover {
+			background-color: mix($fg, $bg, 10%);
+		}
+
+		@include transits(background-color);
+	}
+	
+	table:not(.rouge-table) {
+		@include global-margin;
+
+		width: calc(100% - 0.5rem);
+		border-spacing: 0;
+
+		th, td {
+			padding: 0.2rem 0.5rem;
+			text-align: left;
+		}
+	
+		thead, tfoot {
+			tr {
+				$bg: eatchy-purple(87.5%);
+
+				height: 2.2rem;
+				font-weight: bold;
+				background-color: $bg;
+				@include table-hover($light-foreground, $bg);
+			}
+	
+			th, td {
+				border: 1px solid eatchy-purple(25%);
+			}
+		}
+
+		thead {
+			position: sticky;
+			top: 6rem;
+			z-index: 2;
+		}
+
+		tfoot {
+			position: sticky;
+			bottom: 0;
+			z-index: 1;
+		}
+	
+		tbody {
+			tr {
+				@include table-hover($light-foreground, $light-background);
+			}
+	
+			td {
+				border: 1px solid #c0c0c0;
+			}
+	
+			&:not(:last-child) tr:last-child td  {
+				border-bottom: none;
+			}
+		}
+	
+		@include if-dark {
+			thead, tfoot {
+				tr {
+					$bg: eatchy-purple(12.5%);
+					background-color: $bg;
+					@include table-hover($dark-foreground, $bg);
+				}
+	
+				th, td {
+					border: 1px solid eatchy-purple();
+				}
+			}
+	
+			tbody {
+				tr {
+					@include table-hover($dark-foreground, $dark-background);
+				}
+	
+				td {
+					border: 1px solid #404040;
+				}
+			}
+		}
+	}
+	
+	hr {
+		margin: 2.5rem auto;
+		border: none;
+		width: 80%;
+		height: 1px;
+		background-color: $light-foreground;
+		opacity: 50%;
+	
+		@include if-dark {
+			background-color: $dark-foreground;
+		}
+	}
+	
+	img {
+		max-width: 25rem;
+		max-height: 25rem;
+	}
+	p > img:only-child {
+		display: block;
+		margin: auto;
+		max-width: 100%;
+
+		@include shadow;
+		&:hover {
+			@include intense-shadow;
+		}
+		@include transits(box-shadow);
+	}
+	
+	code.highlighter-rouge {
+		@extend %code;
+		position: relative;
+		margin: 0 0.05em;
+		padding: 0.15em;
+		// background behind surrounding text
+		z-index: -1;
+	}
+	
+	input.task-list-item-checkbox {
+		margin: 0 0.4rem 0 0.25rem;
+		width: 0.9rem;
+		height: 0.9rem;
+		background-color: #ddd;
+		vertical-align: middle;
+		appearance: none;
+
+		&:checked {
+			background-image: url(/assets/images/check.svg);
+		}
+
+		@include if-dark {
+			background-color: #555;
+
+			&:checked {
+				background-image: url(/assets/images/check-dark.svg);
+			}
+		}
+	}
+
+	.footnotes {
+		@include global-margin;
+		margin-left: 0;
+
+		ol {
+			margin: 0;
+			padding-left: 0;
+			list-style-position: inside;
+		
+			li {
+				margin-top: 0.25rem;
+		
+				p {
+					display: inline;
+					margin: 0;
+				}
+			}
+		}
+	}
+
+	abbr {
+		text-decoration: 2px dotted currentcolor underline;
+		text-decoration-skip-ink: all;
+
+		&:hover {
+			text-decoration-color: transparent;
+		}
+
+		@include transits(text-decoration-color);
+	}
+
+	.u {
+		text-decoration: underline;
+		font-style: normal;
+	}
+
+	.ui {
+		text-decoration: underline;
+		font-style: italic;
+	}
+
+	.split {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		grid-template-rows: auto;
+		column-gap: 0.5rem;
+
+		.split-column {
+			// prevent grid expansion without breaking sticky
+			min-width: 0;
+		}
+
+		.split-block {
+			grid-column: 1 / span 2;
+		}
+	}
+	
+	.twitter-tweet-rendered {
+		margin: auto;
+	}
+}

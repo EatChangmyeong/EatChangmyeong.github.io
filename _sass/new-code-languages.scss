@@ -1,0 +1,35 @@
+@charset "UTF-8";
+@import "new-defs";
+
+@mixin code-languages($selector) {
+	&.language-plaintext:not(.markdown) {
+		#{$selector}::before {
+			content: "Plain Text";
+		}
+	}
+	&.language-c {
+		#{$selector}::before {
+			content: "C";
+		}
+	}
+	&.gml {
+		#{$selector}::before {
+			content: "GameMaker Language";
+		}
+	}
+	&.language-javascript:not(.gml) {
+		#{$selector}::before {
+			content: "JavaScript";
+		}
+	}
+	&.language-liquid {
+		#{$selector}::before {
+			content: "Liquid";
+		}
+	}
+	&.language-markdown {
+		#{$selector}::before {
+			content: "Markdown";
+		}
+	}
+}

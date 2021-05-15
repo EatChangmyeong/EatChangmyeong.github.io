@@ -1,0 +1,43 @@
+@charset "UTF-8";
+
+@mixin toc($direction) {
+	padding: 0;
+	text-align: $direction;
+
+	ol, ul {
+		padding: 0;
+
+		margin-#{$direction}: calc(0.64rem - 1px);
+		border-#{$direction}: 1px solid change-color($light-foreground, $alpha: 0.1);
+
+		@include if-dark {
+			border-#{$direction}-color: change-color($dark-foreground, $alpha: 0.1);
+		}
+	}
+
+	li {
+		list-style-type: none;
+
+		a {
+			display: block;
+			padding: 0.2rem;
+			padding-#{$direction}: 0.5rem;
+			text-decoration: none;
+
+			color: change-color($light-foreground, $alpha: 0.75);
+
+			&:hover {
+				background-color: change-color($light-foreground, $alpha: 0.05);
+			}
+
+			@include if-dark {
+				color: change-color($dark-foreground, $alpha: 0.75);
+				&:hover {
+					background-color: change-color($dark-foreground, $alpha: 0.05);
+				}
+			}
+
+			@include transits(background-color);
+		}
+	}
+}
