@@ -32,6 +32,7 @@ tags:
 
 허니하우스에서는 육각형 보드를 아래와 같은 2차원 배열로 표현합니다. 밑줄 `_`은 가독성을 위해서 0 대신 넣었고 빈 공간을 의미합니다.
 
+{:.gml}
 ```javascript
 board = [
 	[2, 5, 3, 2, 1, _, _, _, _],
@@ -82,6 +83,7 @@ $$
 
 고등학교 수학에서도 빠진 행렬을 굳이 복잡하게 쓰지 않아도 두 줄짜리 코드로 육각형 보드를 그릴 수 있긴 합니다.
 
+{:.gml}
 ```javascript
 x_to = a*x_from + c*y_from + x;
 y_to = b*x_from + d*y_from + y;
@@ -93,6 +95,7 @@ y_to = b*x_from + d*y_from + y;
 
 사실 별건 없고 `constructor` 함수 안에 그냥 필요한 연산만 이것저것 `static`으로 정의해놓은 형태입니다. 꽤 간단한 구조이지만 관련된 메소드를 전부 `Matrix` 안으로 욱여넣을 수 있어서(생각할 게 줄어든다는 의미입니다) 개인적으로 `constructor` 문법을 좋아하는 편입니다.
 
+{:.gml}
 ```javascript
 // 구조만 보려고 하는 거니까 구현 어떻게 했는지는 생략할게요
 
@@ -171,6 +174,7 @@ $$
 
 조각 표현은 두 가지 방법으로 할 수 있는데, 하나는 아래와 같이 2차원 배열로 표현하는 방법이고...
 
+{:.gml}
 ```javascript
 // 위 사진에서 가장 오른쪽의 조각은 다음과 같이 표현됩니다. 이 코드에서도 _을 0 대신 사용합니다.
 
@@ -186,6 +190,7 @@ example_piece_1 = {
 
 다른 하나는 각 조각마다 그 위치와 색상을 적어두는 방법입니다.
 
+{:.gml}
 ```javascript
 // 같은 조각을 다른 방식으로 표현한 결과입니다.
 example_piece_2 = [
@@ -287,6 +292,7 @@ example_piece_2 = [
 
 GMS2에서 제일 비직관적인 게 함수 바인딩(함수 내에서 `self`가 무엇을 가리키는지)이었습니다. [yellowafterlife님의 블로그](https://yal.cc/gamemaker-2-3-syntax-in-details/#method)에서 설명을 읽어보긴 했는데 뭔가 안 맞는 게 있었던 것 같고(제가 잘못 읽어서 그럴 수도 있긴 해요) 그냥 메소드를 만들 때마다 [`method`](https://manual.yoyogames.com/GameMaker_Language/GML_Reference/Variable_Functions/method.htm)로 포장했습니다...
 
+{:.gml}
 ```javascript
 interface = {
 	hierarchy: [
@@ -435,6 +441,7 @@ $$R' = \begin{cases} \frac{R}{12.92} & \mbox{if } R \le 0.03928 \\ \left( \frac{
 
 위 식을 (색 공간을 고려하지 않고) 코드로 옮기면 다음과 같습니다.
 
+{:.gml}
 ```javascript
 function contrast_ratio(lhs, rhs) {
 	var

@@ -26,7 +26,10 @@
 				<a href="/" class="front-link">잇창명 개발 블로그</a>
 				<h1>{{ page.actual_title }}</h1>
 				<span class="metadata">
-					<time datetime="{{ page.date | date: '%Y-%m-%d' }}">{{ page.date | date: "%Y년 %m월 %d일" }}</time>
+					<time datetime="{{ page.date | date: '%F' }}">{{ page.date | date: "%Y년 %m월 %d일" }}</time>
+					{% if page.edited_at %}
+						&bull; <time datetime="{{ page.edited_at | date: '%F' }}">{{ page.edited_at | date: "%Y년 %m월 %d일" }}</time> 수정
+					{% endif %}
 					{% if page.categories.size != 0 or page.tags.size != 0 %}
 						{% for x in page.categories %}
 							<span class="category">{{ x }}</span>
