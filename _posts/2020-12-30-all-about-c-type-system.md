@@ -2,7 +2,6 @@
 layout: post
 author: EatChangmyeong
 actual_title: "C 타입 시스템 제대로 알고 가기"
-excerpt: "왜 그렇게나 헷갈리던지"
 edited_at: 2021-05-16
 tags:
 - Programming

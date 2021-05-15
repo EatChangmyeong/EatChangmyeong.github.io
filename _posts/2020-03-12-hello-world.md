@@ -2,7 +2,6 @@
 layout: post
 author: EatChangmyeong
 actual_title: Hello, world!
-excerpt: 블로그 공사할 때 테스트용으로 썼던 글이에요
 tags:
 - Jekyll
 - GithubPages
