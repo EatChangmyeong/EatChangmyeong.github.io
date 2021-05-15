@@ -29,7 +29,7 @@ const
 					return toc_from(split[0], level + 1);
 				
 				const ol = document.createElement('ol');
-				split.forEach(x => {
+				for(const x of split) {
 					const li = document.createElement('li');
 					if(x[0].level === level) {
 						li.appendChild(toc_leaf(x[0]));
@@ -38,7 +38,7 @@ const
 					if(x.length)
 						li.appendChild(toc_from(x, level + 1));
 					ol.appendChild(li);
-				});
+				}
 				return ol;
 			}
 
@@ -95,10 +95,9 @@ window.require_all = () => {
 	window.require(...Object.keys(features));
 };
 
-document.addEventListener('DOMContentLoaded', () =>
-	enabled.forEach(x =>
-		x()
-	)
-);
+document.addEventListener('DOMContentLoaded', () => {
+	for(const x of enabled)
+		x();
+});
 
 }
