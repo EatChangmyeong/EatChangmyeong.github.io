@@ -1074,7 +1074,7 @@ printf("%d", x); // 뭐가 출력될지 모릅니다. 하여튼 하지 마세요
 
 [Compiler Explorer](https://godbolt.org/)에서 아래와 같이 `volatile` 한정자만 다른 두 함수를 `-O2` 플래그(중간 단계 최적화)를 추가하고 컴파일하면 아래와 같은 결과가 나옵니다. 이미지가 작게 나온다면 우클릭을 하거나 길게 눌러서 원본을 볼 수 있습니다.
 
-![int를 사용하는 함수 foo와 volatile int를 사용하는 함수 bar의 어셈블리 출력 비교. foo는 두 줄, bar는 아홉 줄로 출력된다.](/assets/post-images/godbolt-volatile-optimization.png)
+![int를 사용하는 함수 foo와 volatile int를 사용하는 함수 bar의 어셈블리 출력 비교. foo는 두 줄, bar는 아홉 줄로 출력된다.](/assets/post-images/c-volatile-optimization.png)
 
 `foo`(상단의 초록색 블록)는 사실상 `return 100;`과 동일하게 최적화된 반면, `bar`(나머지 모든 부분)는 대입과 루프, `return x;`를 할 때의 읽기 연산까지 그대로 어셈블리로 출력되었습니다.
 

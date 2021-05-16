@@ -7,7 +7,7 @@ tags:
 - Gamedev
 ---
 
-![허니하우스 플레이 화면](/assets/post-images/honeyhouse_demo.gif)
+![허니하우스 플레이 화면](/assets/post-images/honeyhouse-demo.gif)
 
 **겜스가 2.3으로 업데이트되면서 그래도 살만해졌습니다.** 사실 겜스1을 쓰면서는 엔진과 언어가 너무 불편해서 `겜스넘구데기`를 연발했는데 구조체와 함수(생성자 함수도!) 문법이 생기면서 그나마 제가 편한 대로 코드를 짤 수 있게 되었네요.
 
