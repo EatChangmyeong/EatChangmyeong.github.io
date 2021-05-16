@@ -2,6 +2,7 @@
 layout: post
 author: EatChangmyeong
 actual_title: Hello, world!
+cover_image: https://eatch.dev/ei/-0-f
 tags:
 - Jekyll
 - GithubPages

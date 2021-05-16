@@ -329,7 +329,7 @@ main {
 				border-radius: 0.8rem;
 				height: 16rem;
 				color: vivid(eatchy(25%, -30deg));
-				background-color: mix(gray, eatchy-purple(), 70%);
+				background-image: url(/assets/images/no-cover-image.png);
 				background-size: cover;
 				background-position: 50% 40%;
 				contain: content; // prevent overflowing
