@@ -16,6 +16,10 @@
 	@include if-dark {
 		background: #383838;
 	}
+
+	code {
+		font-family: $mono-font-set;
+	}
 }
 
 %monokai {
