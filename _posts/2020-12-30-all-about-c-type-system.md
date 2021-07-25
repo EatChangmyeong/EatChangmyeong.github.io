@@ -2,7 +2,7 @@
 layout: post
 author: EatChangmyeong
 actual_title: "C 타입 시스템 제대로 알고 가기"
-edited_at: 2021-05-18
+edited_at: 2021-07-26
 tags:
 - Programming
 ---
@@ -99,7 +99,7 @@ int* x, y;
 
 **`declarator`는 `BaseType`을 얻기 위해 거치는 연산을 나타냅니다.**
 
-아무 IDE(정 어렵다면 [ideone](https://www.ideone.com/)이나 [repl.it](https://repl.it/languages/c))를 붙잡고 따라해 보세요. `printf` 같은 함수에 넣으면 컴파일러가 타입 체킹을 해주니 확인하는 건 어렵지 않을 겁니다.
+아무 IDE(정 어렵다면 [ideone](https://www.ideone.com/)이나 [replit](https://replit.com/languages/c))을 붙잡고 따라해 보세요. `printf` 같은 함수에 넣으면 컴파일러가 타입 체킹을 해주니 확인하는 건 어렵지 않을 겁니다.
 
 * `int x;`에서 `x`는 `int`입니다.
 	* 여기에 올바른 타입의 변수를 선언하는 예제 코드가 들어갑니다. int x;는 자명하니 생략합니다.
