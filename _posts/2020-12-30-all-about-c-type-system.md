@@ -2,7 +2,7 @@
 layout: post
 author: EatChangmyeong
 actual_title: "C 타입 시스템 제대로 알고 가기"
-edited_at: 2021-05-16
+edited_at: 2021-05-18
 tags:
 - Programming
 ---
@@ -246,6 +246,8 @@ int x = 5;
 int y[x]; // OK: VLA with size x
 int z[2*x] = {0}; // variable-sized object may not be initialized
 ```
+
+모든 컴파일러에서 VLA를 지원하는 것은 아닌데(대표적으로 MSVC가 그렇습니다), 지원하지 않는 컴파일러의 경우 매크로 `__STDC_NO_VLA__`가 1로 정의되어 있습니다 *(C11~)*.
 
 ### 함수
 
