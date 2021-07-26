@@ -5,6 +5,7 @@ actual_title: "C 타입 시스템 제대로 알고 가기"
 edited_at: 2021-07-27
 tags:
 - Programming
+comments: true
 ---
 
 C 코딩을 할 때, 다음 중 가장 "올바른" 코딩 스타일은 무엇일까요?

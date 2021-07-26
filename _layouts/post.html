@@ -30,6 +30,9 @@
 					{% if page.edited_at %}
 						&bull; <time datetime="{{ page.edited_at | date: '%F' }}">{{ page.edited_at | date: "%Y년 %m월 %d일" }}</time> 수정
 					{% endif %}
+					{% if page.comments %}
+						&bull; <a href="https://eatchangmyeong.github.io{{ page.url }}#disqus_thread">댓글 쓰기</a>
+					{% endif %}
 					{% if page.categories.size != 0 or page.tags.size != 0 %}
 						{% for x in page.categories %}
 							<span class="category">{{ x }}</span>
@@ -49,6 +52,26 @@
 				<div id="end-of-post">
 					<img src="https://eatch.dev/ei/s/80" alt="">
 				</div>
+
+				{% if page.comments %}
+					<div id="disqus_thread"></div>
+					<script>
+						/**
+						*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+						*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+						var disqus_config = function () {
+						this.page.url = 'https://eatchangmyeong.github.io{{ page.url }}';  // Replace PAGE_URL with your page's canonical URL variable
+						this.page.identifier = '{{ page.id }}'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+						};
+						(function() { // DON'T EDIT BELOW THIS LINE
+						var d = document, s = d.createElement('script');
+						s.src = 'https://eatch-devblog.disqus.com/embed.js';
+						s.setAttribute('data-timestamp', +new Date());
+						(d.head || d.body).appendChild(s);
+						})();
+					</script>
+					<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+				{% endif %}
 			</article>
 		</main>
 		
@@ -65,5 +88,7 @@
 
 		<script src="/assets/js/postprocess.js"></script>
 		<script>require_all();</script>
+
+		<script id="dsq-count-scr" src="//eatch-devblog.disqus.com/count.js" async></script>
 	</body>
 </html>

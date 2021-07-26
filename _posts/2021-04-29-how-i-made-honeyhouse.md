@@ -5,6 +5,7 @@ actual_title: "Honeyhouse 어떻게 만들었는가"
 tags:
 - GameMaker
 - Gamedev
+comments: true
 ---
 
 ![허니하우스 플레이 화면](/assets/post-images/honeyhouse-demo.gif)

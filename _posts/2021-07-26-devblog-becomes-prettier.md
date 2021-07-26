@@ -6,6 +6,7 @@ cover_image: /assets/post-images/theme-revamp-cover.png
 tags:
 - Updates
 - CSS
+comments: true
 ---
 
 **이 블로그를 처음 만들 때는 CSS가 엉망이었습니다.** Sass를 실전에 쓰는 게 처음이라서기도 하지만, 무엇보다도 전혀 다른 [목차](/syntax/#목차-kramdown-확장)와 [코드 블록](/syntax/#코드-블록) 구조가 여러 가지 있어서가 큰 것 같습니다. 게다가 반응형에 다크 모드, 동작 줄이기 대응까지 있네요!
