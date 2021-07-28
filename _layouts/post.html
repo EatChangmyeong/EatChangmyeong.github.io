@@ -31,7 +31,7 @@
 						&bull; <time datetime="{{ page.edited_at | date: '%F' }}">{{ page.edited_at | date: "%Y년 %m월 %d일" }}</time> 수정
 					{% endif %}
 					{% if page.comments %}
-						&bull; <a href="https://eatchangmyeong.github.io{{ page.url }}#disqus_thread">댓글 쓰기</a>
+						&bull; <a href="https://eatchangmyeong.github.io{{ page.url }}#disqus_thread">댓글 달기</a>
 					{% endif %}
 					{% if page.categories.size != 0 or page.tags.size != 0 %}
 						{% for x in page.categories %}
