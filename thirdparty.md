@@ -1,8 +1,8 @@
 ---
 layout: page
-actual_title: "블로그에 사용한 외부 리소스"
-date: 2020-06-13
-permalink: /thirdparty/
+title: "블로그에 사용한 외부 리소스"
+date: 2020-07-29
+permalink: "/thirdparty/"
 ---
 
 이 블로그에서는 직접 제작한 리소스 이외에도 외부에서 제작한 리소스나 도구 등을 일부 사용하였습니다.
@@ -24,5 +24,6 @@ permalink: /thirdparty/
 * **[Jekyll](https://jekyllrb.com/)**: 블로그 엔진
 	* **[kramdown](https://kramdown.gettalong.org/)**: 마크다운 엔진
 		* **[MathJax](https://www.mathjax.org/)**: 수식 렌더링 엔진
+	* **[jekyll-seo-tag](https://github.com/jekyll/jekyll-seo-tag)**: 검색엔진 최적화 플러그인
 * **[GitHub Pages](https://pages.github.com/)**: 호스팅
 * **[RealFaviconGenerator](https://realfavicongenerator.net/)**: 파비콘 생성

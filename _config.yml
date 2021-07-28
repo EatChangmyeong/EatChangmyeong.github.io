@@ -1,5 +1,19 @@
-timezone: Asia/Seoul
+title: "잇창명 개발 블로그"
+tagline: "잇창명이 개발하다가 배운 것들을 글로 남깁니다."
+author:
+  twitter: EatChangmyeong
+logo: "https://eatch.dev/ei/-0-f"
+locale: ko_KR
+
+timezone: "Asia/Seoul"
 future: true
+
+defaults:
+  -
+    scope:
+      path: ""
+    values:
+      seo: true
 
 markdown: kramdown
 kramdown:
@@ -9,3 +23,6 @@ kramdown:
   smart_quotes: ["apos", "apos", "quot", "quot"]
   typographic_symbols: 
     hellip: ...
+
+plugins:
+  - jekyll-seo-tag

@@ -1,8 +1,8 @@
 ---
 layout: page
-actual_title: "마크다운 문법 치트시트"
+title: "마크다운 문법 치트시트"
 date: 2021-05-15
-permalink: /syntax/
+permalink: "/syntax/"
 ---
 
 제가 기억을 못 할 것 같아서 쓰는 페이지입니다. 이 블로그 기준으로 작성되어 있으니 참고할 때 주의해주세요!

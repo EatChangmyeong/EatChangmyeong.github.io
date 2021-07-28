@@ -1,10 +1,10 @@
 ---
 layout: post
-author: EatChangmyeong
-actual_title: 앗! DISQUS로 댓글을 남길 수 있다?!
+title: "앗! DISQUS로 댓글을 남길 수 있다?!"
 tags:
 - Updates
 comments: true
+seo: false
 ---
 
 ![이 블로그의 투두리스트. 차례대로 'DISQUS 댓글창', '목차에서 지금 읽는 위치 하이라이트', '페이지네이션', '태그 클라우드?'라고 적혀 있다.](/assets/post-images/devblog-todo-210727.png)

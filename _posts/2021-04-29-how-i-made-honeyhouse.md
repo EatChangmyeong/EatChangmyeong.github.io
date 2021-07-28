@@ -1,7 +1,6 @@
 ---
 layout: post
-author: EatChangmyeong
-actual_title: "Honeyhouse 어떻게 만들었는가"
+title: "Honeyhouse 어떻게 만들었는가"
 tags:
 - GameMaker
 - Gamedev

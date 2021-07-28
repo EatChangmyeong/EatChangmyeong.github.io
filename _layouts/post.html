@@ -7,7 +7,11 @@
 		<meta charset="UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>{{ page.actual_title }} · 잇창명 개발 블로그</title>
+		<title>{{ page.title }} · 잇창명 개발 블로그</title>
+
+		{% if page.seo %}
+			{% seo title=false %}
+		{% endif %}
 
 		<link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32x32.png">
 		<link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon-16x16.png">
@@ -24,7 +28,7 @@
 		<main>
 			<header>
 				<a href="/" class="front-link">잇창명 개발 블로그</a>
-				<h1>{{ page.actual_title }}</h1>
+				<h1>{{ page.title }}</h1>
 				<span class="metadata">
 					<time datetime="{{ page.date | date: '%F' }}">{{ page.date | date: "%Y년 %m월 %d일" }}</time>
 					{% if page.edited_at %}
@@ -81,7 +85,7 @@
 				<img id="logo-dark" class="logo" src="https://eatch.dev/ei/-f" alt="첫 페이지로">
 				<img id="logo-light" class="logo" src="https://eatch.dev/ei/-0" alt="첫 페이지로">
 			</a>
-			<span id="top-bar-title">{{ page.actual_title }}</span>
+			<span id="top-bar-title">{{ page.title }}</span>
 		</div>
 
 		<a id="top-button" href="#"><img src="/assets/svg/top.svg"></a>

@@ -1,11 +1,11 @@
 ---
 layout: post
-author: EatChangmyeong
-actual_title: Hello, world!
-cover_image: https://eatch.dev/ei/-0-f
+title: "Hello, world!"
+cover_image: "https://eatch.dev/ei/-0-f"
 tags:
 - Jekyll
 - GithubPages
+seo: false
 ---
 
 # 이거는 테스트용 포스트예요!
