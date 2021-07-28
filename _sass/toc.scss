@@ -23,6 +23,7 @@
 			padding: 0.2rem;
 			padding-#{$direction}: 0.5rem;
 			text-decoration: none;
+			overflow-wrap: break-word;
 
 			color: change-color($light-foreground, $alpha: 0.75);
 
