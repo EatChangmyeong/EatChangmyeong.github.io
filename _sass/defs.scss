@@ -18,6 +18,12 @@
 	}
 }
 
+@mixin if-narrower($narrow: true) {
+	@include media-query-match(max-width, 30rem, $narrow) {
+		@content;
+	}
+}
+
 @mixin if-motion-reduced($reduced: true) {
 	@include media-query-match(prefers-reduced-motion, reduce, $reduced) {
 		@content;

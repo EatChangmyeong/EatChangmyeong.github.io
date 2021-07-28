@@ -378,6 +378,10 @@ main {
 					margin: 0;
 				}
 			}
+
+			@include if-narrower {
+				grid-template-columns: 1fr;
+			}
 		}
 	}
 
