@@ -1,0 +1,152 @@
+---
+---
+
+@charset "UTF-8";
+@import "defs";
+
+@keyframes insert-blink {
+	0% {
+		opacity: 100%;
+	}
+	50% {
+		opacity: 0%;
+	}
+}
+@keyframes overwrite-blink {
+	0% {
+		color: var(--highlight-foreground);
+		background-color: var(--highlight-background);
+	}
+	50% {
+		color: var(--cell-foreground);
+		background-color: var(--cell-background);
+	}
+}
+
+%cppiterators {
+	overflow-x: auto;
+	user-select: none;
+	-moz-user-select: none;
+	-khtml-user-select: none;
+	-webkit-user-select: none;
+	-o-user-select: none;
+
+	.array {
+		position: relative;
+		display: grid;
+		grid-template: 3rem / repeat(10, 3rem);
+		place-items: stretch;
+		place-content: center space-evenly;
+		margin: auto;
+		width: 32.75rem;
+		height: 3.5rem;
+		background-color: change-color($light-foreground, $alpha: 0.15);
+		font-family: $mono-font-set;
+		font-weight: bold;
+		text-align: center;
+		font-size: 1.5rem;
+		line-height: 3rem;
+
+		&:not(:focus) {
+			opacity: 0.7;
+		}
+
+		.cursor-anchor {
+			position: absolute;
+			left: 0;
+			top: 0;
+
+			* {
+				background-color: eatchy-purple(25%);
+			}
+
+			.cursor {
+				position: absolute;
+				width: 0.25rem;
+				height: 3.5rem;
+			}
+
+			.cursor-direction {
+				position: absolute;
+				top: 0.4rem;
+				width: 0.65rem;
+				height: 0.25rem;
+			}
+
+			&.reverse .cursor-direction {
+				left: -0.4rem;
+			}
+	
+			@include if-motion-reduced(false) {
+				animation: insert-blink 1.5s step-end infinite;
+			}
+		}
+
+		.cell {
+			--cell-foreground: #{$light-foreground};
+			--cell-background: #{$light-background};
+			--highlight-foreground: #{$dark-foreground};
+			--highlight-background: #{eatchy-purple(25%)};
+
+			background-color: var(--cell-background);
+
+			&.blinking {
+				@include if-motion-reduced(false) {
+					animation: overwrite-blink 1.5s step-end infinite;
+				}
+			}
+
+			&.selected {
+				color: var(--highlight-foreground);
+				background-color: var(--highlight-background);
+			}
+		
+			@include if-dark {
+				--cell-foreground: #{$dark-foreground};
+				--cell-background: #{$dark-background};
+				--highlight-foreground: #{$light-foreground};
+				--highlight-background: #{eatchy-purple(75%)};
+			}
+		}
+
+		@include if-dark {
+			background-color: change-color($dark-foreground, $alpha: 0.25);
+
+			.cursor-anchor * {
+				background-color: eatchy-purple(75%);
+			}
+
+			.cell {
+				background-color: $dark-background;
+			}
+		}
+
+		@include transits(opacity);
+	}
+
+	.controls {
+		display: flex;
+		flex-flow: row wrap;
+		place-content: center;
+		padding-left: 0;
+		list-style-type: none;
+
+		li {
+			margin: 0 1rem;
+
+			strong {
+				margin-right: 0.5rem;
+
+				kbd {
+					border: 1px solid currentColor;
+					border-radius: 0.25rem;
+					padding: 0 0.25rem;
+				}
+			}
+		}
+	}
+}
+
+main article div[data-script] {
+	@extend %cppiterators;
+}
