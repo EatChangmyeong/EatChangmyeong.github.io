@@ -302,12 +302,9 @@
 		border: none;
 		width: 80%;
 		height: 1px;
-		background-color: $light-foreground;
+		color: inherit;
+		background-color: currentColor;
 		opacity: 50%;
-	
-		@include if-dark {
-			background-color: $dark-foreground;
-		}
 	}
 	
 	img {
