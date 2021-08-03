@@ -20,6 +20,9 @@
 		<meta name="theme-color" content="#d5cafe">
 		
 		<link rel="stylesheet" href="/assets/css/styles.css">
+		{% if page.style %}
+			<link rel="stylesheet" href="{{ page.style }}">
+		{% endif %}
 
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.5.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 	</head>
@@ -92,6 +95,10 @@
 
 		<script src="/assets/js/postprocess.js"></script>
 		<script>require_all();</script>
+		{% if page.script %}
+			<script src="/assets/js/substitute.js"></script>
+			<script src="{{ page.script }}"></script>
+		{% endif %}
 
 		<script id="dsq-count-scr" src="//eatch-devblog.disqus.com/count.js" async></script>
 	</body>

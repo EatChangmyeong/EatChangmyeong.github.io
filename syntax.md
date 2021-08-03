@@ -324,6 +324,7 @@ console.info('코드 테마는 무난하게 Monokai를 썼습니다.');
 * Liquid (`liquid`)
 * Markdown (`markdown`)
 	* kramdown 문법은 올바르게 인식되지 않습니다.
+* SCSS (`scss`)
 
 ### 줄 번호가 있는 코드 블록 (Liquid 확장)
 
@@ -761,6 +762,8 @@ cf. https://eatch.dev/ example@example.com
 
 # 커스텀 확장 문법
 
+*커스텀 확장 문법은 **이 블로그에서만** 동작합니다.*
+
 ## 밑줄
 
 *기울임꼴 문법에 아래의 커스텀 클래스를 추가해 밑줄을 표시할 수 있습니다. 가급적이면 이 문법 대신 **HTML 태그를 직접 사용**하거나 기울임꼴만 사용하는 것을 권장합니다.*
@@ -833,5 +836,31 @@ cf. https://eatch.dev/ example@example.com
 <blockquote class="twitter-tweet" data-dnt="true"><p lang="en" dir="ltr">just setting up my twttr</p>&mdash; jack (@jack) <a href="https://twitter.com/jack/status/20?ref_src=twsrc%5Etfw">March 21, 2006</a>
 </blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
 ```
+
+## 스크립트 삽입
+
+*스크립트를 이용해 글 중간에 인터랙티브 콘텐츠를 넣을 수 있도록 설정해 두었습니다. 필요한 설정은 다음과 같습니다.*
+
+* 프론트 매터에 `script: [스크립트 경로]` 추가
+* 인터랙티브 콘텐츠를 넣을 곳에 `<div data-script='[JSON 포맷의 콘텐츠 매개변수]'>` 추가
+	* JSON 명세에서 작은따옴표를 허용하지 않으므로 `data-script` 속성을 작은따옴표로 둘러싸는 것을 권장합니다.
+* 불러올 스크립트에서 `substitute(fn);` 호출
+	* `fn`은 `<div>` 요소와 JSON 매개변수를 인자로 받고 요소 안쪽에 인터랙티브 콘텐츠를 생성하는 함수입니다.
+
+### 스타일시트 삽입
+
+*인터랙티브 콘텐츠의 스타일링을 쉽게 할 수 있도록 스타일시트도 삽입할 수 있도록 설정해 두었습니다. 필요한 설정은 다음과 같습니다.*
+
+* 프론트 매터에 `style: [스타일시트 경로]` 추가
+	* Jekyll 기반의 블로그이므로 Sass를 사용할 수 있습니다. 스타일시트의 가장 위에 프론트 매터를 넣고 `@import`는 경로를 신경쓰지 않고 하면 됩니다.
+		```scss
+		---
+		---
+
+		@charset "UTF-8";
+		@import "defs";
+
+		// ...
+		```
 
 [^fn_paragraph]: 어떤 콘텐츠의 바로 아래에 빈 줄이 있으면 그 아래의 콘텐츠와 분리되어 "한 문단"이 됩니다.

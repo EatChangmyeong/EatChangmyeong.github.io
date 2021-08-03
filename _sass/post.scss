@@ -413,4 +413,39 @@
 	.twitter-tweet-rendered {
 		margin: auto;
 	}
+
+	div[data-script] {
+		@include global-margin;
+
+		&[data-error] {
+			border: 1px solid red;
+
+			.script-fail {
+				font-weight: bold;
+				color: red;
+			}
+
+			.error-msg {
+				font-family: $mono-font-set;
+			}
+
+			pre.backtrace {
+				@include global-margin;
+				overflow-x: auto;
+				font-family: $mono-font-set;
+			}
+
+			p:last-child {
+				margin-bottom: 0.8rem;
+			}
+
+			@include if-dark {
+				border-color: mix(red, white, 60%);
+	
+				.script-fail {
+					color: mix(red, white, 60%);
+				}
+			}
+		}
+	}
 }

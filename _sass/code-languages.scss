@@ -32,4 +32,9 @@
 			content: "Markdown";
 		}
 	}
+	&.language-scss {
+		#{$selector}::before {
+			content: "SCSS";
+		}
+	}
 }
