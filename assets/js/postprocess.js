@@ -1,4 +1,4 @@
-{
+(() => {
 
 const
 	$ = q => document.querySelector(q),
@@ -100,4 +100,4 @@ document.addEventListener('DOMContentLoaded', () => {
 		x();
 });
 
-}
+})();
