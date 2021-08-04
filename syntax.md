@@ -747,12 +747,14 @@ cf. https://eatch.dev/ example@example.com
 
 <div class="split">
 <div class="split-column">
-* {::comment}이 부분은 주석이라서 보이지 않습니다.{:/} 이 부분은 보입니다.
+* {::comment}이 부분은 주석이라서 보이지 않습니다.{:/} kramdown 주석 문법은 컴파일된 페이지에 노출되지 않습니다.
+	* HTML 주석을 사용할 수도 있습니다. <!-- HTML 주석은 컴파일된 페이지에 노출됩니다. -->
 * {::nomarkdown}**마크다운 문법**을 적용하지 *않습니다*.{:/}
 </div>
 <div class="split-column">
 ```markdown
-* {::comment}이 부분은 주석이라서 보이지 않습니다.{:/} 이 부분은 보입니다.
+* {::comment}이 부분은 주석이라서 보이지 않습니다.{:/} kramdown 주석 문법은 컴파일된 페이지에 노출되지 않습니다.
+	* HTML 주석을 사용할 수도 있습니다. <!-- HTML 주석은 컴파일된 페이지에 노출됩니다. -->
 * {::nomarkdown}**마크다운 문법**을 적용하지 *않습니다*.{:/}
 ```
 </div>
