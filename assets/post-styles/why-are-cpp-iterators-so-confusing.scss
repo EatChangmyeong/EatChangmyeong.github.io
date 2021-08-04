@@ -38,6 +38,7 @@
 		place-items: stretch;
 		place-content: center space-evenly;
 		margin: auto;
+		outline: none;
 		width: 32.75rem;
 		height: 3.5rem;
 		background-color: change-color($light-foreground, $alpha: 0.15);

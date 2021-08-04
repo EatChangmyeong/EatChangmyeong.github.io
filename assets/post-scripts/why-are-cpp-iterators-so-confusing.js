@@ -117,7 +117,7 @@ class Cursorbox {
 				},
 				{
 					keys: [...'0123456789'],
-					handler: e => this.write(e)
+					handler: e => this.digit(e)
 				},
 				{
 					keys: ['Home'],
@@ -148,6 +148,47 @@ class Cursorbox {
 					desc: () => this.rtl ? 'it--;' : 'it++;'
 				},
 				{
+					keys: ['Home'],
+					visible: this.args.movable,
+					desc: () => this.rtl
+						? 'it = arr.rbegin();'
+						: 'it = arr.begin();'
+				},
+				{
+					keys: ['End'],
+					visible: this.args.movable,
+					desc: () => this.rtl
+						? 'it = arr.rend();'
+						: 'it = arr.end();'
+				},
+				{
+					keys: ['LMB'],
+					visible: this.args.movable && this.args.random,
+					desc: () => this.rtl
+						? 'it = arr.rend() - x;'
+						: 'it = arr.begin() + x;'
+				},
+				{
+					keys: this.args.random
+						? ['Shift', '+', '←', '/', '→', ' / ', 'LMB']
+						: ['Shift', '+', '←', '/', '→'],
+					visible: this.args.selectable && (this.args.random || this.args.movable),
+					desc: '영역 선택',
+					human: true
+				},
+				{
+					keys: ['Alt', '+', '0', '...', '9'],
+					visible: this.args.selectable && this.args.bounds,
+					desc: '해당 숫자만 선택',
+					human: true
+				},
+				{
+					keys: ['Ctrl', '+', 'A'],
+					visible: this.args.selectable,
+					desc: '전체 선택',
+					human: true
+				},
+				{
 					keys: ['Insert'],
 					visible: this.args.insertable,
 					desc: () => ({
@@ -165,46 +206,11 @@ class Cursorbox {
 						: '*it = x;'
 				},
 				{
-					keys: ['Home'],
-					visible: this.args.movable,
-					desc: () => this.rtl
-						? 'it = arr.rbegin();'
-						: 'it = arr.begin();'
-				},
-				{
-					keys: ['End'],
-					visible: this.args.movable,
-					desc: () => this.rtl
-						? 'it = arr.rend();'
-						: 'it = arr.end();'
-				},
-				{
-					keys: ['Ctrl', '+', 'A'],
-					visible: this.args.selectable,
-					desc: '전체 선택',
-					human: true
-				},
-				{
 					keys: ['R'],
 					visible: this.args.reversible,
 					desc: () => this.rtl
 						? 'it = it.base;'
 						: 'it = make_reverse_iterator(it);'
-				},
-				{
-					keys: ['LMB'],
-					visible: this.args.movable && this.args.random,
-					desc: () => this.rtl
-						? 'it = arr.rend() - x;'
-						: 'it = arr.begin() + x;'
-				},
-				{
-					keys: this.args.random
-						? ['Shift', '+', '←', '/', '→', ' / ', 'LMB']
-						: ['Shift', '+', '←', '/', '→'],
-					visible: this.args.selectable && (this.args.random || this.args.movable),
-					desc: '영역 선택',
-					human: true
 				}
 			];
 		
@@ -350,6 +356,12 @@ class Cursorbox {
 		this.update_control();
 		e.preventDefault();
 	}
+	digit(e) {
+		if(e.altKey)
+			this.bounds(e);
+		else
+			this.write(e);
+	}
 	write(e) {
 		if(
 			!this.args.writable ||
@@ -358,7 +370,6 @@ class Cursorbox {
 			this.begin == (this.rtl ? 0 : 10) ||
 			this.selecting ||
 			e.ctrlKey ||
-			e.altKey ||
 			e.shiftKey ||
 			e.metaKey
 		)
@@ -371,6 +382,39 @@ class Cursorbox {
 			else
 				this.right();
 		
+		this.update_cell();
+		e.preventDefault();
+	}
+	bounds(e) {
+		const binary_search = right => {
+			let begin = 0, end = 10;
+			while(begin != end) {
+				const mid = Math.floor((begin + end)/2);
+				if(right(this.arr[mid]))
+					begin = mid + 1;
+				else
+					end = mid;
+			}
+			return begin;
+		};
+		
+		if(
+			!this.args.selectable ||
+			!this.args.bounds ||
+			this.selecting ||
+			e.ctrlKey ||
+			e.shiftKey ||
+			e.metaKey
+		)
+			return;
+		
+		this.arr.sort();
+		this.begin = 
+		this.anchor =
+			binary_search(x => x < e.key);
+		this.end = binary_search(x => x <= e.key);
+
+		this.update_cursor();
 		this.update_cell();
 		e.preventDefault();
 	}
