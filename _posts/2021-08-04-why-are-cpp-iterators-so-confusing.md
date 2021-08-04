@@ -18,7 +18,7 @@ category:
 
 **이 글은 키보드로만 조작할 수 있는 인터랙티브 요소를 포함하고 있으며, 모바일 환경에 최적화되지 않았습니다. PC로 열람을 권장합니다.**
 
-에츠허르 다익스트라는 [Why numbering should start at zero](https://www.cs.utexas.edu/users/EWD/transcriptions/EWD08xx/EWD831.html)라는 서한을 남긴 적이 있습니다. 전체 내용은 [별도의 보충글](http://localhost:4000/beta/2021/08/04/why-numbering-should-start-at-zero.html)에 정리해 두었고, 이 중 글과 관련이 있는 부분을 발췌하면 이렇습니다.
+에츠허르 다익스트라는 [Why numbering should start at zero](https://www.cs.utexas.edu/users/EWD/transcriptions/EWD08xx/EWD831.html)라는 서한을 남긴 적이 있습니다. 전체 내용은 [별도의 보충글](/beta/2021/08/04/why-numbering-should-start-at-zero.html)에 정리해 두었고, 이 중 글과 관련이 있는 부분을 발췌하면 이렇습니다.
 
 > 자연수의 부분수열 2, 3, ..., 12를 끔찍한 줄임표 없이 나타낼 때, 다음과 같은 4종류의 방식을 고를 수 있다.
 >

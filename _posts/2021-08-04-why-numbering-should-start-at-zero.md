@@ -10,7 +10,7 @@ category:
 - Beta
 ---
 
-*이 글은 에츠허르 다익스트라의 서한인 [Why numbering should start at zero](https://www.cs.utexas.edu/users/EWD/transcriptions/EWD08xx/EWD831.html)의 한국어 번역문이며, [C++ 반복자는 왜 그렇게 헷갈리는 걸까?](http://localhost:4000/beta/2021/08/04/why-are-cpp-iterators-so-confusing.html)의 내용을 보충할 목적으로 작성했습니다. 오역이 있을 경우 댓글로 알려주세요.*
+*이 글은 에츠허르 다익스트라의 서한인 [Why numbering should start at zero](https://www.cs.utexas.edu/users/EWD/transcriptions/EWD08xx/EWD831.html)의 한국어 번역문이며, [C++ 반복자는 왜 그렇게 헷갈리는 걸까?](/beta/2021/08/04/why-are-cpp-iterators-so-confusing.html)의 내용을 보충할 목적으로 작성했습니다. 오역이 있을 경우 댓글로 알려주세요.*
 
 ---
 
