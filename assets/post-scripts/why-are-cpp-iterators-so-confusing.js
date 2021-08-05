@@ -104,31 +104,41 @@ class Cursorbox {
 		const
 			keyboard_input = [
 				{
-					keys: ['ArrowLeft'],
+					keys: [{ key: 'ArrowLeft', shift: undefined }],
 					handler: e => this.left(e)
 				},
 				{
-					keys: ['ArrowRight'],
+					keys: [{ key: 'ArrowRight', shift: undefined }],
 					handler: e => this.right(e)
 				},
 				{
-					keys: ['Insert'],
+					keys: ['Insert', { key: 'i', ctrl: true }],
 					handler: e => this.insert(e)
 				},
 				{
 					keys: [...'0123456789'],
-					handler: e => this.digit(e)
+					handler: e => this.write(e)
 				},
 				{
-					keys: ['Home'],
+					keys: [...'0123456789'].map(key => ({ key, alt: true })),
+					handler: e => this.bounds(e)
+				},
+				{
+					keys: [
+						{ key: 'Home', shift: undefined },
+						{ key: ['h', 'H'], shift: undefined }
+					],
 					handler: e => this.to_begin(e)
 				},
 				{
-					keys: ['End'],
+					keys: [
+						{ key: 'End', shift: undefined },
+						{ key: ['l', 'L'], shift: undefined }
+					],
 					handler: e => this.to_end(e)
 				},
 				{
-					keys: ['a'],
+					keys: [{ key: 'a', ctrl: true }],
 					handler: e => this.all(e)
 				},
 				{
@@ -148,14 +158,14 @@ class Cursorbox {
 					desc: () => this.rtl ? 'it--;' : 'it++;'
 				},
 				{
-					keys: ['Home'],
+					keys: ['Home', ' / ', 'H'],
 					visible: this.args.movable,
 					desc: () => this.rtl
 						? 'it = arr.rbegin();'
 						: 'it = arr.begin();'
 				},
 				{
-					keys: ['End'],
+					keys: ['End', ' / ', 'L'],
 					visible: this.args.movable,
 					desc: () => this.rtl
 						? 'it = arr.rend();'
@@ -189,7 +199,7 @@ class Cursorbox {
 					human: true
 				},
 				{
-					keys: ['Insert'],
+					keys: ['Insert', ' / ', 'Ctrl', '+', 'I'],
 					visible: this.args.insertable,
 					desc: () => ({
 						'Insert': '수정 모드',
@@ -277,15 +287,7 @@ class Cursorbox {
 			return Math.max(0, x - 1);
 		}
 
-		if(
-			!this.args.movable ||
-			this.selecting ||
-			e && (
-				e.ctrlKey ||
-				e.altKey ||
-				e.metaKey
-			)
-		)
+		if(!this.args.movable || this.selecting)
 			return;
 		
 		if(e && e.shiftKey && this.args.selectable)
@@ -310,15 +312,7 @@ class Cursorbox {
 			return Math.min(10, x + 1);
 		}
 
-		if(
-			!this.args.movable ||
-			this.selecting ||
-			e && (
-				e.ctrlKey ||
-				e.altKey ||
-				e.metaKey
-			)
-		)
+		if(!this.args.movable || this.selecting)
 			return;
 		
 		if(e && e.shiftKey && this.args.selectable)
@@ -356,22 +350,13 @@ class Cursorbox {
 		this.update_control();
 		e.preventDefault();
 	}
-	digit(e) {
-		if(e.altKey)
-			this.bounds(e);
-		else
-			this.write(e);
-	}
 	write(e) {
 		if(
 			!this.args.writable ||
 			this.mode == 'Insert' ||
 			this.begin != this.end ||
 			this.begin == (this.rtl ? 0 : 10) ||
-			this.selecting ||
-			e.ctrlKey ||
-			e.shiftKey ||
-			e.metaKey
+			this.selecting
 		)
 			return;
 		
@@ -401,10 +386,7 @@ class Cursorbox {
 		if(
 			!this.args.selectable ||
 			!this.args.bounds ||
-			this.selecting ||
-			e.ctrlKey ||
-			e.shiftKey ||
-			e.metaKey
+			this.selecting
 		)
 			return;
 		
@@ -439,15 +421,7 @@ class Cursorbox {
 				10;
 	}
 	to_begin(e) {
-		if(
-			!this.args.movable ||
-			this.selecting ||
-			e && (
-				e.ctrlKey ||
-				e.altKey ||
-				e.metaKey
-			)
-		)
+		if(!this.args.movable || this.selecting)
 			return;
 		
 		const shift = e && e.shiftKey && this.args.selectable;
@@ -461,15 +435,7 @@ class Cursorbox {
 			e.preventDefault();
 	}
 	to_end(e) {
-		if(
-			!this.args.movable ||
-			this.selecting ||
-			e && (
-				e.ctrlKey ||
-				e.altKey ||
-				e.metaKey
-			)
-		)
+		if(!this.args.movable || this.selecting)
 			return;
 		
 		const shift = e && e.shiftKey && this.args.selectable;
@@ -483,13 +449,7 @@ class Cursorbox {
 			e.preventDefault();
 	}
 	all(e) {
-		if(
-			!this.args.selectable ||
-			this.selecting ||
-			!e.ctrlKey ||
-			e.altKey ||
-			e.metaKey
-		)
+		if(!this.args.selectable || this.selecting)
 			return;
 		
 		this.begin = 0;
@@ -499,13 +459,7 @@ class Cursorbox {
 		e.preventDefault();
 	}
 	reverse(e) {
-		if(
-			!this.args.reversible ||
-			this.selecting ||
-			e.ctrlKey ||
-			e.altKey ||
-			e.metaKey
-		)
+		if(!this.args.reversible || this.selecting)
 			return;
 		
 		this.rtl = !this.rtl;
@@ -554,13 +508,31 @@ class Cursorbox {
 }
 
 function attach_keyboard_input(target, list) {
-	const keymap = {};
-	for(const { keys, handler } of list)
-		for(const key of keys)
-			keymap[key] = handler;
 	target.addEventListener('keydown', e => {
-		if(e.key in keymap)
-			keymap[e.key](e);
+		for(const { keys, handler } of list)
+			for(const key of keys) {
+				const
+					keylist = typeof key === 'string'
+						? [key]
+					: typeof key.key === 'string'
+						? [key.key]
+						: key.key,
+					{ ctrl, alt, shift, meta } = {
+						ctrl: false,
+						alt: false,
+						shift: false,
+						meta: false,
+						...typeof key === 'string' ? { key } : key
+					};
+				if(
+					keylist.includes(e.key) &&
+					(ctrl === undefined || ctrl === e.ctrlKey) &&
+					(alt === undefined || alt === e.altKey) &&
+					(shift === undefined || shift === e.shiftKey) &&
+					(meta === undefined || meta === e.metaKey)
+				)
+					return handler(e);
+			}
 	});
 }
 
