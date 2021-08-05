@@ -76,7 +76,12 @@ a {
 	background-color: eatchy-purple();
 	z-index: 11;
 
+	&.complete {
+		background-color: currentColor;
+	}
+
 	@include shadow;
+	@include transits(background-color);
 }
 
 #top-bar {
