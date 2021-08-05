@@ -65,9 +65,10 @@ function progress_bar() {
 			progress = Math.min(1, window.scrollY/scroll_len);
 		progress_bar.style.width =
 			`${100*progress}%`;
-		progress_bar.className = progress == 1
-			? 'complete'
-			: '';
+		if(progress == 1)
+			progress_bar.classList.add('complete');
+		else
+			progress_bar.classList.remove('complete');
 	}
 
 	if(window.ResizeObserver)

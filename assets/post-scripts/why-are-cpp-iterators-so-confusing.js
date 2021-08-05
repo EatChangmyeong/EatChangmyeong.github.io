@@ -258,6 +258,7 @@ class Cursorbox {
 			const classname = cursor.className;
 			cursor.style.display = '';
 			cursor.style.left = `${3.25*this.begin}rem`;
+			// classList.remove somehow doesn't work here
 			cursor.className = '';
 			// black magic from https://css-tricks.com/restart-css-animation/
 			void cursor.offsetWidth;
@@ -265,15 +266,17 @@ class Cursorbox {
 		} else
 			cursor.style.display = 'none';
 
-		this.html.cells.forEach((x, i) =>
-			x.className = `cell ${
-				this.begin <= i && i < this.end
-					? 'selected'
-				: this.mode != 'Insert' && i == (this.rtl ? this.begin - 1 : this.begin)
-					? 'blinking'
-					: ''
-			}`
+		this.html.cells.forEach((x, i) => {
+			const
+				selected = this.begin <= i && i < this.end,
+				blinking =
+					this.mode != 'Insert' &&
+					i == (this.rtl ? this.begin - 1 : this.begin);
+			class_if(x,
+				'selected', selected,
+				'blinking', !selected && blinking
 		);
+		});
 	}
 	update_cell() {
 		this.html.cells.forEach((x, i) => x.textContent = this.arr[i]);
@@ -464,7 +467,7 @@ class Cursorbox {
 		
 		this.rtl = !this.rtl;
 
-		this.html.cursor.className = `cursor-anchor ${this.rtl ? 'reverse' : ''}`;
+		class_if(this.html.cursor, 'reverse', this.rtl);
 		this.update_cursor();
 		this.update_control();
 		e.preventDefault();
@@ -534,6 +537,21 @@ function attach_keyboard_input(target, list) {
 					return handler(e);
 			}
 	});
+}
+
+function class_if(elem, ...args) {
+	const
+		list = elem.classList,
+		len = args.length/2;
+	for(let i = 0; i < len; i++) {
+		const
+			token = args[2*i],
+			pred = args[2*i + 1];
+		if(pred)
+			list.add(token);
+		else
+			list.remove(token);
+	}
 }
 
 document.addEventListener('mouseup', () =>
