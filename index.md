@@ -8,6 +8,8 @@ layout: front
 
 [외부 리소스](/thirdparty)
 
+[소스 코드 확인해보기](https://github.com/EatChangmyeong/EatChangmyeong.github.io)
+
 ## TODO
 
 * 목차에서 지금 읽는 위치 하이라이트
