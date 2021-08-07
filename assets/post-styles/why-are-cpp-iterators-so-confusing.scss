@@ -12,7 +12,7 @@
 		opacity: 0%;
 	}
 }
-@keyframes overwrite-blink {
+@keyframes overtype-blink {
 	0% {
 		color: var(--highlight-foreground);
 		background-color: var(--highlight-background);
@@ -91,15 +91,15 @@
 
 			background-color: var(--cell-background);
 
-			&.blinking {
-				@include if-motion-reduced(false) {
-					animation: overwrite-blink 1.5s step-end infinite;
-				}
-			}
-
-			&.selected {
+			&.blinking, &.selected {
 				color: var(--highlight-foreground);
 				background-color: var(--highlight-background);
+			}
+
+			&.blinking {
+				@include if-motion-reduced(false) {
+					animation: overtype-blink 1.5s step-end infinite;
+				}
 			}
 		
 			@include if-dark {
@@ -142,6 +142,16 @@
 					border: 1px solid currentColor;
 					border-radius: 0.25rem;
 					padding: 0 0.25rem;
+
+					&[title] {
+						text-decoration: 2px dotted currentColor underline;
+
+						&:hover {
+							text-decoration-color: transparent;
+						}
+
+						@include transits(text-decoration-color);
+					}
 				}
 			}
 		}

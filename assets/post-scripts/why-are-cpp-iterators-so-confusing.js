@@ -65,6 +65,12 @@ class Cursorbox {
 				function maybe_call(f) {
 					return typeof f === 'function' ? f() : f;
 				}
+				const glossary = {
+					'←': '왼쪽 방향키',
+					'→': '오른쪽 방향키',
+					'LMB': '왼쪽 마우스 버튼'
+				};
+
 				const elems = [];
 				const controls = document.createElement('ul');
 				controls.className = 'controls';
@@ -83,6 +89,8 @@ class Cursorbox {
 						else {
 							const kbd = document.createElement('kbd');
 							kbd.textContent = x;
+							if(x in glossary)
+								kbd.title = glossary[x];
 							strong.appendChild(kbd);
 						}
 					});
