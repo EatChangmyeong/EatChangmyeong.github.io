@@ -374,8 +374,7 @@
 	}
 
 	abbr {
-		text-decoration: 2px dotted currentcolor underline;
-		text-decoration-skip-ink: all;
+		text-decoration: 2px dotted currentColor underline;
 
 		&:hover {
 			text-decoration-color: transparent;

@@ -1,9 +1,11 @@
 @charset "UTF-8";
 @import "defs";
 
-// enforce border box model
 * {
+// enforce border box model
 	box-sizing: border-box;
+
+	text-decoration-skip-ink: all;
 }
 
 // take full height
@@ -40,7 +42,6 @@ h1, h2, h3, h4, h5, h6 {
 
 a {
 	color: vivid(eatchy(25%, -30deg));
-	text-decoration-skip-ink: all;
 
 	&:visited {
 		color: eatchy(25%, -30deg);
