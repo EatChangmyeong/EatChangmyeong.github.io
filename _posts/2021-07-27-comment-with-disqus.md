@@ -1,13 +1,13 @@
 ---
 layout: post
-title: "앗! DISQUS로 댓글을 남길 수 있다?!"
+title: "앗! Disqus로 댓글을 남길 수 있다?!"
 tags:
 - Updates
 comments: true
 seo: false
 ---
 
-![이 블로그의 투두리스트. 차례대로 'DISQUS 댓글창', '목차에서 지금 읽는 위치 하이라이트', '페이지네이션', '태그 클라우드?'라고 적혀 있다.](/assets/post-images/devblog-todo-210727.png)
+![이 블로그의 투두리스트. 차례대로 'Disqus 댓글창', '목차에서 지금 읽는 위치 하이라이트', '페이지네이션', '태그 클라우드?'라고 적혀 있다.](/assets/post-images/devblog-todo-210727.png)
 
 블로그 첫 화면에 투두리스트를 처음 적은 게 언제였는지 기억도 안 나네요. 아무튼 맨 위의 댓글창 추가를 쳐냈습니다!
 
