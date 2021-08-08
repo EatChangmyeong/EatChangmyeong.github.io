@@ -4,21 +4,17 @@ title: "C++ 반복자는 왜 그렇게 헷갈리는 걸까?"
 cover_image: "/assets/post-images/text-cursor.gif"
 tags:
 - Language
+- Interactive
 style: "/assets/post-styles/why-are-cpp-iterators-so-confusing.css"
 script: "/assets/post-scripts/why-are-cpp-iterators-so-confusing.js"
-# comments: true
-
-category:
-- Beta
+comments: true
 ---
 
 {::comment}&#41;은 VS Code에서 맞는 괄호 하이라이팅을 부숴먹지 않기 위해 닫는 괄호 대신 사용했습니다. 혹시 EatChangmyeong/EatChangmyeong.github.io에서 오셨다면 이 건으로 이슈나 풀 리퀘를 넣지 말아 주세요.{:/}
 
-* *__이 글은 링크로만 접근할 수 있는 베타 버전입니다.__ 글을 미리 읽어보고 피드백을 남겨 주시면 감사하겠습니다.*
-
 **이 글은 키보드로만 조작할 수 있는 인터랙티브 요소를 포함하고 있으며, 모바일 환경에 최적화되지 않았습니다. PC로 열람을 권장합니다.**
 
-에츠허르 다익스트라는 [Why numbering should start at zero](https://www.cs.utexas.edu/users/EWD/transcriptions/EWD08xx/EWD831.html)라는 서한을 남긴 적이 있습니다. 전체 내용은 [별도의 보충글](/beta/2021/08/04/why-numbering-should-start-at-zero.html)에 정리해 두었고, 이 중 글과 관련이 있는 부분을 발췌하면 이렇습니다.
+에츠허르 다익스트라는 [Why numbering should start at zero](https://www.cs.utexas.edu/users/EWD/transcriptions/EWD08xx/EWD831.html)라는 서한을 남긴 적이 있습니다. 전체 내용은 [별도의 보충글](/2021/08/09/why-numbering-should-start-at-zero.html)에 정리해 두었고, 이 중 글과 관련이 있는 부분을 발췌하면 이렇습니다.
 
 > 자연수의 부분수열 2, 3, ..., 12를 끔찍한 줄임표 없이 나타낼 때, 다음과 같은 4종류의 방식을 고를 수 있다.
 >
@@ -168,6 +164,5 @@ Insert를 한 번 더 누르면 삽입 모드로 돌아갑니다. C++에서는 [
 	* C 등 다른 언어에서도 무조건 이 범위만을 사용하고 있습니다.
 * 이 글을 써보려고 히브리어 IME를 설치해서 실제로 커서가 바뀌는지 테스트해봤습니다.
 * 소화불량이 해결되었습니다. (농담입니다.)
-	* 베타라서 하는 얘기인데 소화불량보다 더 재밌는 농담 추천 받습니다.
 
 다음번에 C++로 프로그래밍할 때는 커서를 떠올려보는 게 어떨까 싶네요.
