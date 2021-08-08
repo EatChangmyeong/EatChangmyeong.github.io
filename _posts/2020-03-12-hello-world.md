@@ -2,15 +2,15 @@
 layout: post
 title: "Hello, world!"
 cover_image: "https://eatch.dev/ei/-0-f"
+edited_at: 2021-08-09
 tags:
-- Jekyll
-- GithubPages
+- Test
 seo: false
 ---
 
 # 이거는 테스트용 포스트예요!
 
-일단 중요한 거는 다 만들어놓긴 했지만 아직 글이 너무 적으니 당분간 남겨놓기로 했습니다. 언젠가 이 글을 지울 수 있으면 좋겠네요.
+이 글은 개인 블로그를 처음 만들 때 테스트용으로 만들었던 의미 없는 글입니다. 원래 글이 충분히 쌓이면 지우려고 했는데 그동안 정이 들어서 못 지우겠네요.
 
 ## H2
 
