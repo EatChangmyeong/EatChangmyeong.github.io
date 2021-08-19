@@ -12,6 +12,11 @@
 			content: "C";
 		}
 	}
+	&.language-cpp {
+		#{$selector}::before {
+			content: "C++";
+		}
+	}
 	&.gml {
 		#{$selector}::before {
 			content: "GameMaker Language";
@@ -30,6 +35,11 @@
 	&.language-markdown {
 		#{$selector}::before {
 			content: "Markdown";
+		}
+	}
+	&.language-python {
+		#{$selector}::before {
+			content: "Python";
 		}
 	}
 	&.language-scss {

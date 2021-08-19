@@ -318,12 +318,14 @@ console.info('코드 테마는 무난하게 Monokai를 썼습니다.');
 
 * Plain Text (언어 없음)
 * C (`c`)
+* C++ (`cpp`)
 * GameMaker Language (`javascript` + `{:.gml}`)
 	* (특히 GMS 2.3 이후의 경우에는) JavaScript와 문법이 유사하기 때문에 하이라이팅 엔진을 훔쳐서 사용하고 있습니다. 일부 GML 문법이 올바르게 인식되지 않을 수 있습니다.
 * JavaScript (`javascript`)
 * Liquid (`liquid`)
 * Markdown (`markdown`)
 	* kramdown 문법은 올바르게 인식되지 않습니다.
+* Python (`python`)
 * SCSS (`scss`)
 
 ### 줄 번호가 있는 코드 블록 (Liquid 확장)
