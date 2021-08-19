@@ -3,6 +3,7 @@ layout: post
 title: "C++ 반복자는 왜 그렇게 헷갈리는 걸까?"
 cover_image: "/assets/post-images/text-cursor.gif"
 tags:
+- C++
 - Language
 - Interactive
 style: "/assets/post-styles/why-are-cpp-iterators-so-confusing.css"

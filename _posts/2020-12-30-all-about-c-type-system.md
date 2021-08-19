@@ -3,6 +3,7 @@ layout: post
 title: "C 타입 시스템 제대로 알고 가기"
 edited_at: 2021-07-27
 tags:
+- C
 - Language
 comments: true
 ---
