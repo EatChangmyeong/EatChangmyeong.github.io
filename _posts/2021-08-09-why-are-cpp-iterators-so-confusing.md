@@ -14,6 +14,8 @@ edited_at: 2021-10-11
 
 {::comment}&#41;은 VS Code에서 맞는 괄호 하이라이팅을 부숴먹지 않기 위해 닫는 괄호 대신 사용했습니다. 혹시 EatChangmyeong/EatChangmyeong.github.io에서 오셨다면 이 건으로 이슈나 풀 리퀘를 넣지 말아 주세요.{:/}
 
+**이 글은 단축링크 <https://eatch.dev/s/iter>로도 들어올 수 있습니다.**
+
 **이 글은 키보드로만 조작할 수 있는 인터랙티브 요소를 포함하고 있으며, 모바일 환경에 최적화되지 않았습니다. PC로 열람을 권장합니다.**
 
 에츠허르 다익스트라는 [Why numbering should start at zero](https://www.cs.utexas.edu/users/EWD/transcriptions/EWD08xx/EWD831.html)라는 서한을 남긴 적이 있습니다. 전체 내용은 [별도의 보충글](/2021/08/09/why-numbering-should-start-at-zero.html)에 정리해 두었고, 이 중 글과 관련이 있는 부분을 발췌하면 이렇습니다.
