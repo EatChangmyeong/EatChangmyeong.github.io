@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "C 타입 시스템 제대로 알고 가기"
-edited_at: 2021-10-11
+edited_at: 2021-10-12
 tags:
 - C
 - Language
