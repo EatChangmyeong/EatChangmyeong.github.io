@@ -18,7 +18,7 @@
 		<link rel="mask-icon" href="/assets/images/safari-pinned-tab.svg" color="#564a7e">
 		<link rel="shortcut icon" href="/assets/images/favicon.ico">
 		<meta name="theme-color" content="#d5cafe">
-		
+
 		<link rel="stylesheet" href="/assets/css/styles.css">
 		{% if page.style %}
 			<link rel="stylesheet" href="{{ page.style }}">
@@ -26,7 +26,7 @@
 
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.5.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 	</head>
-	
+
 	<body>
 		<main>
 			<header>
@@ -81,12 +81,14 @@
 				{% endif %}
 			</article>
 		</main>
-		
+
 		<div id="progress-bar"></div>
 		<div id="top-bar">
 			<a href="/">
-				<img id="logo-dark" class="logo" src="https://eatch.dev/ei/-f" alt="첫 페이지로">
-				<img id="logo-light" class="logo" src="https://eatch.dev/ei/-0" alt="첫 페이지로">
+				<picture>
+					<source srcset="https://eatch.dev/ei/-f" media="(prefers-color-scheme: dark)">
+					<img class="logo" src="https://eatch.dev/ei/-0" alt="eatch.dev로">
+				</picture>
 			</a>
 			<span id="top-bar-title">{{ page.title }}</span>
 		</div>

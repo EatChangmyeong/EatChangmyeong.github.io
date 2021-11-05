@@ -111,20 +111,8 @@ a {
 	}
 
 	.logo {
-		display: none;
 		width: 4rem;
 		height: 4rem;
-	}
-
-	@include if-dark {
-		#logo-dark {
-			display: inline;
-		}
-	}
-	@include if-dark(false) {
-		#logo-light {
-			display: inline;
-		}
 	}
 
 	#top-bar-title {
@@ -235,13 +223,13 @@ main {
 			"header header "
 			"toc    article";
 	}
-	
+
 	@mixin narrow-layout {
 		grid-template-columns: auto;
 		grid-template-areas:
 			"header "
 			"article";
-		
+
 		margin: auto;
 		width: 80vw;
 		max-width: 45rem;
@@ -259,7 +247,7 @@ main {
 			&:not(:hover) {
 				text-decoration-color: transparent;
 			}
-	
+
 			@include if-dark {
 				color: #bbb;
 			}
@@ -328,7 +316,7 @@ main {
 			margin-top: 1.2rem;
 			padding: 0;
 			list-style: none;
-		
+
 			li {
 				display: block;
 				position: relative;
@@ -349,7 +337,7 @@ main {
 					@include intense-shadow;
 				}
 				@include transits(box-shadow);
-		
+
 				span.post-list-title {
 					display: block;
 					position: absolute;
@@ -374,12 +362,12 @@ main {
 						@extend %metadata;
 					}
 				}
-				
+
 				h2 {
 					margin: 0;
 					font-size: 1.8rem;
 				}
-		
+
 				p {
 					margin: 0;
 				}
@@ -395,7 +383,7 @@ main {
 		@include if-wide(false) {
 			@include narrow-layout;
 		}
-	
+
 		@include if-wide {
 			@include wide-layout;
 		}
