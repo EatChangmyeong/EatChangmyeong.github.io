@@ -9,7 +9,7 @@ class Cursorbox {
 			movable: true,
 			random: true,
 			selectable: false,
-			bounds: false, // TODO
+			bounds: false,
 			reversible: false,
 			...args
 		};
