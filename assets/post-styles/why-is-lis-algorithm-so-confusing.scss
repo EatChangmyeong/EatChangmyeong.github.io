@@ -1,0 +1,119 @@
+---
+---
+
+@charset "UTF-8";
+@import "defs";
+
+%lisalgorithm {
+	isolation: isolate;
+	user-select: none;
+	-moz-user-select: none;
+	-khtml-user-select: none;
+	-webkit-user-select: none;
+	-o-user-select: none;
+
+	.stage-wrapper {
+		$ease-fn: cubic-bezier(0, .5, .5, 1);
+
+		width: 100%;
+		overflow-x: auto;
+
+		svg {
+			display: block;
+
+			.background {
+				fill: mix($light-background, black, 90%);
+			}
+
+			line {
+				fill: none;
+				stroke: $light-foreground;
+				stroke-width: 2px;
+			}
+
+			circle {
+				fill: $light-background;
+				stroke: $light-foreground;
+				stroke-width: 2px;
+
+				&.highlight {
+					fill: mix($light-background, #00ffff, 60%);
+				}
+			}
+
+			text {
+				fill: $light-foreground;
+				font-family: $mono-font-set;
+				text-anchor: middle;
+			}
+		}
+	}
+
+	.controls {
+		display: flex;
+		flex-flow: column nowrap;
+		align-items: center;
+		gap: 0.5rem;
+		position: sticky;
+		bottom: 0;
+		margin-top: 0.5rem;
+		background-color: change-color($light-background, $alpha: 0.75);
+		z-index: 5;
+
+		> * {
+			width: 100%;
+		}
+
+		input {
+			flex: auto;
+		}
+
+		input[type="text"]:invalid {
+			background-color: #ffc0c0;
+		}
+
+		.row {
+			display: flex;
+			flex-flow: row wrap;
+			justify-content: center;
+			gap: 0.5rem;
+
+			button, span {
+				flex: none;
+			}
+		}
+	}
+
+	@include if-dark {
+		.stage-wrapper svg {
+			.background {
+				fill: mix($dark-background, white, 90%);
+			}
+
+			line {
+				stroke: $dark-foreground;
+			}
+
+			circle {
+				fill: $dark-background;
+				stroke: $dark-foreground;
+
+				&.highlight {
+					fill: mix($dark-background, #00ffff, 70%);
+				}
+			}
+
+			text {
+				fill: $dark-foreground;
+			}
+		}
+
+		.controls {
+			background-color: change-color($dark-background, $alpha: 0.75);
+		}
+	}
+}
+
+main article div[data-script] {
+	@extend %lisalgorithm;
+}
