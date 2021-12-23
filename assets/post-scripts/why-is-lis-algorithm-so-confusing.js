@@ -2,6 +2,29 @@
 
 const SVG = 'http://www.w3.org/2000/svg';
 
+class Complex {
+	constructor(r = 0, i = 0) {
+		this.r = r;
+		this.i = i;
+	}
+	add(x) {
+		return new Complex(this.r + x.r, this.i + x.i);
+	}
+	sub(x) {
+		return this.add(this.r - x.r, this.i - x.i);
+	}
+	mul(x) {
+		return new Complex(this.r*x.r - this.i*x.i, this.r*x.i + this.i*x.r);
+	}
+	div(x) {
+		return this.mul(x.pow(-1));
+	}
+	pow(x) {
+		const l = Math.hypot(this.r, this.i)**x, d = Math.atan2(this.i, this.r)*x;
+		return new Complex(l*Math.cos(d), l*Math.sin(d));
+	}
+}
+
 function binary_search(from, to, fn) {
 	while(from != to) {
 		const mid = Math.floor((from + to)/2);
@@ -80,8 +103,10 @@ class Treebox {
 		// selection:right: null | number
 		// pivot: null | number
 		this.movie = null;
+		this.anim_state = null;
 		this.stage_height = 0;
 		this.playback = null;
+		this.anim = null;
 
 		this.html = this.html(elem);
 		this.record();
@@ -378,9 +403,21 @@ class Treebox {
 		}
 		stage.prepend(stripe_frag);
 
-		this.html.animate = [];
-		this.html.nodes = [];
-		const node_frag = new DocumentFragment();
+		this.anim_state = {
+			selection: {
+				opacity: [0, 0],
+				pos: [0, 0],
+				width: [0, 0]
+			},
+			pivot: {
+				opacity: [0, 0],
+				pos: [0, 0]
+			},
+			nodes: []
+		};
+		const
+			node_states = [],
+			node_frag = new DocumentFragment();
 		nodes.forEach(({ value, parent }, i) => {
 			const
 				edge = document.createElementNS(SVG, 'line'),
@@ -391,15 +428,23 @@ class Treebox {
 			node.setAttributeNS(null, 'r', '1.5em');
 			node.setAttributeNS(null, 'opacity', i ? '0' : '1');
 			label.textContent = i ? value.toString() : '-inf';
-			this.html.nodes.push({
+			node_states.push({
+				opacity: [0, 0],
+				highlight: [0, 0],
+				arm: [0, 0],
+				x: [0, 0],
+				y: [0, 0],
+				parent_x: [0, 0],
+				parent_y: [0, 0],
 				edge, node, label,
 				parent: parent?.index
 			});
 		});
-		this.html.nodes.forEach(({ edge }) => node_frag.append(edge));
-		this.html.nodes.forEach(({ node }) => node_frag.append(node));
-		this.html.nodes.forEach(({ label }) => node_frag.append(label));
+		node_states.forEach(({ edge }) => node_frag.append(edge));
+		node_states.forEach(({ node }) => node_frag.append(node));
+		node_states.forEach(({ label }) => node_frag.append(label));
 		stage.append(node_frag);
+		this.anim_state.nodes = node_states;
 
 		this.render();
 
@@ -407,112 +452,176 @@ class Treebox {
 	}
 
 	render(animated = false) {
-		function animate(elem, args) {
-			for(const i in args) {
-				let
-					from = args[i](0),
-					to = args[i](1);
-				if(from == null)
-					from = to;
-				if(to == null)
-					to = from;
-				if(from === null)
-					continue;
-
-				const x = {
-					attributeName: i,
-					calcMode: 'spline',
-					keySplines: '0 0.5 0.5 1',
-					repeatCount: '1',
-					dur: '0.25s',
-					values: `${from}; ${to}`
-				};
-				elem.setAttributeNS(null, i, to);
-				if(!animated || from == to)
-					continue;
-
-				const animate = document.createElementNS(SVG, 'animate');
-				for(const y in x)
-					animate.setAttributeNS(null, y, x[y]);
-				elem.appendChild(animate);
-				anim_elem.push(animate);
+		const update_state = () => {
+			function spread([a, b]) {
+				return a == null
+					? b == null
+						? [0, 0]
+						: [b, b]
+				: b == null
+					? [a, a]
+					: [a, b];
 			}
-		}
+			function spread_map([a, b], [c, d], fn) {
+				return spread([
+					a == null || c == null
+						? null
+						: fn(a, c),
+					b == null || d == null
+						? null
+						: fn(b, d)
+				]);
+			}
+
+			const
+				prev = this.movie.moment(this.time - 1),
+				curr = this.movie.moment(this.time),
+				{ selection, pivot, nodes } = this.anim_state;
+
+			const
+				sel_left_raw = [
+					prev.get('selection:left'),
+					curr.get('selection:left')
+				],
+				sel_right_raw = [
+					prev.get('selection:right'),
+					curr.get('selection:right')
+				];
+			selection.opacity = sel_left_raw.map(x => +(x != null));
+			selection.pos = spread(sel_left_raw);
+			selection.width = spread_map(sel_left_raw, sel_right_raw, (l, r) => r - l);
+
+			const
+				pivot_raw = [
+					prev.get('pivot'),
+					curr.get('pivot')
+				];
+			pivot.opacity = pivot_raw.map(x => +(x != null));
+			pivot.pos = spread(pivot_raw);
+
+			nodes.forEach((node, i) => {
+				const
+					x_raw = [
+						prev.get(`node:${i}:x`),
+						curr.get(`node:${i}:x`)
+					],
+					y_raw = [
+						prev.get(`node:${i}:y`),
+						curr.get(`node:${i}:y`)
+					],
+					highlight_raw = [
+						prev.get(`node:${i}:highlight`),
+						curr.get(`node:${i}:highlight`)
+					],
+					arm_raw = [
+						prev.get(`node:${i}:arm`),
+						curr.get(`node:${i}:arm`)
+					],
+					parent_x_raw = [
+						prev.get(`node:${node.parent}:x`),
+						curr.get(`node:${node.parent}:x`)
+					],
+					parent_y_raw = [
+						prev.get(`node:${node.parent}:y`),
+						curr.get(`node:${node.parent}:y`)
+					];
+				node.opacity = x_raw.map(x => +(x != null));
+				node.highlight = spread(highlight_raw);
+				node.arm = spread(arm_raw);
+				node.x = spread(x_raw);
+				node.y = spread(y_raw);
+				node.parent_x = spread(parent_x_raw);
+				node.parent_y = spread(parent_y_raw);
+			});
+		};
+		const animate = t => {
+			function bezier(x) {
+				const
+					sqrt3 = Math.sqrt(3),
+					fx = new Complex(x*(x - 2)).pow(1/2).add(new Complex(1 - x)).pow(1/3),
+					lhs = new Complex(-1, -sqrt3).mul(fx),
+					rhs = new Complex(-1, sqrt3).div(fx),
+					t = lhs.add(rhs).div(new Complex(2)).add(new Complex(1)).r;
+				return -0.5*t**3 + 1.5*t;
+			}
+			function lerp([a, b]) {
+				return y*b + (1 - y)*a;
+			}
+
+			const
+				x = animated
+					? Math.max(0, Math.min(1, (t - base_time)/250))
+					: 1,
+				y = bezier(x),
+				middle = 2.5*this.stage_height;
+			const
+				{
+					selection: selection_html,
+					pivot: pivot_html
+				} = this.html,
+				{ selection, pivot, nodes } = this.anim_state;
+
+			selection_html.setAttributeNS(
+				null, 'opacity',
+				lerp(selection.opacity)
+			);
+			selection_html.setAttributeNS(
+				null, 'x',
+				`${5*lerp(selection.pos) - 1}em`
+			);
+			selection_html.setAttributeNS(
+				null, 'width',
+				`${5*lerp(selection.width) + 2}em`
+			);
+
+			pivot_html.setAttributeNS(
+				null, 'opacity',
+				lerp(pivot.opacity)
+			);
+			pivot_html.setAttributeNS(
+				null, 'x',
+				`${5*lerp(pivot.pos) + 1}em`
+			);
+
+			for(const {
+				opacity, highlight: [, highlight], arm,
+				x, y,
+				parent_x, parent_y,
+				edge, node, label
+			} of nodes) {
+				node.setAttributeNS(
+					null, 'class',
+					highlight ? 'highlight' : ''
+				);
+				node.setAttributeNS(null, 'opacity', lerp(opacity));
+				node.setAttributeNS(null, 'cx', `${5*lerp(x) + 2.5}em`);
+				node.setAttributeNS(null, 'cy', `${5*lerp(y) + middle}em`);
+				label.setAttributeNS(null, 'opacity', lerp(opacity));
+				label.setAttributeNS(null, 'x', `${5*lerp(x) + 2.5}em`);
+				label.setAttributeNS(null, 'y', `${5*lerp(y) + middle + 0.4}em`);
+				edge.setAttributeNS(null, 'opacity', lerp(arm));
+				edge.setAttributeNS(null, 'x1', `${5*lerp(parent_x) + 2.5}em`);
+				edge.setAttributeNS(null, 'y1', `${5*lerp(parent_y) + middle}em`);
+				edge.setAttributeNS(null, 'x2', `${5*lerp(x) + 2.5}em`);
+				edge.setAttributeNS(null, 'y2', `${5*lerp(y) + middle}em`);
+			}
+
+			if(x != 1)
+				register_animation_frame(animate);
+		};
+		const register_animation_frame = f => {
+			if(this.anim != null)
+				cancelAnimationFrame(this.anim);
+			this.anim = requestAnimationFrame(f);
+		};
 
 		if(matchMedia('(prefers-reduced-motion: reduce)').matches)
 			animated = false;
-		const { stage, nodes, selection, pivot, animate: html_animate } = this.html;
-		const
-			anim_elem = [],
-			previous = this.movie.moment(this.time - 1),
-			moment = this.movie.moment(this.time),
-			stage_middle = 2.5*this.stage_height;
+		const base_time = performance.now();
 
 		this.update_slider(this.time + 1);
-		for(const x of html_animate)
-			x.endElement();
-		for(const x of stage.querySelectorAll('animate'))
-			x.parentElement.removeChild(x);
-		nodes.forEach(({ edge, node, label, parent }, i) => {
-			const
-				node_exists = [previous.has(`node:${i}:x`), moment.has(`node:${i}:x`)],
-				edge_exists = [!!previous.get(`node:${i}:arm`), !!moment.get(`node:${i}:arm`)],
-				node_x = [previous.get(`node:${i}:x`), moment.get(`node:${i}:x`)],
-				node_y = [previous.get(`node:${i}:y`), moment.get(`node:${i}:y`)],
-				parent_x = [previous.get(`node:${parent}:x`), moment.get(`node:${parent}:x`)],
-				parent_y = [previous.get(`node:${parent}:y`), moment.get(`node:${parent}:y`)],
-				highlight = [!!previous.get(`node:${i}:highlight`), !!moment.get(`node:${i}:highlight`)];
-
-			animate(node, {
-				opacity: x => `${+node_exists[x]}`,
-				cx: x => node_x[x] != undefined ? `${5*node_x[x] + 2.5}em` : null,
-				cy: x => node_y[x] != undefined ? `${5*node_y[x] + stage_middle}em` : null
-			});
-			animate(label, {
-				opacity: x => `${+node_exists[x]}`,
-				x: x => node_x[x] != undefined ? `${5*node_x[x] + 2.5}em` : null,
-				y: x => node_y[x] != undefined ? `${5*node_y[x] + stage_middle + 0.4}em` : null
-			});
-			animate(edge, {
-				opacity: x => `${+edge_exists[x]}`,
-				x1: x => parent_x[x] != undefined ? `${5*parent_x[x] + 2.5}em` : null,
-				y1: x => parent_y[x] != undefined ? `${5*parent_y[x] + stage_middle}em` : null,
-				x2: x => node_x[x] != undefined ? `${5*node_x[x] + 2.5}em` : null,
-				y2: x => node_y[x] != undefined ? `${5*node_y[x] + stage_middle}em` : null
-			});
-			if(node_exists[1])
-				node.setAttributeNS(null, 'class', highlight[1] ? 'highlight' : '');
-		});
-
-		const
-			sel_left = [previous.get('selection:left'), moment.get('selection:left')],
-			sel_exists = sel_left.map(x => x != null),
-			sel_right = [previous.get('selection:right'), moment.get('selection:right')],
-			sel_width = [
-				sel_left[0] != null && sel_right[0] != null
-					? sel_right[0] - sel_left[0]
-					: null,
-				sel_left[1] != null && sel_right[1] != null
-					? sel_right[1] - sel_left[1]
-					: null
-			],
-			pivot_pos = [previous.get('pivot'), moment.get('pivot')],
-			pivot_exists = pivot_pos.map(x => x != null);
-
-		animate(selection, {
-			opacity: x => `${+sel_exists[x]}`,
-			x: x => sel_left[x] != null ? `${5*sel_left[x] - 1}em` : null,
-			width: x => sel_width[x] != null ? `${5*sel_width[x] + 2}em` : null
-		});
-
-		animate(pivot, {
-			opacity: x => `${+pivot_exists[x]}`,
-			x: x => pivot_pos[x] != null ? `${5*pivot_pos[x] + 1}em` : null
-		});
-
-		for(const x of anim_elem)
-			x.beginElement();
-		this.html.animate = anim_elem;
+		update_state();
+		register_animation_frame(animate);
 	}
 	update_slider(t) {
 		const { slider, progress } = this.html;
