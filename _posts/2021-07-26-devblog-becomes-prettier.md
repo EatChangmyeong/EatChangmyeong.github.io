@@ -2,7 +2,7 @@
 layout: post
 title: "더 예뻐지는 잇창명 개발 블로그"
 cover_image: "/assets/post-images/theme-revamp-cover.png"
-edited_at: 2021-08-09
+edited_at: 2022-01-16
 tags:
 - Updates
 - CSS
@@ -32,10 +32,10 @@ CSS가 워낙 크다 보니(기록상 22.4KB입니다. 이거 큰 거 맞나) �
 
 ![단순한 리스트 형태의 글 목록이 카드 형태로 바뀌고, 커버 이미지가 추가되었다.](/assets/post-images/theme-revamp-post-list.png)
 
-글 목록을 2단 그리드 형태로 수정했습니다. 각 항목에서는 정하기 너무 어려웠던 한줄요약(요약조차도 아니긴 합니다)을 지우고 대신 커버 이미지를 추가했습니다. 디폴트 커버 이미지는 원래 개인 브랜딩에 활용하려고 생각했던 패턴이고, [10 PRINT](https://youtu.be/m9joBLOZVEo)에서 영감을 받았습니다. 트위터 헤더 이미지로도 쓰고 있습니다.
+글 목록을 2단 그리드 형태로 수정했습니다. 각 항목에서는 정하기 너무 어려웠던 한줄요약(요약조차도 아니긴 합니다)을 지우고 대신 커버 이미지를 추가했습니다. 디폴트 커버 이미지는 현재 개인 브랜딩에 활용하고 있는 [10 EATCH](https://eatch.dev/10eatch)이고, 이름에서 알 수 있듯이 [10 PRINT CHR$(205.5+RND(1)); : GOTO 10](https://youtu.be/m9joBLOZVEo)에서 영감을 받았습니다. 트위터 헤더 이미지로도 쓰고 있습니다.
 
 <blockquote class="twitter-tweet" data-dnt="true"><p lang="ko" dir="ltr">새 헤더 <a href="https://t.co/NmT26Ub1oV">pic.twitter.com/NmT26Ub1oV</a></p>&mdash; 잇창명 EatChangmyeong💕 (@EatChangmyeong) <a href="https://twitter.com/EatChangmyeong/status/1393999505184333827?ref_src=twsrc%5Etfw">May 16, 2021</a>
-</blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+</blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 # 넓은 화면 레이아웃 수정
 
@@ -71,11 +71,11 @@ TMI: 예전에는 넓은 화면에서 블로그 제목이 "잇창명 (줄바꿈)
 
 좀 어색할 수도 있겠지만 다크 모드에서는 모든(이미지와 UI를 포함해서) 그림자가 하얗습니다.
 
-# 커스텀 체크박스
+# ~~커스텀 체크박스~~
 
 ![체크박스의 모양이 아주 미묘하게 다르다.](/assets/post-images/theme-revamp-custom-checkbox.png)
 
-파이어폭스 체크박스가 시스템 기본 모양이던 시절에 넣었었는데 지금은 업데이트가 돼서 차이가 눈에 잘 안 들어오네요. 가독성/접근성에 안 좋다면 롤백할 생각도 있습니다.
+파이어폭스 체크박스가 시스템 기본 모양이던 시절에 넣었었는데 지금은 업데이트가 돼서 차이가 눈에 잘 안 들어오네요. 지금은 롤백했습니다.
 
 # 글 맨 밑에 가로선 추가
 
