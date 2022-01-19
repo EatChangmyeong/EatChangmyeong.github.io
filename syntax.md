@@ -5,18 +5,13 @@ date: 2021-05-15
 permalink: "/syntax/"
 ---
 
-제가 기억을 못 할 것 같아서 쓰는 페이지입니다. 이 블로그 기준으로 작성되어 있으니 참고할 때 주의해주세요!
+제가 기억을 못 할 것 같아서 쓰는 페이지입니다. 이 블로그에서 사용하는 [kramdown 문법](https://kramdown.gettalong.org/syntax.html) 기준으로 작성되어 있으니 참고할 때 주의해주세요!
 
 최종 출력은 왼쪽에, 마크다운 코드는 오른쪽에 배치되어 있습니다.
 
-# 혹시 몰라서 추가하는 외부 링크
-
-* [GitHub Flavored Markdown 스펙](https://github.github.com/gfm/)
-* [kramdown 문법](https://kramdown.gettalong.org/syntax.html)
-
 # 목차 (kramdown 확장)
 
-*목차를 생성하려면 `<ul>` 혹은 `<ol>`을 생성한 뒤 다음 줄에 [인라인 속성](#인라인-속성-목록-kramdown-확장) `{:toc}`을 추가해야 합니다. 제물로 바쳐지는 리스트는 사라집니다.*
+*목차를 생성하려면 리스트를 만든 뒤 다음 줄에 [인라인 속성](#인라인-속성-목록-kramdown-확장) `{:toc}`을 추가해야 합니다. 제물로 바쳐지는 리스트와 그 내용은 사라지며, 내용을 비워 두려면 [최소한 공백 하나는 남겨 둬야 합니다](#리스트).*
 
 *이 블로그에서는 목차 문법과는 별도로 글 옆에 상주하는 목차 기능을 구현했기 때문에 이 문법은 사용하지 않을 예정입니다. 현재 테마에서는 `<ul>`과 `<ol>`을 써서 나오는 출력도 완전히 같으며, (어차피 안 쓸 문법이니) 차이를 두지 않을 생각입니다.*
 
@@ -27,7 +22,7 @@ permalink: "/syntax/"
 </div>
 <div class="split-column">
 ```markdown
-1. 
+* 
 {:toc}
 ```
 </div>
@@ -39,7 +34,7 @@ permalink: "/syntax/"
 
 ### Setext 스타일
 
-*H1 및 H2만 지원합니다. `=` 혹은 `-`의 개수는 상관 없습니다.*
+*H1 및 H2만 지원합니다. `=` 혹은 `-`의 개수는 상관 없으며, 가로선 문법보다 우선합니다.*
 
 <div class="split">
 <div class="split-column">
@@ -67,7 +62,7 @@ Setext 스타일 H2
 
 ### atx 스타일
 
-*H1부터 H6까지를 모두 지원합니다. 목차를 더 망가뜨리기 싫어서 H3까지는 생략했습니다.*
+*H1부터 H6까지를 모두 지원합니다. 맨 끝에 원하는 만큼 # 문자를 더 넣을 수 있습니다. 목차를 더 망가뜨리기 싫어서 H3까지는 생략했습니다.*
 
 <div class="split">
 <div class="split-column">
@@ -89,11 +84,11 @@ Setext 스타일 H2
 </div>
 
 <div class="split-column">
-###### H6
+###### H6 ##################
 </div>
 <div class="split-column">
 ```markdown
-###### H6
+###### H6 ##################
 ```
 </div>
 </div>
@@ -113,26 +108,77 @@ Setext 스타일 H2
 </div>
 </div>
 
-## 글자 효과
+## 줄바꿈
 
-*<u>밑줄</u>은 마크다운/kramdown 문법상에서 지원되지 않으며, 인라인 HTML + CSS나 [밑줄 커스텀 문법](#밑줄)을 사용해야 합니다. 취소선은 환경에 따라 잘 인식되지 않는 경우가 있습니다.*
+*kramdown 소스에서 줄바꿈을 한 번 하면 줄바꿈으로 인식되지 않으며, 원래 줄에 텍스트가 계속 이어집니다. 이 경우에는 다음 줄부터 원하는 만큼 들여쓰기를 할 수 있습니다. 강제 줄바꿈을 하려면 줄의 맨 끝에 공백 2자 이상이나 역슬래시 2개를 넣어야 합니다.*
 
 <div class="split">
 <div class="split-column">
-**굵게**, *기울임체*, ***굵은 기울임체***
+다람쥐 헌
+	쳇바퀴에 타고파. \\
+		다음 줄
 </div>
 <div class="split-column">
 ```markdown
-**굵게**, *기울임체*, ***굵은 기울임체***
+다람쥐 헌
+	쳇바퀴에 타고파. \\
+		다음 줄
+```
+</div>
+</div>
+
+## 문장 부호 변환
+
+*일부 문자열을 인식해 적절한 문장 부호로 변환합니다. 원래는 `...`가 줄임표로, `'`와 `"`가 짝을 이루는 따옴표 문자로 변환되지만 설정에서 꺼 두었습니다.*
+
+<div class="split">
+<div class="split-column">
+Em --- dash
+
+En -- dash
+
+<<Guillemet>>
+</div>
+<div class="split-column">
+```markdown
+Em --- dash
+
+En -- dash
+
+<<Guillemet>>
+```
+</div>
+</div>
+
+## 글자 효과
+
+*<u>밑줄</u>은 마크다운/kramdown 문법상에서 지원되지 않으며, 인라인 HTML(`<u>`...`</u>`)을 사용해야 합니다. 취소선은 환경에 따라 잘 인식되지 않는 경우가 있습니다.*
+
+<div class="split">
+<div class="split-column">
+**굵게**, *기울임체*, ***굵은 기울임체***, 한단어*일부분*만강조하기
+</div>
+<div class="split-column">
+```markdown
+**굵게**, *기울임체*, ***굵은 기울임체***, 한단어*일부분*만강조하기
 ```
 </div>
 
 <div class="split-column">
-__굵게__, _기울임체_, ___굵은 기울임체___
+__굵게__, _기울임체_, ___굵은 기울임체___, 한단어_일부분_만강조가안되네
 </div>
 <div class="split-column">
 ```markdown
-__굵게__, _기울임체_, ___굵은 기울임체___
+__굵게__, _기울임체_, ___굵은 기울임체___, 한단어_일부분_만강조가안되네
+```
+</div>
+
+<div class="split-column">
+별 1개/2개가 * 별도의 단어 * 로 있으면 ** 강조 효과로 취급되지 않습니다 ** .
+</div>
+<div class="split-column">
+```markdown
+별 1개/2개가 * 별도의 단어 * 로 있으면 ** 강조 효과로 취급되지 않습니다 ** .
 ```
 </div>
 
@@ -150,6 +196,8 @@ __굵게__, _기울임체_, ___굵은 기울임체___
 
 ## 리스트
 
+*순서 없는 리스트는 `*`, `+`, `-` 중 아무거나 써도 됩니다. 이 블로그에서는 `*`을 선호합니다.*
+
 <div class="split">
 <div class="split-column">
 * 순서 없는
@@ -182,13 +230,19 @@ __굵게__, _기울임체_, ___굵은 기울임체___
 </div>
 
 <div class="split-column">
-* 
-		리스트 내부에 다른 요소가 올 수 있습니다.
+* 리스트 내부에 다른 요소가 올 수 있습니다.
+
+	`*` 문자 바로 뒤에 최소한 공백 문자를 삽입해야 리스트 안에 있는 요소로 인식합니다.
+
+		뭐야 왜 2칸 들여쓰기가 돼있어
 </div>
 <div class="split-column">
 ```markdown
-* 
-		리스트 내부에 다른 요소가 올 수 있습니다.
+* 리스트 내부에 다른 요소가 올 수 있습니다.
+
+	`*` 문자 바로 뒤에 최소한 공백 문자를 삽입해야 리스트 안에 있는 요소로 인식합니다.
+
+		뭐야 왜 2칸 들여쓰기가 돼있어
 ```
 </div>
 </div>
@@ -325,6 +379,8 @@ console.info('코드 테마는 무난하게 Monokai를 썼습니다.');
 * Liquid (`liquid`)
 * Markdown (`markdown`)
 	* kramdown 문법은 올바르게 인식되지 않습니다.
+* Pseudocode (언어 없음 + `{:.pseudocode}`)
+	* 의사코드이기 때문에 하이라이팅을 지원하지 않습니다.
 * Python (`python`)
 * SCSS (`scss`)
 
@@ -533,15 +589,15 @@ $$\sum_{i=0}^n i^2 = \frac{n(n+1)(2n+1)}{6}$$
 </div>
 
 <div class="split-column">
-[별도 정의를 사용하는 링크][ref-style-link]
+[별도 정의를 사용하는 링크][reference-link] or [reference-link]
 
-[ref-style-link]: https://eatch.dev/ "여기도 툴팁을 넣을 수 있습니다."
+[reference-link]: https://eatch.dev/ "여기도 툴팁을 넣을 수 있습니다."
 </div>
 <div class="split-column">
 ```markdown
-[별도 정의를 사용하는 링크][ref-style-link]
+[별도 정의를 사용하는 링크][reference-link] or [reference-link]
 
-[ref-style-link]: https://eatch.dev/ "여기도 툴팁을 넣을 수 있습니다."
+[reference-link]: https://eatch.dev/ "여기도 툴팁을 넣을 수 있습니다."
 ```
 </div>
 
@@ -599,10 +655,23 @@ cf. https://eatch.dev/ example@example.com
 
 <div class="split-column">
 ``haha `backticks` go brrrr``
+
+백틱만 있는 인라인 코드: `` ` ``
 </div>
 <div class="split-column">
 ```markdown
 ``haha `backticks` go brrrr``
+
+백틱만 있는 인라인 코드: `` ` ``
+```
+</div>
+
+<div class="split-column">
+백틱 하나가 ` 별도의 단어 ` 로 있으면 인라인 코드로 취급되지 않습니다.
+</div>
+<div class="split-column">
+```markdown
+백틱 하나가 ` 별도의 단어 ` 로 있으면 인라인 코드로 취급되지 않습니다.
 ```
 </div>
 
@@ -654,13 +723,15 @@ cf. https://eatch.dev/ example@example.com
 <div class="split-column">
 똑같은 주석을 여러 번 쓸 수 있습니다. [^fnrepeat] & [^fnrepeat]
 
-[^fnrepeat]: 각주 아이디는 한글로 못 씁니다. 아쉽다
+[^fnrepeat]:
+	> 각주 안에 인용문이 있다?!
 </div>
 <div class="split-column">
 ```markdown
 똑같은 주석을 여러 번 쓸 수 있습니다. [^fnrepeat] & [^fnrepeat]
 
-[^fnrepeat]: 각주 아이디는 한글로 못 씁니다. 아쉽다
+[^fnrepeat]:
+	> 각주 안에 인용문이 있다?!
 ```
 </div>
 </div>
@@ -684,7 +755,7 @@ cf. https://eatch.dev/ example@example.com
 
 # 기타 문법
 
-## 블록 분리 (kramdown 확장)
+## 블록 종료 표지 (kramdown 확장)
 
 *^ 문자를 이용해 블록 단위 문법을 분리할 수 있습니다.*
 
@@ -768,40 +839,6 @@ cf. https://eatch.dev/ example@example.com
 
 *커스텀 확장 문법은 **이 블로그에서만** 동작합니다.*
 
-## 밑줄
-
-*기울임꼴 문법에 아래의 커스텀 클래스를 추가해 밑줄을 표시할 수 있습니다. 가급적이면 이 문법 대신 **HTML 태그를 직접 사용**하거나 기울임꼴만 사용하는 것을 권장합니다.*
-
-<div class="split">
-<div class="split-column">
-* *밑줄 (기울임꼴 문법 해제)*{:.u}
-* *밑줄 (기울임꼴 문법 유지)*{:.ui}
-</div>
-<div class="split-column">
-```markdown
-* *밑줄 (기울임꼴 문법 해제)*{:.u}
-* *밑줄 (기울임꼴 문법 유지)*{:.ui}
-```
-</div>
-</div>
-
-*기울임꼴 문법에 인라인 속성 문법을 추가하는 대신 HTML 태그에 위 클래스를 추가하거나 그냥 `<u>`를 써도 됩니다.*
-
-<div class="split">
-<div class="split-column">
-* <span class="u">밑줄만 적용</span>
-* <span class="ui">밑줄 + 기울임꼴</span>
-* <u>훨씬 빠른 방법</u>
-</div>
-<div class="split-column">
-```markdown
-* <span class="u">밑줄만 적용</span>
-* <span class="ui">밑줄 + 기울임꼴</span>
-* <u>훨씬 빠른 방법</u>
-```
-</div>
-</div>
-
 ## 좌우 분리
 
 <div class="split">
@@ -834,11 +871,11 @@ cf. https://eatch.dev/ example@example.com
 *<https://publish.twitter.com/>에 원하는 트윗 주소를 붙여넣고 Opt-out of tailoring Twitter를 켜서(선택) 나오는 HTML 코드를 붙여넣습니다. kramdown 오류인지는 몰라도 `</blockquote>`부터는 다음 줄에 작성해야 올바르게 파싱됩니다.*
 
 <blockquote class="twitter-tweet" data-dnt="true"><p lang="en" dir="ltr">just setting up my twttr</p>&mdash; jack (@jack) <a href="https://twitter.com/jack/status/20?ref_src=twsrc%5Etfw">March 21, 2006</a>
-</blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+</blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 ```markdown
 <blockquote class="twitter-tweet" data-dnt="true"><p lang="en" dir="ltr">just setting up my twttr</p>&mdash; jack (@jack) <a href="https://twitter.com/jack/status/20?ref_src=twsrc%5Etfw">March 21, 2006</a>
-</blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+</blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 ```
 
 ## 스크립트 삽입

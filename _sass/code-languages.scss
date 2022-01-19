@@ -2,7 +2,7 @@
 @import "defs";
 
 @mixin code-languages($selector) {
-	&.language-plaintext:not(.markdown) {
+	&.language-plaintext:not(.pseudocode) {
 		#{$selector}::before {
 			content: "Plain Text";
 		}
@@ -35,6 +35,11 @@
 	&.language-markdown {
 		#{$selector}::before {
 			content: "Markdown";
+		}
+	}
+	&.pseudocode {
+		#{$selector}::before {
+			content: "Pseudocode";
 		}
 	}
 	&.language-python {
