@@ -342,7 +342,7 @@
 			li {
 				margin-top: 0.25rem;
 
-				p {
+				> p {
 					display: inline;
 					margin: 0;
 				}
@@ -358,16 +358,6 @@
 		}
 
 		@include transits(text-decoration-color);
-	}
-
-	.u {
-		text-decoration: underline;
-		font-style: normal;
-	}
-
-	.ui {
-		text-decoration: underline;
-		font-style: italic;
 	}
 
 	.split {
