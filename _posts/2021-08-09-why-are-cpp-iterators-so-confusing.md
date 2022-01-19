@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "C++ 반복자는 왜 그렇게 헷갈리는 걸까?"
-cover_image: "/assets/post-images/text-cursor.gif"
+image: "/assets/post-images/text-cursor.gif"
 edited_at: 2021-10-12
 tags:
 - C++

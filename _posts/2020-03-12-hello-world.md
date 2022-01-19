@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Hello, world!"
-cover_image: "https://eatch.dev/ei/-0-f"
+image: "https://eatch.dev/ei/-0-f"
 edited_at: 2021-08-09
 tags:
 - Test

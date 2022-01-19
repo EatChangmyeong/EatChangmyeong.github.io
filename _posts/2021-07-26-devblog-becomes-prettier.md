@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "더 예뻐지는 잇창명 개발 블로그"
-cover_image: "/assets/post-images/theme-revamp-cover.png"
+image: "/assets/post-images/theme-revamp-cover.png"
 edited_at: 2022-01-16
 tags:
 - Updates

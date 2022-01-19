@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Thanks for inventing JavaScript"
-cover_image: "/assets/post-images/thanks-for-inventing-javascript.png"
+image: "/assets/post-images/thanks-for-inventing-javascript.png"
 tags:
 - JavaScript
 - Language

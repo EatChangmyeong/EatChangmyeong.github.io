@@ -23,8 +23,8 @@ layout: front
 		{% unless x.categories contains "Beta" %}
 		<a href="{{ x.url }}">
 			<li
-				{% if x.cover_image %}
-					style="background-image: url({{ x.cover_image }});"
+				{% if x.image %}
+					style="background-image: url({{ x.image }});"
 				{% endif %}
 			>
 				<span class="post-list-title">
