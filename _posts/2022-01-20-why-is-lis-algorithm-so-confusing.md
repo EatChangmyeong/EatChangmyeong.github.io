@@ -1,18 +1,14 @@
 ---
 layout: post
 title: "LIS 알고리즘은 왜 그렇게 헷갈리는 걸까?"
-categories:
-- Beta
 tags:
 - ProblemSolving
 - Algorithm
 - Interactive
 style: "/assets/post-styles/why-is-lis-algorithm-so-confusing.css"
 script: "/assets/post-scripts/why-is-lis-algorithm-so-confusing.js"
-# comments: true
+comments: true
 ---
-
-**이 글은 링크가 있어야 읽을 수 있는 베타 버전입니다.** 피드백을 받고 있으니 재밌게 읽어주세요 🙇‍♂️
 
 [**가장 긴 증가하는 부분 수열**](https://ko.wikipedia.org/wiki/%EC%B5%9C%EC%9E%A5_%EC%A6%9D%EA%B0%80_%EB%B6%80%EB%B6%84_%EC%88%98%EC%97%B4)(longest increasing subsequence; LIS)은 어떤 수열이 주어질 때 그 수열의 증가하는 부분 수열(연속하지 않아도 됩니다) 중 가장 긴 것을 찾는 문제입니다. 이 문제를 푸는 여러 가지 알고리즘이 알려져 있지만 문제풀이에서 자주 사용하는 것은 $$O(n \log n)$$입니다.
 
@@ -122,15 +118,43 @@ LIS를 최대한 길게 만들려면 가능한 한 가장 깊은 노드를 찾�
 
 글의 맨 위에서 봤던 $$O(n \log n)$$ LIS 알고리즘을 재발견했네요!
 
-# 결론: LIS 트리의 그림자
-
 지금까지 했던 "조금 더 쉬운 설명"과 위키백과에서 했던 "어려운 설명"을 비교해보면 사실 같은 것을 말하고 있음을 알 수 있습니다. 개인적으로 위키백과의 설명이 어렵게 느껴졌던 이유는 배열 $$M$$이 LIS 트리에서 따라오는 개념인데도 LIS 트리를 언급하지 않고 바로 $$M$$으로 넘어갔기 때문이라고 생각하고 있습니다. 말하자면 **배열 $$M$$은 LIS 트리의 그림자**인 셈이죠.
 
-LIS 트리를 이해했다면 백준의 [14003번 "가장 긴 증가하는 부분 수열 5"](https://www.acmicpc.net/problem/14003) 같은 문제에도 응용할 수 있습니다. LIS 트리의 모든 노드는 ("가상의 0번 원소"를 제외하고) 부모가 정확히 하나씩이니 $$M$$ 이외에 각 노드의 부모를 기록하는 $$O(n)$$짜리 배열을 하나 만들고 이 두 배열로 LIS 트리를 만듭니다. 모든 $$A_i$$를 읽은 뒤에는 $$M$$의 가장 끝에서 부모 배열을 타고 내려가면 LIS를 복구할 수 있습니다.
+# 응용: 백준에서 문제 풀어보기
+
+LIS 트리를 이해했다면 백준의 [14003번 "가장 긴 증가하는 부분 수열 5"](https://www.acmicpc.net/problem/14003) 같은 문제에도 응용할 수 있습니다.
+
+LIS 트리의 모든 노드는 ("가상의 0번 원소"를 제외하고) 부모가 정확히 하나씩이니 $$M$$ 이외에 각 노드의 부모를 기록하는 $$O(n)$$짜리 배열을 하나 만들고 이 두 배열로 LIS 트리를 만듭니다. 모든 $$A_i$$를 읽은 뒤에는 $$M$$의 가장 끝에서 부모 배열을 타고 내려가면 LIS를 복구할 수 있습니다.
 
 {:.pseudocode}
 ```
-asdf
+# 복붙을 방지하기 위해 Python과 비슷한 의사코드로 작성합니다.
+# 자신 있는 언어로 옮겨 적으면서 글을 잘 이해했는지 확인해 주세요.
+
+N = input()
+A = []
+for i in [0, N):
+	A[i] = input()
+M = [-1] # 인덱스를 저장합니다. -1은 가상의 0번째 원소입니다.
+parent = [] # 부모의 인덱스를 저장합니다.
+
+for i in [0, N):
+	m_index = 1 + M[1:] # 첫 원소를 제외하고
+		.map(x => A[x]) # 인덱스를 실제 값으로 바꾼 뒤
+		.lower_bound(A[i]) # 이분 탐색. 자리가 없으면 맨 끝에서 한 칸 뒤의 인덱스
+	parent[i] = M[m_index - 1]
+	M[m_index] = i
+
+LIS = [M[-1]] # M의 마지막 원소
+for i in [1, ∞):
+	next = parent[LIS[i - 1]] # LIS 트리를 타고 내려갑니다.
+	if next == -1:
+		break
+	LIS[i] = next
+
+print(LIS.length() + "\n")
+for x in LIS.reverse(): # 맨 끝의 원소부터 나오므로 뒤집습니다.
+	print(x + " ")
 ```
 
 아마 앞으로도 가끔씩 문제풀이 알고리즘을 다루는 글을 올릴 것 같습니다. 조금이라도 쉽게 이해할 수 있도록 제가 글을 잘 썼으면 하는데 아무래도 쉽지는 않네요. 앞으로도 잘 부탁드립니다 🙇‍♂️
