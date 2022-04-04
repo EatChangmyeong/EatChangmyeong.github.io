@@ -19,7 +19,7 @@
 	}
 	&.gml {
 		#{$selector}::before {
-			content: "GameMaker Language";
+			content: "GML Code";
 		}
 	}
 	&.language-javascript:not(.gml) {
