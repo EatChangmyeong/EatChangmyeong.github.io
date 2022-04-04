@@ -360,6 +360,11 @@
 		@include transits(text-decoration-color);
 	}
 
+	.scroll {
+		overflow-x: auto;
+		overflow-y: hidden;
+	}
+
 	.split {
 		display: grid;
 		grid-template-columns: repeat(2, 1fr);
