@@ -21,8 +21,14 @@ kramdown:
   parse_block_html: true
   remove_line_breaks_for_cjk: true
   smart_quotes: ["apos", "apos", "quot", "quot"]
-  typographic_symbols: 
+  typographic_symbols:
     hellip: ...
 
 plugins:
   - jekyll-seo-tag
+  - jekyll-feed
+
+# jekyll-seo-tag
+twitter:
+  username: EatChangmyeong
+  card: summary

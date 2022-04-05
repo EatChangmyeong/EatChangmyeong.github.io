@@ -8,6 +8,8 @@ layout: front
 
 [외부 리소스](/thirdparty)
 
+[Atom 피드](/feed.xml)
+
 [소스 코드 확인해보기](https://github.com/EatChangmyeong/EatChangmyeong.github.io)
 
 ## TODO
