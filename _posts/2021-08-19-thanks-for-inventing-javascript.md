@@ -2,12 +2,15 @@
 layout: post
 title: "Thanks for inventing JavaScript"
 image: "/assets/post-images/thanks-for-inventing-javascript.png"
+edited_at: 2022-04-05
 tags:
 - JavaScript
 - Language
 - Rant
 comments: true
 ---
+
+*2022년 4월 5일 수정: 코드 가독성을 향상했습니다.*
 
 ![JavaScript의 특이한 코드 실행 결과 여러 개가 있고 그 밑에 사람의 얼굴과 "Thanks for inventing Javascript"라는 문구를 달아 두었다.](/assets/post-images/thanks-for-inventing-javascript.png)
 
@@ -24,24 +27,33 @@ comments: true
 ```cpp
 #include <iostream>
 #include <cmath>
+#include <typeinfo>
+
+template<class T> void print_type(T x) {
+	std::cout << typeid(x).name() << " " << x << std::endl;
+}
 
 int main() {
     double
 		number = 12.34,
 		not_a_number = 0./0.,
 		explicit_nan = NAN;
-	std::cout
-		<< number << " vs "
-		<< not_a_number << " vs "
-		<< explicit_nan << std::endl; // 12.34 vs nan vs nan
+
+	/*
+		typeid(...).name()은 컴파일러에 따라 다른 값을 반환할 수 있지만,
+		같은 컴파일러에서 같은 타입이면 같은 문자열을 반환합니다.
+	*/
+	print_type(number); // d 12.34
+	print_type(not_a_number); // d nan
+	print_type(explicit_nan); // d nan
     return 0;
 }
 ```
 
 ```python
-import math
+from math import nan
 print(type(1.)) # <class 'float'>
-print(type(math.nan)) # <class 'float'>
+print(type(nan)) # <class 'float'>
 ```
 
 애초에 `NaN`은 **[IEEE 754](https://ko.wikipedia.org/wiki/IEEE_754) 표준**에서 정의하고 있는 값이기 때문에 부동소숫점 타입이 있는 웬만한 언어에는 전부 들어가 있고 일반적인 실수와 같은 타입입니다. `NaN`만 다른 타입인 게 오히려 이상합니다.
@@ -95,34 +107,32 @@ $$\sum_{x \in \emptyset} x = 0$$
 
 # `true+true+true===3`, `true-true`
 
-**C++와 Python에서도 똑같은 현상이 발생합니다.**
+**C++와 Python에서도 똑같은 현상이 발생합니다.** 그런데 불린을 정수로 형변환하는 게 편리할 때가 많지 않나요?
 
 ```cpp
 #include <iostream>
+#include <typeinfo>
 
-void print(bool x) {
-	std::cout << "bool " << x << std::endl;
-}
-void print(int x) {
-	std::cout << "int " << x << std::endl;
+template<class T> void print_type(T x) {
+	std::cout << typeid(x).name() << " " << x << std::endl;
 }
 
 int main() {
 	bool foo = true;
-	print(foo); // bool 1
-	print(foo + foo + foo); // int 3
-	print(foo - foo); // int 0
+	print_type(foo); // b 1
+	print_type(foo + foo + foo); // i 3
+	print_type(foo - foo); // i 0
     return 0;
 }
 ```
 
 ```python
-def print_(x):
-	print(f"type({x}) = {type(x)}")
+def print_type(x):
+	print(f"{type(x)} {x}")
 
-print_(True) # type(True) = <class 'bool'>
-print_(True + True + True) # type(3) = <class 'int'>
-print_(True - True) # type(0) = <class 'int'>
+print_type(True) # <class 'bool'> True
+print_type(True + True + True) # <class 'int'> 3
+print_type(True - True) # <class 'int'> 0
 ```
 
 # `true==1`, `true===1`, `[]==0`
