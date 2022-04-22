@@ -1,0 +1,46 @@
+---
+---
+
+@charset "UTF-8";
+@import "defs";
+
+%murecursive {
+	.mu-input {
+		width: 100%;
+		height: 30em;
+		min-height: 5em;
+		font-family: $mono-font-set;
+		tab-size: 4;
+		resize: vertical;
+	}
+
+	.mu-output-line {
+		display: flex;
+		flex-flow: row nowrap;
+		align-items: flex-start;
+		gap: 0 0.5rem;
+		margin-top: 0.5rem;
+
+		.mu-output {
+			margin: 0;
+			flex: auto;
+			overflow-x: auto;
+
+			&.error {
+				color: red;
+
+				@include if-dark {
+					color: #ff4040;
+				}
+			}
+		}
+
+		button {
+			flex: none;
+		}
+	}
+}
+
+main article div[data-script] {
+	@extend %murecursive;
+}
