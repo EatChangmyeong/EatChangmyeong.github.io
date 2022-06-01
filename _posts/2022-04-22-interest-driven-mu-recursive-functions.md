@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "흥미 위주로 알아보는 μ-재귀 함수"
+edited_at: 2022-06-01
 tags:
 - Computation
 - Interactive
@@ -39,7 +40,7 @@ comments: true
 	* "뮤 재귀 함수"라고 읽습니다.
 * [**마르코프 알고리즘**](https://en.wikipedia.org/wiki/Markov_algorithm)
 	* 정해진 알파벳으로 이루어진 문자열을 주어진 치환 규칙의 집합에 따라 찾아 바꾸는 알고리즘입니다.
-	* 이 계산 모형에 기초한 프로그래밍 언어 [Refal](https://en.wikipedia.org/wiki/Refal)과 *난해한* 프로그래밍 언어 [Thue](https://en.wikipedia.org/wiki/Thue_(programming_language))가 있습니다.
+	* 이 계산 모형에 기초한 프로그래밍 언어 [Refal](https://en.wikipedia.org/wiki/Refal)과 *난해한* 프로그래밍 언어 [Thue](https://en.wikipedia.org/wiki/Thue_(programming_language)), 비슷한 아이디어를 다루는 게임인 [A=B](https://store.steampowered.com/app/1720850/AB/)가 있습니다.
 
 원래는 제가 잘 알고 있는 주제 위주로 블로그 글로 적었는데, 첫 문단에서 눈치채셨겠지만 제가 접한 지 얼마 안 되는 분야로 글을 쓰고 있기 때문에 주제에 대한 이해도가 비교적 낮을 수 있습니다. 재미있어 보이고 자주 다뤄지는 주제가 아닌 것 같아서 글로 남기고 있으니 틀린 곳을 발견하셨다면 댓글로 알려주세요.
 
