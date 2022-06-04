@@ -4,7 +4,7 @@ title: "C 타입 시스템 제대로 알고 가기"
 edited_at: 2022-04-26
 tags:
 - C
-- Language
+- 언어론
 comments: true
 ---
 

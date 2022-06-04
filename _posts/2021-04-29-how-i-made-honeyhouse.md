@@ -2,8 +2,8 @@
 layout: post
 title: "Honeyhouse 어떻게 만들었는가"
 tags:
-- GameMaker
-- Gamedev
+- 게임메이커
+- 게임개발
 comments: true
 ---
 

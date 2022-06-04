@@ -3,9 +3,9 @@ layout: post
 title: "LIS 알고리즘은 왜 그렇게 헷갈리는 걸까?"
 edited_at: 2022-01-20
 tags:
-- ProblemSolving
-- Algorithm
-- Interactive
+- 문제해결
+- 알고리즘
+- 인터랙티브
 style: "/assets/post-styles/why-is-lis-algorithm-so-confusing.css"
 script: "/assets/post-scripts/why-is-lis-algorithm-so-confusing.js"
 comments: true

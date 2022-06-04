@@ -4,7 +4,7 @@ title: "Hello, world!"
 image: "https://eatch.dev/ei/-0-f"
 edited_at: 2021-08-09
 tags:
-- Test
+- 테스트
 seo: false
 ---
 

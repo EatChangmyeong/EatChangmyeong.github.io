@@ -2,8 +2,8 @@
 layout: post
 title: "번호 붙이기를 0부터 시작해야 하는 이유 (\"C++ 반복자는...\" 보충)"
 tags:
-- Supplement
-- Translation
+- 보충
+- 번역
 comments: true
 ---
 

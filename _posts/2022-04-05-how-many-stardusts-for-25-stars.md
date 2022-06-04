@@ -4,8 +4,8 @@ title: "한별포스 25성을 찍으려면 별조각을 얼마나 써야 할까?
 image: "/assets/post-images/solvedac-hanbyeolforce.png"
 edited_at: 2022-04-05
 tags:
-- Mathematics
-- Statistics
+- 수학
+- 확률론
 comments: true
 ---
 

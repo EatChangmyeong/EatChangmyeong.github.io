@@ -3,8 +3,9 @@ layout: post
 title: "흥미 위주로 알아보는 μ-재귀 함수"
 edited_at: 2022-06-01
 tags:
-- Computation
-- Interactive
+- TIL
+- 계산이론
+- 인터랙티브
 style: "/assets/post-styles/interest-driven-mu-recursive-functions.css"
 script: "/assets/post-scripts/interest-driven-mu-recursive-functions.js"
 comments: true

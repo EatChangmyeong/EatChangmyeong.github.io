@@ -2,7 +2,7 @@
 layout: post
 title: "앗! Disqus로 댓글을 남길 수 있다?!"
 tags:
-- Updates
+- 업데이트
 comments: true
 seo: false
 ---

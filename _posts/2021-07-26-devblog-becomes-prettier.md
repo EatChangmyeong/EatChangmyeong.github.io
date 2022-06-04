@@ -4,7 +4,7 @@ title: "더 예뻐지는 잇창명 개발 블로그"
 image: "/assets/post-images/theme-revamp-cover.png"
 edited_at: 2022-01-16
 tags:
-- Updates
+- 업데이트
 - CSS
 comments: true
 seo: false
