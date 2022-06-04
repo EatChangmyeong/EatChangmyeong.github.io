@@ -47,6 +47,11 @@
 			content: "Python";
 		}
 	}
+	&.language-rust {
+		#{$selector}::before {
+			content: "Rust";
+		}
+	}
 	&.language-scss {
 		#{$selector}::before {
 			content: "SCSS";

@@ -383,6 +383,7 @@ console.info('코드 테마는 무난하게 Monokai를 썼습니다.');
 * Pseudocode (언어 없음 + `{:.pseudocode}`)
 	* 의사코드이기 때문에 하이라이팅을 지원하지 않습니다.
 * Python (`python`)
+* Rust (`rust`)
 * SCSS (`scss`)
 
 ### 줄 번호가 있는 코드 블록 (Liquid 확장)
