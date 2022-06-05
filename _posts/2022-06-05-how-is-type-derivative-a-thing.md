@@ -34,7 +34,7 @@ Bar y = { 1 };
 x = y; // assigning to 'Foo' (aka 'int') from incompatible type 'Bar'
 ```
 
-...하지만 `Foo`에서 `Bar`로, 또 `Bar`에서 `Foo`로 "자연스럽게" 변환하는 함수를 만어서 두 타입 사이를 자유롭게 오갈 수 있습니다.
+...하지만 `Foo`에서 `Bar`로, 또 `Bar`에서 `Foo`로 "자연스럽게" 변환하는 함수를 만들어서 두 타입 사이를 자유롭게 오갈 수 있습니다.
 
 ```c
 Bar foo_to_bar(Foo x) {
