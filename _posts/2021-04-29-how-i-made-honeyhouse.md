@@ -1,13 +1,20 @@
 ---
 layout: post
 title: "Honeyhouse 어떻게 만들었는가"
+edited_at: 2022-06-07
 tags:
 - 게임메이커
 - 게임개발
 comments: true
 ---
 
-![허니하우스 플레이 화면](/assets/post-images/honeyhouse-demo.gif)
+*2022년 6월 7일 수정: 이미지 파일의 크기를 줄였습니다.*
+
+<p>
+<video autoplay loop muted playsinline poster="/assets/post-images/honeyhouse-demo-thumbnail.png">
+<source type="video/webm" src="/assets/post-images/honeyhouse-demo.webm">
+</video>
+</p>
 
 **겜스가 2.3으로 업데이트되면서 그래도 살만해졌습니다.** 사실 겜스1을 쓰면서는 엔진과 언어가 너무 불편해서 `겜스넘구데기`를 연발했는데 구조체와 함수(생성자 함수도!) 문법이 생기면서 그나마 제가 편한 대로 코드를 짤 수 있게 되었네요.
 
@@ -19,7 +26,7 @@ comments: true
 
 # 1월 31일
 
-![다섯 가지 색의 원으로 채워져 있는 길이 5의 정육각형 보드](/assets/post-images/honeyhouse-jan31.png)
+![다섯 가지 색의 원으로 채워져 있는 길이 5의 정육각형 보드](/assets/post-images/honeyhouse-jan31.webp)
 
 허니하우스 프로젝트를 시작하고 처음 남긴 기록이네요. 보드 및 회전 코드를 구현했습니다. 아직 회전할 만한 게 없어서 시험 삼아 보드를 회전시켜봤습니다.
 
@@ -59,7 +66,7 @@ $$
 
 아래 사진과 같은 좌표계를 표현할 수 있게 됩니다. $$(x, y)$$가 새로운 원점이고 빨간색 화살표가 $$x$$축 한 칸, 파란색 화살표가 $$y$$축 한 칸을 나타냅니다. 참고로 허니하우스에서 (거의) 모든 육각형은 아래처럼 "$$x$$축이 살짝 올라간" 좌표 체계로 다룹니다.
 
-![허니하우스의 정육각형 보드. 가장 왼쪽 위 원을 (x, y)로, 오른쪽 위에 있는 점까지의 위치 차이를 (a, b)로, 아래에 있는 점까지의 위치 차이를 (c, d)로 표현하였다.](/assets/post-images/honeyhouse-jan31-affine.png)
+![허니하우스의 정육각형 보드. 가장 왼쪽 위 원을 (x, y)로, 오른쪽 위에 있는 점까지의 위치 차이를 (a, b)로, 아래에 있는 점까지의 위치 차이를 (c, d)로 표현하였다.](/assets/post-images/honeyhouse-jan31-affine.webp)
 
 실제로 2차원 배열 좌표 `board[y_from][x_from]`에서 화면상의 좌표 $$(x_{to}, y_{to})$$를 구하려면 주어진 좌표를 열벡터 $$\begin{pmatrix} x_{from} \\ y_{from} \\ 1 \end{pmatrix}$$로 바꾸고 왼쪽에 $$\boldsymbol{M}$$을 곱하기만 하면 됩니다. 이런 형태의 행렬 곱셈은 꽤 자주 쓰이기 때문에 *아핀 변환*이라는 이름이 따로 붙어 있습니다.
 
@@ -157,7 +164,7 @@ $$
 
 # 2월 1일
 
-![정육각형 보드 위에 마우스가 있다. 마우스가 가리키고 있는 칸이 육각형으로 강조되어 있다.](/assets/post-images/honeyhouse-feb1.png)
+![정육각형 보드 위에 마우스가 있다. 마우스가 가리키고 있는 칸이 육각형으로 강조되어 있다.](/assets/post-images/honeyhouse-feb1.webp)
 
 마우스로 플레이하는 게임이니 마우스가 어느 칸에 있는지도 판정해야겠죠. 생각보다 아이디어를 떠올리기가 어려웠고 버그도 많이 났었습니다.
 
@@ -167,7 +174,7 @@ $$
 
 # 2월 2일
 
-![정육각형 보드와 조각 3개가 그려져 있는 게임 화면](/assets/post-images/honeyhouse-feb2.png)
+![정육각형 보드와 조각 3개가 그려져 있는 게임 화면](/assets/post-images/honeyhouse-feb2.webp)
 
 기본적인 조각 기능을 구현했습니다. 실제로 매치는 되지 않지만 회전, 뒤집기, 마우스 클릭 판정 정도가 가능하고, 완전하지는 않지만 보드 위에 올리면 가까운 칸에 스냅이 됩니다.
 
@@ -220,7 +227,7 @@ example_piece_2 = [
 
 # 2월 7일
 
-![보드와 조각 그래픽이 바뀌고 오른쪽 위에 버튼 2개가 추가되었다. 배경색은 검은색이 아닌 흰색이다.](/assets/post-images/honeyhouse-feb7.png)
+![보드와 조각 그래픽이 바뀌고 오른쪽 위에 버튼 2개가 추가되었다. 배경색은 검은색이 아닌 흰색이다.](/assets/post-images/honeyhouse-feb7.webp)
 
 나흘 동안 실제 게임에 사용할 그래픽 리소스를 만들고 적용했습니다. 덤으로 밝은 모드(?)와 (색약/색맹 플레이어를 위한) 무늬 켜기/끄기 버튼도 만들었습니다. 분명 접근성으로 넣은 요소였는데 개발하다 보니까 오히려 무늬가 없는 게 안 익숙하네요.
 
@@ -255,19 +262,19 @@ example_piece_2 = [
 
 # 2월 8일
 
-![왼쪽 아래에 버튼 3개가 추가되었다. 마우스가 가장 아래쪽의 "Game mode: zen" 버튼을 가리키고 있다.](/assets/post-images/honeyhouse-feb8.png)
+![왼쪽 아래에 버튼 3개가 추가되었다. 마우스가 가장 아래쪽의 "Game mode: zen" 버튼을 가리키고 있다.](/assets/post-images/honeyhouse-feb8.webp)
 
 3종류의 게임 모드 버튼과 그 버튼에 쓸 이미지를 넣었습니다. 아직 실제로 작동하지는 않았고, 이후 구현하기 쉬워 보이는 순서대로 차례차례 넣게 되었습니다.
 
 # 2월 9일
 
-![보드 크기가 한 변에 5칸에서 4칸으로 줄어들었다. 붉은색의 'Click twice to restart' 버튼이 생겼다.](/assets/post-images/honeyhouse-feb9.png)
+![보드 크기가 한 변에 5칸에서 4칸으로 줄어들었다. 붉은색의 'Click twice to restart' 버튼이 생겼다.](/assets/post-images/honeyhouse-feb9.webp)
 
 작은 크기의 보드와 재시작 버튼을 구현했습니다. 아무래도 보드가 작다 보니까 너무 빨리 죽어서 밸런스 조절을 하기로 했었는데 정확히 언제 조절했는지는 기억이 안 나네요.
 
 # 2월 11일
 
-![허니하우스 플레이 화면. 중력 버튼이 활성화되어 있다.](/assets/post-images/honeyhouse-feb11.png)
+![허니하우스 플레이 화면. 중력 버튼이 활성화되어 있다.](/assets/post-images/honeyhouse-feb11.webp)
 
 중력 모드를 구현했습니다. 스크린샷으로 찍은 보드 상태를 보면 아시겠지만... 아직까지도 게임 오버 판정은 구현이 안 돼있었습니다.
 
@@ -275,7 +282,7 @@ example_piece_2 = [
 
 *무관하지만 이날은 제 생일이었습니다.* 🥳
 
-![오른쪽 위에 설정 버튼이 1개, 색상 설정 버튼, 무늬 설정 버튼이 5개씩 있다. 왼쪽 두 색상이 어두운 보라색으로 바뀌어 있다.](/assets/post-images/honeyhouse-feb14.png)
+![오른쪽 위에 설정 버튼이 1개, 색상 설정 버튼, 무늬 설정 버튼이 5개씩 있다. 왼쪽 두 색상이 어두운 보라색으로 바뀌어 있다.](/assets/post-images/honeyhouse-feb14.webp)
 
 [Windows API의 색상 선택 창](https://docs.microsoft.com/en-us/windows/win32/dlgbox/images/colordialogboxxp.png)([이미지 출처](https://docs.microsoft.com/en-us/windows/win32/dlgbox/color-dialog-box))을 살짝 빌려서 색 조합 편집 기능을 추가했습니다. 무늬 설정은 아직 구현하지 않았습니다. 이전에 대충 만들었던 무늬들도 개수가 적고 마음에 들지 않아 새로 여러 개 만들었습니다.
 
@@ -326,19 +333,23 @@ interface.onmouseup = method(interface, function(mx, my) {
 
 # 2월 15일
 
-![무늬 설정 버튼 위아래에 체크박스가 3개 생겼다. 무늬를 바꾸고 있다.](/assets/post-images/honeyhouse-feb15.png)
+![무늬 설정 버튼 위아래에 체크박스가 3개 생겼다. 무늬를 바꾸고 있다.](/assets/post-images/honeyhouse-feb15.webp)
 
 체크박스와 무늬 설정을 구현했습니다. 덤으로 마우스 휠 방향을 바꾸는 체크박스까지 만들었습니다.
 
 # 2월 16일
 
-![조각을 맞춘 뒤에 보드 위에서 새로운 칸이 부드러운 움직임으로 내려오고 있다.](/assets/post-images/honeyhouse-feb16.gif)
+<p>
+<video autoplay loop muted playsinline poster="/assets/post-images/honeyhouse-feb16-thumbnail.png">
+<source type="video/webm" src="/assets/post-images/honeyhouse-feb16.webm">
+</video>
+</p>
 
 보드 위에서 새로운 칸이 내려오는 애니메이션을 만들었습니다. 부드러운 게 좋네요. 원래 디스코드에 근황으로 올리면 어떨까 싶어서 움짤로 찍어봤는데 결국에는 안 올리고 트위터에만 올렸습니다.
 
 # 2월 18일
 
-![게임이 끝나 보드의 모든 칸이 사라지고 있다.](/assets/post-images/honeyhouse-feb18.png)
+![게임이 끝나 보드의 모든 칸이 사라지고 있다.](/assets/post-images/honeyhouse-feb18.webp)
 
 드디어 게임 오버를 구현했습니다!!! 최종본과는 달리 게임 오버 조건을 만족하면 왜 죽었는지 볼 시간도 안 주고 바로 사라지는 애니메이션으로 넘어갔습니다.
 
@@ -346,7 +357,7 @@ interface.onmouseup = method(interface, function(mx, my) {
 
 # 2월 20일
 
-![보드의 왼쪽에 남은 시간, 오른쪽에 점수가 표시되고 있다. 남은 시간은 33초, 점수는 3000점이다.](/assets/post-images/honeyhouse-feb20.png)
+![보드의 왼쪽에 남은 시간, 오른쪽에 점수가 표시되고 있다. 남은 시간은 33초, 점수는 3000점이다.](/assets/post-images/honeyhouse-feb20.webp)
 
 시간 제한 모드를 실제로 구현했습니다. 이때는 아직 60초 모드밖에 없었고 보드를 섞기 전에 아무런 신호도 주지 않았습니다. 시간 제한 UI를 구현해야 하길래 점수도 얼레벌레 구현했습니다.
 
@@ -376,7 +387,7 @@ interface.onmouseup = method(interface, function(mx, my) {
 
 # 2월 22일
 
-![설정 창에서 컬러 피커를 열어 색상을 수정하고 있다. #132AB0(탁한 파랑)이 선택되어 있다.](/assets/post-images/honeyhouse-feb22.png)
+![설정 창에서 컬러 피커를 열어 색상을 수정하고 있다. #132AB0(탁한 파랑)이 선택되어 있다.](/assets/post-images/honeyhouse-feb22.webp)
 
 하루 만에 DLL을 버리고 GMS2 컬러 피커 구현체를 만들었습니다. 🏃 덤으로 힌트 기능도 만들었습니다.
 

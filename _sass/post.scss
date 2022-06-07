@@ -305,11 +305,11 @@
 		opacity: 50%;
 	}
 
-	img {
+	img, video {
 		max-width: 25rem;
 		max-height: 25rem;
 	}
-	p > img:only-child {
+	p > img:only-child, p > video:only-child {
 		display: block;
 		margin: auto;
 		max-width: 100%;
