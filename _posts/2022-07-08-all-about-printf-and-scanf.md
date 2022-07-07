@@ -4,7 +4,7 @@ title: "printf와 scanf 제대로 알고 가기"
 tags:
 - C
 - 언어론
-# comments: true
+comments: true
 ---
 
 **이 글은 단축링크 <https://eatch.dev/s/printf>로도 들어올 수 있습니다.**
