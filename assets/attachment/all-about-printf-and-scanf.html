@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="UTF-8">
+		<title>printf/scanf 치트시트</title>
+		<style>
+			html {
+				margin: 0;
+
+				font-family: '나눔스퀘어라운드';
+			}
+
+			body {
+				position: relative;
+				margin: 1rem;
+			}
+
+			section {
+				width: 100%;
+
+				overflow-x: auto;
+			}
+			h1 {
+				margin: 0;
+
+				font-size: 2em;
+			}
+			h2 {
+				margin: 0;
+				margin-top: 1rem;
+			}
+			p {
+				margin: 0;
+				margin-top: 0.5rem;
+			}
+			p.center {
+				text-align: center;
+			}
+			a {
+				color: unset;
+				text-decoration: none;
+			}
+			a:hover {
+				text-decoration: underline;
+			}
+
+			table {
+				margin: 0.5rem auto 0;
+
+				border-collapse: collapse;
+				white-space: nowrap;
+			}
+			table.layout th {
+				padding: 0;
+
+				font-size: 2em;
+				font-weight: normal;
+				text-align: left;
+				vertical-align: top;
+			}
+			table.layout td {
+				border: none;
+				padding: 0.2rem 0.4rem;
+
+				text-align: left;
+				vertical-align: top;
+			}
+			td {
+				border: 1px solid black;
+				padding: 0.2rem;
+				text-align: center;
+			}
+			.dual {
+				display: flex;
+				flex-flow: row wrap;
+				justify-content: space-evenly;
+				gap: 1rem;
+			}
+			.dual > .half {
+				flex: 1 1 0;
+			}
+			.dual > .half > p {
+				white-space: nowrap;
+			}
+
+			.left {
+				text-align: left;
+			}
+			.right {
+				text-align: right;
+			}
+			.small {
+				font-size: 0.7em;
+			}
+			.code {
+				font-family: 'D2Coding';
+			}
+			.black {
+				color: black;
+			}
+			.printf {
+				color: #0070e0;
+			}
+			.scanf {
+				color: #a06000;
+			}
+
+			.credit {
+				float: right;
+
+				text-align: right;
+				line-height: 2rem;
+			}
+
+			@media all and (prefers-color-scheme: dark) {
+				html {
+					color: white;
+					background-color: #222;
+				}
+
+				td {
+					border-color: white;
+				}
+
+				.black {
+					color: white;
+				}
+				.printf {
+					color: #90e0ff;
+				}
+				.scanf {
+					color: #ffc080;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<span class="credit">
+			<a href="https://eatch.dev/s/printf">https://eatch.dev/s/printf</a> · 2022-07-08
+		</span>
+		<h1>
+			<span class="printf">printf</span>/<span class="scanf">scanf</span> Cheat Sheet
+		</h1>
+
+		<section>
+			<h2>기본 문법</h2>
+			<table class="printf layout">
+				<tr class="code">
+					<th>%</th>
+					<th>[플래그]</th>
+					<th>[최소 폭]</th>
+					<th>[.정밀도]</th>
+					<th>[길이]</th>
+					<th>변환 지정자</th>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+					<td>출력할 최소 글자 수</td>
+					<td></td>
+					<td>출력할 값의 타입</td>
+					<td>사용할 서식</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>
+						<span class="black code">'-'</span>: 왼쪽 정렬<br>
+						<span class="black code">'+'</span>: 부호 항상 출력<br>
+						<span class="black code">' '</span>: 부호 자리에 공백 항상 출력<br>
+						<span class="black code">'#'</span>: C 코드와 호환되는 서식<br>
+						<span class="black code">'0'</span>: 공백 대신 0으로 출력
+					</td>
+					<td>
+						<span class="black code">(정수)</span><br>
+						<span class="black code">*</span>: 추가 인자로 입력
+					</td>
+					<td>
+						<span class="black code">.</span> = 0<br>
+						<span class="black code">.(정수)</span><br>
+						<span class="black code">.*</span>: 추가 인자로 입력
+					</td>
+					<td></td>
+					<td></td>
+				</tr>
+			</table>
+			<table class="scanf layout">
+				<tr class="code">
+					<th>%</th>
+					<th>[*]</th>
+					<th>[최대 폭]</th>
+					<th>[길이]</th>
+					<th>변환 지정자</th>
+				</tr>
+				<tr>
+					<td></td>
+					<td>읽은 값을 버림</td>
+					<td>읽을 최대 글자 수</td>
+					<td>읽을 값의 타입</td>
+					<td>인식할 서식</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+					<td><span class="black code">(정수)</span></td>
+					<td></td>
+					<td></td>
+				</tr>
+			</table>
+		</section>
+
+		<section>
+			<h2>변환 지정자별 세부사항</h2>
+			<table>
+				<tr>
+					<td class="printf" colspan="9">길이</td>
+					<td rowspan="2" colspan="3">변환 지정자</td>
+					<td class="scanf" rowspan="2">공백</td>
+					<td class="scanf" colspan="9">길이</td>
+				</tr>
+				<tr>
+					<td class="printf code">L</td>
+					<td class="printf code">t</td>
+					<td class="printf code">z</td>
+					<td class="printf code">j</td>
+					<td class="printf code">ll</td>
+					<td class="printf code">l</td>
+					<td class="printf"></td>
+					<td class="printf code">h</td>
+					<td class="printf code">hh</td>
+					<td class="scanf code">hh</td>
+					<td class="scanf code">h</td>
+					<td class="scanf"></td>
+					<td class="scanf code">l</td>
+					<td class="scanf code">ll</td>
+					<td class="scanf code">j</td>
+					<td class="scanf code">z</td>
+					<td class="scanf code">t</td>
+					<td class="scanf code">L</td>
+				</tr>
+				<tr>
+					<td class="printf code"></td>
+					<td class="printf code"></td>
+					<td class="printf code"></td>
+					<td class="printf code"></td>
+					<td class="printf code"></td>
+					<td class="printf code"></td>
+					<td class="printf code"></td>
+					<td class="printf code"></td>
+					<td class="printf code"></td>
+					<td class="printf right"><span class="code">%</span> 문자</td>
+					<td class="code">%</td>
+					<td class="scanf left"><span class="code">%</span> 문자</td>
+					<td class="scanf">○</td>
+					<td class="scanf code"></td>
+					<td class="scanf code"></td>
+					<td class="scanf code"></td>
+					<td class="scanf code"></td>
+					<td class="scanf code"></td>
+					<td class="scanf code"></td>
+					<td class="scanf code"></td>
+					<td class="scanf code"></td>
+					<td class="scanf code"></td>
+				</tr>
+				<tr>
+					<td class="printf code"></td>
+					<td class="printf code"></td>
+					<td class="printf code"></td>
+					<td class="printf code"></td>
+					<td class="printf code"></td>
+					<td class="printf code">wi</td>
+					<td class="printf code">i</td>
+					<td class="printf code"></td>
+					<td class="printf code"></td>
+					<td class="printf right">문자</td>
+					<td class="code">c</td>
+					<td class="scanf left">
+						<span class="small">[폭을 생략했을 경우]</span><br>
+						문자<br><br>
+						<span class="small">[폭을 입력했을 경우]</span><br>
+						문자의 배열<br>
+						<span class="small">널 문자를 쓰지 않음</span>
+					</td>
+					<td class="scanf"></td>
+					<td class="scanf code"></td>
+					<td class="scanf code"></td>
+					<td class="scanf code" rowspan="4">c*</td>
+					<td class="scanf code" rowspan="4">wc*</td>
+					<td class="scanf code"></td>
+					<td class="scanf code"></td>
+					<td class="scanf code"></td>
+					<td class="scanf code"></td>
+					<td class="scanf code"></td>
+				</tr>
+				<tr>
+					<td class="printf code"></td>
+					<td class="printf code"></td>
+					<td class="printf code"></td>
+					<td class="printf code"></td>
+					<td class="printf code"></td>
+					<td class="printf code">wc*</td>
+					<td class="printf code">c*</td>
+					<td class="printf code"></td>
+					<td class="printf code"></td>
+					<td class="printf right">
+						문자열<br>
+						<span class="small">출력하는 최대 문자 수 = 정밀도</span>
+					</td>
+					<td class="code">s</td>
+					<td class="scanf left">
+						문자열<br>
+						<span class="small">공백 문자에서 멈춤</span>
+					</td>
+					<td class="scanf">○</td>
+					<td class="scanf code"></td>
+					<td class="scanf code"></td>
+					<td class="scanf code"></td>
+					<td class="scanf code"></td>
+					<td class="scanf code"></td>
+					<td class="scanf code"></td>
+					<td class="scanf code"></td>
+				</tr>
+				<tr>
+					<td class="printf code"></td>
+					<td class="printf code"></td>
+					<td class="printf code"></td>
+					<td class="printf code"></td>
+					<td class="printf code"></td>
+					<td class="printf code"></td>
+					<td class="printf code"></td>
+					<td class="printf code"></td>
+					<td class="printf code"></td>
+					<td>(없음)</td>
+					<td class="code">[...]</td>
+					<td class="scanf left">
+						특정 문자로 이루어진 문자열<br>
+						<span class="small">폭 = 입력받는 최대 문자 수</span><br>
+						<span class="small">집합에 없는 문자에서 멈춤</span><br>
+						<span class="small">컴파일러에 따라 <span class="code">a-z</span> 문법 사용 가능</span>
+					</td>
+					<td class="scanf"></td>
+					<td class="scanf code"></td>
+					<td class="scanf code"></td>
+					<td class="scanf code"></td>
+					<td class="scanf code"></td>
+					<td class="scanf code"></td>
+					<td class="scanf code"></td>
+					<td class="scanf code"></td>
+				</tr>
+				<tr>
+					<td class="printf code"></td>
+					<td class="printf code"></td>
+					<td class="printf code"></td>
+					<td class="printf code"></td>
+					<td class="printf code"></td>
+					<td class="printf code"></td>
+					<td class="printf code"></td>
+					<td class="printf code"></td>
+					<td class="printf code"></td>
+					<td>(없음)</td>
+					<td class="code">[^...]</td>
+					<td class="scanf left">
+						특정 문자를 제외한 문자로 이루어진 문자열<br>
+						<span class="small">폭 = 입력받는 최대 문자 수</span><br>
+						<span class="small">집합에 있는 문자에서 멈춤</span><br>
+						<span class="small">컴파일러에 따라 <span class="code">a-z</span> 문법 사용 가능</span>
+					</td>
+					<td class="scanf"></td>
+					<td class="scanf code"></td>
+					<td class="scanf code"></td>
+					<td class="scanf code"></td>
+					<td class="scanf code"></td>
+					<td class="scanf code"></td>
+					<td class="scanf code"></td>
+					<td class="scanf code"></td>
+				</tr>
+				<tr>
+					<td class="printf code" rowspan="2"></td>
+					<td class="printf code" rowspan="5">pd</td>
+					<td class="printf code" rowspan="5">sz</td>
+					<td class="printf code" rowspan="5">im</td>
+					<td class="printf code" rowspan="5">ll</td>
+					<td class="printf code" rowspan="5">l</td>
+					<td class="printf code" rowspan="5">i</td>
+					<td class="printf code" rowspan="5">s</td>
+					<td class="printf code" rowspan="5">c</td>
+					<td class="printf right" rowspan="2">
+						부호 있는 10진 정수<br>
+						<span class="small">출력하는 최소 자릿수 (기본 1) = 정밀도</span>
+					</td>
+					<td class="code">d</td>
+					<td class="scanf left">
+						부호 있는 10진 정수<br>
+						<span class="small code">[+-]?[0-9]+</span>
+					</td>
+					<td class="scanf">○</td>
+					<td class="scanf code" rowspan="5">c*</td>
+					<td class="scanf code" rowspan="5">s*</td>
+					<td class="scanf code" rowspan="5">i*</td>
+					<td class="scanf code" rowspan="5">l*</td>
+					<td class="scanf code" rowspan="5">ll*</td>
+					<td class="scanf code" rowspan="5">im*</td>
+					<td class="scanf code" rowspan="5">sz*</td>
+					<td class="scanf code" rowspan="5">pd*</td>
+					<td class="scanf code"></td>
+				</tr>
+				<tr>
+					<td class="code">i</td>
+					<td class="scanf left">
+						<span class="small">[0으로 시작할 경우]</span><br>
+						부호 있는 8진 정수<br>
+						<span class="small"><span class="code">%o</span>와 같은 규칙</span><br><br>
+						<span class="small">[0x로 시작할 경우]</span><br>
+						부호 있는 16진 정수<br>
+						<span class="small"><span class="code">%x</span>와 같은 규칙</span><br><br>
+						<span class="small">[나머지 경우]</span><br>
+						부호 있는 10진 정수<br>
+						<span class="small"><span class="code">%d</span>와 같은 규칙</span>
+					</td>
+					<td class="scanf">○</td>
+					<td class="scanf code"></td>
+				</tr>
+				<tr>
+					<td class="printf code"></td>
+					<td class="printf right">
+						부호 없는 10진 정수<br>
+						<span class="small">출력하는 최소 자릿수 (기본 1) = 정밀도</span>
+					</td>
+					<td class="code">u</td>
+					<td class="scanf left">
+						부호 없는 10진 정수<br>
+						<span class="small code">[+-]?[0-9]+</span>
+					</td>
+					<td class="scanf">○</td>
+					<td class="scanf code"></td>
+				</tr>
+				<tr>
+					<td class="printf code"></td>
+					<td class="printf right">
+						부호 없는 8진 정수<br>
+						<span class="small">출력하는 최소 자릿수 (기본 1) = 정밀도</span>
+					</td>
+					<td class="code">o</td>
+					<td class="scanf left">
+						부호 없는 8진 정수<br>
+						<span class="small code">[+-]?[0-7]+</span>
+					</td>
+					<td class="scanf">○</td>
+					<td class="scanf code"></td>
+				</tr>
+				<tr>
+					<td class="printf code"></td>
+					<td class="printf right">
+						부호 없는 16진 정수<br>
+						<span class="small">출력하는 최소 자릿수 (기본 1) = 정밀도</span>
+					</td>
+					<td><span class="code">x</span>/<span class="code">X</span></td>
+					<td class="scanf left">
+						부호 없는 16진 정수<br>
+						<span class="small code">[+-]?(0x)?[0-9a-f]+</span>
+					</td>
+					<td class="scanf">○</td>
+					<td class="scanf code"></td>
+				</tr>
+				<tr>
+					<td class="printf code" rowspan="4">ld</td>
+					<td class="printf code"></td>
+					<td class="printf code"></td>
+					<td class="printf code"></td>
+					<td class="printf code"></td>
+					<td class="printf code" rowspan="4">d</td>
+					<td class="printf code" rowspan="4">d</td>
+					<td class="printf code"></td>
+					<td class="printf code"></td>
+					<td class="printf right">
+						부동소숫점<br>
+						<span class="small">소숫점 아래 자릿수 (기본 6) = 정밀도</span><br>
+						<span class="small">무한대는 <span class="code">inf</span> 혹은 <span class="code">infinity</span>로 변환</span>
+					</td>
+					<td><span class="code">f</span>/<span class="code">F</span></td>
+					<td class="scanf left" rowspan="4">
+						<span class="small">[0x로 시작할 경우]</span><br>
+						부동소숫점 (16진 지수)<br>
+						<span class="small code">[+-]?0x{significand}(p[+-]?[0-9]+)?</span><br>
+						<span class="small"><span class="code">{significand}</span>는 <span class="code">[0-9a-f]+(\.[0-9a-f]*)?|\.[0-9a-f]+</span></span><br><br>
+						<span class="small">[나머지 경우]</span><br>
+						부동소숫점 (10진)<br>
+						<span class="small code">[+-]?{significand}(e[+-]?[0-9]+)?</span><br>
+						<span class="small"><span class="code">{significand}</span>는 <span class="code">[0-9]+(\.[0-9]*)?|\.[0-9]+</span></span><br><br>
+						<span class="small">[이외 특수한 값]</span><br>
+						<span class="small">무한대: <span class="code">[+-]?inf(inity)?</span></span><br>
+						<span class="small">NaN: <span class="code">[+-]?nan</span></span><br>
+					</td>
+					<td class="scanf">○</td>
+					<td class="scanf code"></td>
+					<td class="scanf code"></td>
+					<td class="scanf code" rowspan="4">f*</td>
+					<td class="scanf code" rowspan="4">d*</td>
+					<td class="scanf code"></td>
+					<td class="scanf code"></td>
+					<td class="scanf code"></td>
+					<td class="scanf code"></td>
+					<td class="scanf code" rowspan="4">ld*</td>
+				</tr>
+				<tr>
+					<td class="printf code"></td>
+					<td class="printf code"></td>
+					<td class="printf code"></td>
+					<td class="printf code"></td>
+					<td class="printf code"></td>
+					<td class="printf code"></td>
+					<td class="printf right">
+						부동소숫점<br>(10진 지수 표기)<br>
+						<span class="small">소숫점 아래 자릿수 (기본 6) = 정밀도</span><br>
+						<span class="small">무한대는 <span class="code">inf</span> 혹은 <span class="code">infinity</span>로 변환</span><br>
+						<span class="small">지수 자리는 최소 2자리</span><br>
+						<span class="small">0은 지수 자리가 +00으로 출력</span>
+					</td>
+					<td><span class="code">e</span>/<span class="code">E</span></td>
+					<td class="scanf">○</td>
+					<td class="scanf code"></td>
+					<td class="scanf code"></td>
+					<td class="scanf code"></td>
+					<td class="scanf code"></td>
+					<td class="scanf code"></td>
+					<td class="scanf code"></td>
+				</tr>
+				<tr>
+					<td class="printf code"></td>
+					<td class="printf code"></td>
+					<td class="printf code"></td>
+					<td class="printf code"></td>
+					<td class="printf code"></td>
+					<td class="printf code"></td>
+					<td class="printf right">
+						부동소숫점 (16진 지수 표기)<br>
+						<span class="small">소숫점 아래 자릿수 (기본값은 자동) = 정밀도</span><br>
+						<span class="small">normalized value 범위일 경우 첫 자리가 0이 아님</span><br>
+						<span class="small">0은 지수 자리가 +0으로 출력</span>
+					</td>
+					<td><span class="code">a</span>/<span class="code">A</span></td>
+					<td class="scanf">○</td>
+					<td class="scanf code"></td>
+					<td class="scanf code"></td>
+					<td class="scanf code"></td>
+					<td class="scanf code"></td>
+					<td class="scanf code"></td>
+					<td class="scanf code"></td>
+				</tr>
+				<tr>
+					<td class="printf code"></td>
+					<td class="printf code"></td>
+					<td class="printf code"></td>
+					<td class="printf code"></td>
+					<td class="printf code"></td>
+					<td class="printf code"></td>
+					<td class="printf right">
+						부동소숫점 (10진 알아서 표기)<br>
+						<span class="small">0이거나 절댓값이 0.0001 이상 10^(정밀도) 미만일 경우 <span class="code">%f</span>와 같은 규칙</span><br>
+						<span class="small">그렇지 않을 경우 <span class="code">%e</span>와 같은 규칙</span><br>
+						<span class="small">최대 유효 숫자의 개수 (기본 6, 최소 1) = 정밀도</span><br>
+						<span class="small">맨 뒤의 의미 없는 0을 출력하지 않음</span>
+					</td>
+					<td><span class="code">g</span>/<span class="code">G</span></td>
+					<td class="scanf">○</td>
+					<td class="scanf code"></td>
+					<td class="scanf code"></td>
+					<td class="scanf code"></td>
+					<td class="scanf code"></td>
+					<td class="scanf code"></td>
+					<td class="scanf code"></td>
+				</tr>
+				<tr>
+					<td class="printf code"></td>
+					<td class="printf code"></td>
+					<td class="printf code"></td>
+					<td class="printf code"></td>
+					<td class="printf code"></td>
+					<td class="printf code"></td>
+					<td class="printf code">v*</td>
+					<td class="printf code"></td>
+					<td class="printf code"></td>
+					<td class="printf right">
+						포인터<br>
+						<span class="small">컴파일러마다 서식이 다름</span>
+					</td>
+					<td class="code">p</td>
+					<td class="scanf left">
+						포인터<br>
+						<span class="small">printf의 <span class="code">%p</span>와 호환되는 서식</span>
+					</td>
+					<td class="scanf">○</td>
+					<td class="scanf code"></td>
+					<td class="scanf code"></td>
+					<td class="scanf code">v**</td>
+					<td class="scanf code"></td>
+					<td class="scanf code"></td>
+					<td class="scanf code"></td>
+					<td class="scanf code"></td>
+					<td class="scanf code"></td>
+					<td class="scanf code"></td>
+				</tr>
+				<tr>
+					<td class="printf code"></td>
+					<td class="printf code">pd*</td>
+					<td class="printf code">sz*</td>
+					<td class="printf code">im*</td>
+					<td class="printf code">ll*</td>
+					<td class="printf code">l*</td>
+					<td class="printf code">i*</td>
+					<td class="printf code">s*</td>
+					<td class="printf code">c*</td>
+					<td class="printf right">
+						이번 호출에서 출력한 문자 수<br>
+						<span class="small">인자 포인터가 가리키는 주소에 값을 씀</span>
+					</td>
+					<td class="code">n</td>
+					<td class="scanf left">
+						이번 호출에서 읽은 문자 수<br>
+						<span class="small">인자 포인터가 가리키는 주소에 값을 씀</span>
+					</td>
+					<td class="scanf"></td>
+					<td class="scanf code">c*</td>
+					<td class="scanf code">s*</td>
+					<td class="scanf code">i*</td>
+					<td class="scanf code">l*</td>
+					<td class="scanf code">ll*</td>
+					<td class="scanf code">im*</td>
+					<td class="scanf code">sz*</td>
+					<td class="scanf code">pd*</td>
+					<td class="scanf code"></td>
+				</tr>
+			</table>
+			<p>
+				<span class="code">c</span> = <span class="code">char</span>,
+				<span class="code">wc</span> = <span class="code">wchar_t</span>,<br>
+				<span class="code">s</span> = <span class="code">short</span>,
+				<span class="code">i</span> = <span class="code">int</span>,
+				<span class="code">wi</span> = <span class="code">wint_t</span>,
+				<span class="code">l</span> = <span class="code">long</span>,
+				<span class="code">ll</span> = <span class="code">long long</span>,<br>
+				<span class="code">im</span> = <span class="code">intmax_t</span>,
+				<span class="code">sz</span> = <span class="code">size_t</span>,
+				<span class="code">pd</span> = <span class="code">ptrdiff_t</span>,<br>
+				<span class="code">f</span> = <span class="code">float</span>,
+				<span class="code">d</span> = <span class="code">double</span>,
+				<span class="code">ld</span> = <span class="code">long double</span>,<br>
+				<span class="code">v</span> = <span class="code">void</span>
+			</p>
+		</section>
+
+		<section>
+			<h2>서식 지정자가 아닌 문자</h2>
+			<div class="dual">
+				<div class="half printf">
+					<p class="center"><span class="black">모든 문자</span>: 그대로 출력</p>
+				</div>
+				<div class="half scanf">
+					<p class="center"><span class="black">공백</span>: 0개 이상의 공백 문자를 읽은 뒤 버리기</p>
+					<p class="center"><span class="black">이외 모든 문자</span>: 정확히 일치</p>
+				</div>
+			</div>
+		</section>
+
+		<section>
+			<h2>반환값</h2>
+			<div class="dual">
+				<div class="half printf">
+					<p class="center"><span class="black">성공</span>: 출력한 문자 수 (<span class="code">sn</span>의 경우 버퍼 크기를 무시하고)</p>
+					<p class="center"><span class="black">출력/인코딩/<span class="code">_s</span> 오류</span>: 음수</p>
+				</div>
+				<div class="half scanf">
+					<p class="center"><span class="black">성공/매치 실패</span>: 대입에 성공한 서식 지정자 개수 (<span class="code">%n</span>과 <span class="code">*</span>을 무시하고)</p>
+					<p class="center"><span class="black">입력/<span class="code">_s</span> 오류</span>: <span class="code">EOF</span></p>
+				</div>
+			</div>
+		</section>
+
+		<section>
+			<h2>변종</h2>
+			<table class="printf layout">
+				<tr>
+					<th class="code black">·</th>
+					<th class="code black">·</th>
+					<th class="code black">·</th>
+					<th class="code">printf</th>
+					<th class="code black">·</th>
+				</tr>
+				<tr>
+					<td>가변인자로 전달</td>
+					<td>표준 출력으로</td>
+					<td>일반 문자열</td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<th class="code black">v</th>
+					<th class="code black">f</th>
+					<th class="code black">w</th>
+					<th class="code black"></th>
+					<th class="code black">_s</th>
+				</tr>
+				<tr>
+					<td><span class="code">va_list</span>로 전달</td>
+					<td>파일로</td>
+					<td>와이드 문자열</td>
+					<td></td>
+					<td>범위 확인 등</td>
+				</tr>
+				<tr>
+					<th class="code black"></th>
+					<th class="code black">s</th>
+					<th class="code black"></th>
+					<th class="code black"></th>
+					<th class="code black"></th>
+				</tr>
+				<tr>
+					<td></td>
+					<td>문자열로</td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<th class="code black"></th>
+					<th class="code black">sn</th>
+					<th class="code black"></th>
+					<th class="code black"></th>
+					<th class="code black"></th>
+				</tr>
+				<tr>
+					<td></td>
+					<td>문자열로, 버퍼 크기만큼만</td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+			</table>
+			<table class="scanf layout">
+				<tr>
+					<th class="code black">·</th>
+					<th class="code black">·</th>
+					<th class="code black">·</th>
+					<th class="code">scanf</th>
+					<th class="code black">·</th>
+				</tr>
+				<tr>
+					<td>가변인자로 전달</td>
+					<td>표준 입력에서</td>
+					<td>일반 문자열</td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<th class="code black">v</th>
+					<th class="code black">f</th>
+					<th class="code black">w</th>
+					<th class="code black"></th>
+					<th class="code black">_s</th>
+				</tr>
+				<tr>
+					<td><span class="code">va_list</span>로 전달</td>
+					<td>파일에서</td>
+					<td>와이드 문자열</td>
+					<td></td>
+					<td>범위 확인 등</td>
+				</tr>
+				<tr>
+					<th class="code black"></th>
+					<th class="code black">s</th>
+					<th class="code black"></th>
+					<th class="code black"></th>
+					<th class="code black"></th>
+				</tr>
+				<tr>
+					<td></td>
+					<td>문자열에서</td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+			</table>
+			<p><span class="printf code">snwprintf</span>, <span class="printf code">vsnwprintf</span>는 지원하지 않음</p>
+		</section>
+	</body>
+</html>
