@@ -4,8 +4,8 @@ title: "Thanks for inventing JavaScript"
 image: "/assets/post-images/thanks-for-inventing-javascript.png"
 edited_at: 2022-04-05
 tags:
-- 자바스크립트
-- 언어론
+- JavaScript
+- 언어
 - 투정
 comments: true
 ---

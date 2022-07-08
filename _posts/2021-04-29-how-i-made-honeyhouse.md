@@ -5,6 +5,7 @@ edited_at: 2022-06-07
 tags:
 - 게임메이커
 - 게임개발
+- 선형대수학
 comments: true
 ---
 

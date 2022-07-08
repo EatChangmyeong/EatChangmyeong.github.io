@@ -3,7 +3,7 @@ layout: post
 title: "printf와 scanf 제대로 알고 가기"
 tags:
 - C
-- 언어론
+- 언어
 comments: true
 ---
 

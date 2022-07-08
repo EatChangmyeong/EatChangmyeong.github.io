@@ -5,7 +5,7 @@ image: "/assets/post-images/text-cursor.gif"
 edited_at: 2021-10-12
 tags:
 - C++
-- 언어론
+- 언어
 - 인터랙티브
 style: "/assets/post-styles/why-are-cpp-iterators-so-confusing.css"
 script: "/assets/post-scripts/why-are-cpp-iterators-so-confusing.js"

@@ -6,6 +6,7 @@ edited_at: 2022-04-05
 tags:
 - 수학
 - 확률론
+- 선형대수학
 comments: true
 ---
 
