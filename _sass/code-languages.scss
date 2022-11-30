@@ -22,6 +22,11 @@
 			content: "GML Code";
 		}
 	}
+	&.language-haskell {
+		#{$selector}::before {
+			content: "Haskell";
+		}
+	}
 	&.language-javascript:not(.gml) {
 		#{$selector}::before {
 			content: "JavaScript";
@@ -55,6 +60,11 @@
 	&.language-scss {
 		#{$selector}::before {
 			content: "SCSS";
+		}
+	}
+	&.language-typescript {
+		#{$selector}::before {
+			content: "TypeScript";
 		}
 	}
 }

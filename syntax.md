@@ -376,6 +376,7 @@ console.info('코드 테마는 무난하게 Monokai를 썼습니다.');
 * GML Code (`javascript` + `{:.gml}`)
 	* (특히 GMS 2.3 이후의 경우에는) JavaScript와 문법이 유사하기 때문에 하이라이팅 엔진을 훔쳐서 사용하고 있습니다. 일부 문법이 올바르게 인식되지 않을 수 있습니다.
 	* 기존에는 텍스트 기반 코드만을 GML로 지칭하고 액션 기반 코드에 DnD라는 별개의 이름을 사용했지만, 게임메이커 2022.3 업데이트부터 두 방식을 모두 GML로 지칭합니다. GML Code는 기존에 GML로 지칭하던 텍스트 코드를 가리킵니다.
+* Haskell (`haskell`)
 * JavaScript (`javascript`)
 * Liquid (`liquid`)
 * Markdown (`markdown`)
@@ -385,6 +386,7 @@ console.info('코드 테마는 무난하게 Monokai를 썼습니다.');
 * Python (`python`)
 * Rust (`rust`)
 * SCSS (`scss`)
+* TypeScript (`typescript`)
 
 ### 줄 번호가 있는 코드 블록 (Liquid 확장)
 
