@@ -276,10 +276,10 @@ instance Eq Bool where
     -- `/=`를 구현하지 않았으므로 위의 `class Eq a` 정의에 있는 기본 구현을 그대로 사용합니다.
 ```
 
-동일성 비교가 가능한 것만 인자로 받는 함수는 타입 자리에 특별한 문법으로 나타낼 수 있습니다.
+동일성 비교가 가능한 타입만 매개변수로 받는 함수는 타입 자리에 특별한 문법으로 나타낼 수 있습니다.
 
 ```haskell
-tripleEqual = Eq a => a -> a -> a -> Bool -- `Eq a =>`는 `a`가 `Eq`를 만족해야 한다는 의미입니다.
+tripleEqual :: Eq a => a -> a -> a -> Bool -- `Eq a =>`는 `a`가 `Eq`를 만족해야 한다는 의미입니다.
 tripleEqual a b c = a == b && b == c
 ```
 
