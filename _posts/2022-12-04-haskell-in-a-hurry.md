@@ -5,7 +5,7 @@ tags:
 - 함수형
 - Haskell
 - 보충
-# comments: true 
+comments: true
 ---
 
 *이 글은 [검증하지 말고 파싱하라](/2022/12/04/parse-don-t-validate.html)의 내용을 보충할 목적으로 작성하는 Haskell 속성 강좌 같은 느낌의 글입니다. 글을 읽는 데 꼭 필요한 분량만 작성했기 때문에 실제로 Haskell을 학습하는 목적으로는 적합하지 않으며, 진지하게 Haskell을 배우신다면 [Haskell 공식 홈페이지](https://www.haskell.org/documentation/)에서 안내하는 학습 자료 중 하나를 골라서 읽어보는 것을 권장드립니다.*

@@ -6,7 +6,7 @@ tags:
 - Haskell
 - 타입이론
 - 번역
-# comments: true 
+comments: true 
 ---
 
 *이 글은 Alexis King님의 [Parse, don't validate](https://lexi-lambda.github.io/blog/2019/11/05/parse-don-t-validate/)를 원 작성자님의 동의 하에 한국어로 번역한 글입니다. Haskell에 대한 사전 지식이 필요하며, 보충 글인 [급하게 배우는 Haskell](/2022/12/04/haskell-in-a-hurry.html)에 필요한 만큼만 설명해 두었습니다. 오역이 있을 경우 댓글로 알려주세요.*
