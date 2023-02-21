@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "급하게 배우는 Haskell (\"검증하지 말고 파싱하라\" 보충)"
-edited_at: 2022-12-25
+edited_at: 2023-02-21
 tags:
 - 함수형
 - Haskell
