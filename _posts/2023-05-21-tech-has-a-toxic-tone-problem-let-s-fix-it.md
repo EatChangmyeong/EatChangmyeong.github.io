@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "기술 업계의 독성 말투 문제, 고칩시다! (임시 업로드)"
+edited_at: 2023-05-22
 tags:
 - 문화
 - 번역
@@ -68,7 +69,7 @@ tags:
 <blockquote class="twitter-tweet" data-dnt="true"><p lang="en" dir="ltr">Anti-social behavior in any employee invisibly &amp; silently costs you money - WAY more money than their extraordinary productivity gains you.</p>&mdash; Sarah Mei (@sarahmei) <a href="https://twitter.com/sarahmei/status/673599699819958273?ref_src=twsrc%5Etfw">December 6, 2015</a>
 </blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
 
-> 직원의 보이지 않고 조용한 반사회적 행동에서 비용이 발생합니다. 그런 사람들의 비범한 생산성보다 정! 말! 큰 비용을 지출하게 합니다.
+> 어떤 직원이든 반사회적 행동에서는 보이지 않고 조용한 비용이 발생합니다. 그런 사람들의 비범한 생산성보다 정! 말! 큰 비용을 지출하게 합니다.
 
 이에 대한 해결책은 무엇일까요?
 
@@ -94,7 +95,7 @@ tags:
 
 1886년, 한 여성이 두 명의 영국 총리 후보와 각각 저녁 식사를 했습니다. 이 여성이 저녁 식사에서 언론에 다음과 같이 말했습니다.
 
-> "글래드스턴 씨와 저녁 식사를 한 후에는 그가 영국에서 가장 현명한 사람이라고 생각했습니다. 디즈레일리 씨와 저녁 식사를 한 후에는 **제가** 영국에서 가장 현명한 사람이라는 생각이 들었습니다.
+> "글래드스턴 씨와 저녁 식사를 한 후에는 그가 영국에서 가장 현명한 사람이라고 생각했습니다. 디즈레일리 씨와 저녁 식사를 한 후에는 **제가** 영국에서 가장 현명한 사람이라는 생각이 들었습니다."
 
 말할 필요도 없이 궁극적으로 디즈레일리가 선거에서 승리했습니다. 어떤 타입의 사람이 되고 싶은가요? 거들먹거리며 당신의 우월함을 자랑하는 사람이 되고 싶은가요? 아니면 다른 사람들의 가능성을 일깨우는 데 도움을 주는 사람이 되고 싶은가요? 단순하게, *당신은* 어떤 타입의 사람과 일을 하고 싶은가요?
 
