@@ -20,7 +20,7 @@ comments: true
 
 예를 들어 반론의 여지 없이 함수가 일급 객체인 JavaScript에서는 이렇게 할 수 있습니다.
 
-```js
+```javascript
 // 변수에 대입할 수 있을 것
 let cmp_asc = (l, r) => l - r;
 let cmp_desc = (l, r) => r - l;
@@ -90,7 +90,7 @@ int (*cmp(int desc))(const void *, const void *) {
 게임메이커로 예를 들어보자면, 게임메이커 언어는 스튜디오 2.3 시점부터 익명 함수를 지원하기 시작했고, 여기에 [적당히 흑마술을 부리면 클로저와 비슷한 것을 구현할 수 있다는 것을 확인했습니다](/2020/04/24/gms-tips.html#오묘한-함수형-프로그래밍의-세계). 이때 작성했던 코드는 다음과 같습니다.
 
 {:.gml}
-```js
+```javascript
 function plus_function(_x) {
 	return method({
 		_x: _x
@@ -106,7 +106,7 @@ show_message([ plus_three(5), plus_three(123) ]); // [ 8, 126 ]
 그런데 이렇게 흑마술을 부려야 했던 것은 언어 자체적으로 클로저를 지원하지 *않았기* 때문입니다(지금도 그런지는 잘 모르겠습니다). 클로저 지원이 있었다면 이렇게 군더더기 없는 코드를 짤 수 있었을 것입니다.
 
 {:.gml}
-```js
+```javascript
 function plus_function(_x) {
 	return function(_y) {
 		return _x + _y;
@@ -119,7 +119,7 @@ function plus_function(_x) {
 클로저 지원이 없다는 것은 모든 중첩/익명 함수를 함수 밖으로 빼고 기명 함수[^fn-named-function]로 바꾸어도 동작에 별 차이가 없다는 의미이기도 합니다.
 
 {:.gml}
-```js
+```javascript
 function __anonymous1(_y) {
 	return self._x + _y;
 }
@@ -166,7 +166,7 @@ int main(void) {
 
 실제로 돌아가게 짜려다 보니 코드가 많이 번잡해지긴 했는데, 제가 하려던 말은 클로저가 없는 익명 함수는 (함수형 패러다임을 구사하는 측면에서) 없는 것과 다를 바가 없다는 뜻이었습니다. 거꾸로 클로저만 있고 익명 함수만 없다면 그냥 기명 중첩 함수를 만들어서 쓰면 됩니다.
 
-```js
+```javascript
 function plus_function(x) {
 	function inner(y) {
 		return x + y;
