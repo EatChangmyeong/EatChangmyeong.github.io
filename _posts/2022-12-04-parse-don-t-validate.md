@@ -12,7 +12,7 @@ comments: true
 
 *이 글은 Alexis King님의 [Parse, don't validate](https://lexi-lambda.github.io/blog/2019/11/05/parse-don-t-validate/)를 원 작성자님의 동의 하에 한국어로 번역한 글입니다. Haskell에 대한 사전 지식이 필요하며, 보충 글인 [급하게 배우는 Haskell](/2022/12/04/haskell-in-a-hurry.html)에 필요한 만큼만 설명해 두었습니다. 오역이 있을 경우 댓글로 알려주세요.*
 
-*이어지는 글인 [No, dynamic type systems are not inherently more open](https://lexi-lambda.github.io/blog/2020/01/19/no-dynamic-type-systems-are-not-inherently-more-open/)은 [서동휘님의 블로그](https://blog.donghwi.dev/no-dynamic-type-systems-are-not-inherently-more-open/)에서 한국어로 읽을 수 있습니다.*
+*이어지는 글인 [No, dynamic type systems are not inherently more open](https://lexi-lambda.github.io/blog/2020/01/19/no-dynamic-type-systems-are-not-inherently-more-open/)은 [서동휘님의 블로그](https://donghwi.dev/no-dynamic-type-systems-are-not-inherently-more-open/)에서 한국어로 읽을 수 있습니다.*
 
 *번역 초안을 검수하고 매끄러운 번역문을 제안해주신 카타님과 RanolP님께 감사드립니다.*
 
