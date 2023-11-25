@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "기술 업계의 독성 말투 문제, 고칩시다! (임시 업로드)"
-edited_at: 2023-05-22
+edited_at: 2023-11-25
 tags:
 - 문화
 - 번역
