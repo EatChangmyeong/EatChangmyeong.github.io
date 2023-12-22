@@ -379,6 +379,7 @@ console.info('코드 테마는 무난하게 Monokai를 썼습니다.');
 * Haskell (`haskell`)
 * JavaScript (`javascript`)
 * Liquid (`liquid`)
+* Lisp (`lisp`)
 * Markdown (`markdown`)
 	* kramdown 문법은 올바르게 인식되지 않습니다.
 * Pseudocode (언어 없음 + `{:.pseudocode}`)

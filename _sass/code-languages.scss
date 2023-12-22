@@ -37,6 +37,11 @@
 			content: "Liquid";
 		}
 	}
+	&.language-lisp {
+		#{selector}::before {
+			content: "Lisp";
+		}
+	}
 	&.language-markdown {
 		#{$selector}::before {
 			content: "Markdown";
