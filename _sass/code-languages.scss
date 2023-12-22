@@ -38,7 +38,7 @@
 		}
 	}
 	&.language-lisp {
-		#{selector}::before {
+		#{$selector}::before {
 			content: "Lisp";
 		}
 	}
