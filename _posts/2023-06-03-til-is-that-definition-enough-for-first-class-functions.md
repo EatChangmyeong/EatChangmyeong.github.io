@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "TIL: 일급 함수, 그 정의로 충분할까?"
-edited_at: 2023-12-22
+edited_at: 2023-12-23
 tags:
 - 언어
 - 함수형
