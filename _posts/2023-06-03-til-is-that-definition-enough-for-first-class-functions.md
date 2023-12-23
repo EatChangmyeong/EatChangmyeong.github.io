@@ -241,7 +241,7 @@ function closure_and_self(_x) {
 	return method({
 		_x: _x,
 		_self: _self
-	}, function(_y) {
+	}, function() {
 		return self._x + self._self.y;
 	});
 }
