@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "TIL: 일급 함수, 그 정의로 충분할까?"
-edited_at: 2023-12-23
+edited_at: 2024-01-10
 tags:
 - 언어
 - 함수형
@@ -218,7 +218,7 @@ var plus_three = plus_function(3);
 show_message([ plus_three(5), plus_three(123) ]); // [ 8, 126 ]
 ```
 
-여기서 `self`와 [`method(struct, fn)`](https://manual.gamemaker.io/monthly/en/#t=GameMaker_Language/GML_Reference/Variable_Functions/method.htm)은 각각 JavaScript의 `this`와 `fn.bind(struct)`와 비슷한 동작을 합니다. 즉, **`this` 값 묶어놓기**에 해당하는 구현입니다. 당시에는 게임메이커 언어가 클로저를 지원하지 않았는데, 2023.11 업데이트가 올라온 지금도 그런지는 잘 모르겠습니다. 현재는 군 복무로 인해 GameMaker를 쓸 수 없는 관계로 제가 기억하는 동작을 기준으로 작성하며, 다음 휴가 동안 다시 확인해 보겠습니다.
+여기서 `self`와 [`method(struct, fn)`](https://manual.gamemaker.io/monthly/en/#t=GameMaker_Language/GML_Reference/Variable_Functions/method.htm)은 각각 JavaScript의 `this`와 `fn.bind(struct)`와 비슷한 동작을 합니다. 즉, **`this` 값 묶어놓기**에 해당하는 구현입니다. 당시에도 게임메이커 언어가 클로저를 지원하지 않았고, 2023.11 업데이트가 적용된 현재에도 지원하지 않고 있습니다.
 
 `method` 호출에서 볼 수 있듯이, 이 방식은 *외부 변수를 수동으로 가져와야 합니다*. JavaScript에서는 변수 범위 전체를 클로저로 잡아주기 때문에 무슨 변수를 사용할지 일일이 작성할 필요가 없습니다.
 
