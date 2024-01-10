@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "TIL: 일급 함수, 그 정의로 충분할까?"
-edited_at: 2024-01-10
+edited_at: 2024-01-11
 tags:
 - 언어
 - 함수형
@@ -147,21 +147,24 @@ dynamic_function(1, 2) // 3
 
 "일급 함수"를 지원한다고 여겨지는 언어와 아닌 언어의 차이점을 생각해 보면, 함수 안에서 참조할 수 있는 변수의 범위가 다릅니다.
 
-```c
-static int global = 1;
+```rust
+// Rust도 일급 함수를 지원하지만, "일급" 함수(클로저)와 "이급" 함수(전통적 함수)가 서로 다른 문법과 의미론을 가집니다.
+// 이 코드에서 정의하는 함수는 모두 이급 함수입니다.
 
-// C에서는 함수 안에서 함수를 정의할 수 없기 때문에 JavaScript 코드와 달리 바깥에 작성했습니다.
-int fn(void) {
-	int local = 3;
-	
-	printf("%d\n", global); // 1
-	printf("%d\n", outer_local); // use of undeclared identifer 'outer_local'
-	printf("%d\n", local); // 3
-}
+const GLOBAL: i32 = 1;
 
-int main(void) {
-	int outer_local = 2;
-	fn();
+fn main() {
+	let outer_local: i32 = 2;
+
+	fn inner() {
+		let local: i32 = 3;
+
+		println!("{}", GLOBAL); // 1
+		println!("{}", outer_local); // can't capture dynamic environment in a fn item
+		println!("{}", local); // 3
+	}
+
+	inner();
 }
 ```
 
@@ -171,7 +174,7 @@ const global = 1;
 function main() {
 	const outer_local = 2;
 	
-	function fn() {
+	function inner() {
 		const local = 3;
 		
 		console.log(global); // 1
@@ -179,7 +182,7 @@ function main() {
 		console.log(local); // 3
 	}
 	
-	fn();
+	inner();
 }
 ```
 
