@@ -10,9 +10,6 @@ tags:
 comments: true
 ---
 
-{:ol2: style="list-style-type: lower-alpha;"}
-{:ol3: style="list-style-type: lower-roman;"}
-
 ![JavaScript의 특이한 코드 실행 결과 여러 개가 있고 그 밑에 사람의 얼굴과 "Thanks for inventing Javascript"라는 문구를 달아 두었다.](/assets/post-images/thanks-for-inventing-javascript.png)
 
 어린 시절(나이가 1자리 수였을 때로 기억하고 있습니다)에 HTML 학습 사이트에 올라온 자바스크립트 달력 코드를 보고 따라해본 적이 있었습니다(실패했습니다). 또 나이가 더 들고 나서는 유명한 웹게임인 [Cookie Clicker](https://orteil.dashnet.org/cookieclicker/)의 한국어 번역 플러그인을 만들다가 던진 기억이 있습니다.
@@ -182,7 +179,7 @@ int main(void) {
 > 	1. ? [ToNumber][7.1.4](*arg*)를 *n*이라 한다.[^fn-tonumber]
 > 	1. *coerced*의 맨 끝에 *n*을 추가한다.
 > 	{:ol2}
-> 1. *highest*를 $$-\infty_\mathbb{F}$$로 정한다.[^fn-subscript-f]
+> 1. *highest*를 $$-\infty_\mathbb{F}$$로 정한다.
 > 1. *coerced*의 각 원소 *number*마다,
 > 	1. *number*가 **NaN**이면, **NaN**을 반환한다.
 > 	1. *number*가 $$+0_\mathbb{F}$$이고 *highest*가 $$-0_\mathbb{F}$$이면, *highest*를 $$+0_\mathbb{F}$$로 바꾼다.
@@ -387,7 +384,6 @@ JavaScript의 문제가 아닌 걸 치우고 IEEE 754의 문제만 따로 모아
 [^fn-ecma262-language-types]: ECMA-262 표준에서 정의하는 "[언어 타입][6.1]"(language types)은 `typeof`가 반환하는 타입과 다소 차이가 있는데, `null`은 Object가 아닌 별도의 Null 타입으로, `"function"` 타입은 내부 메소드 \[\[Call\]\]이 있는 Object 타입으로 분류되어 있습니다.
 [^fn-significand]: 상용로그 $$\log_{10} N = n + \log a$$에서 $$n$$을 지표, $$\log a$$를 가수라고 하는 것을 차용한 표기입니다. 다른 글에서도 이렇게 번역하는지는 잘 모르겠네요.
 [^fn-tonumber]: ToNumber는 임의의 값을 Number로 바꾸는 추상 연산으로, `+x`의 동작과 일치합니다.
-[^fn-subscript-f]: 아래 첨자 $$\mathbb{F}$$가 붙은 값은 JavaScript의 Number 값을 나타내며, 첨자가 없는 수학적 실수 값과 대비됩니다.
 [^fn-max-identity]: 엄밀히 말해 $$\max$$의 항등원은 [확장된 실수](https://en.wikipedia.org/wiki/Extended_real_number_line), 즉 $$\pm \infty$$가 추가된 실수 체계에서만 정의되며, 일반적인 실수 집합에서는 $$\max$$의 항등원이 존재하지 않습니다. 추가로 JavaScript의 Number에는 `NaN`이 정의되어 있는데, $$\max(\mathrm{NaN}, -\infty) = \max(-\infty, \mathrm{NaN}) = \mathrm{NaN}$$이므로 문제가 없습니다.
 [^fn-tostring]: ToString은 String이 아닌 값을 String인 값으로 바꾸는 추상 연산입니다. 이 맥락에서는 *lprim*과 *rprim*이 모두 String이므로 의미 있는 동작을 하지 않습니다.
 
@@ -416,3 +412,6 @@ JavaScript의 문제가 아닌 걸 치우고 IEEE 754의 문제만 따로 모아
 
 [연결문자열]: https://tc39.es/ecma262/multipage/ecmascript-data-types-and-values.html#string-concatenation
 [*UnaryExpression*]: https://tc39.es/ecma262/multipage/ecmascript-language-expressions.html#prod-UnaryExpression
+
+{:ol2: style="list-style-type: lower-alpha;"}
+{:ol3: style="list-style-type: lower-roman;"}
