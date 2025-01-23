@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "타입을 미분할 수 있다고?"
-edited_at: 2023-01-06
+edited_at: 2025-01-24
 tags:
 - TIL
 - 타입이론
@@ -10,10 +10,9 @@ comments: true
 
 뚱딴지같은 소리일 것 같긴 한데 솔직히 저도 놀랐습니다.
 
-<blockquote class="twitter-tweet" data-dnt="true"><p lang="ko" dir="ltr">타입을 미분할 수 있다고????????? <a href="https://t.co/eTxMAUYdxk">https://t.co/eTxMAUYdxk</a> <a href="https://t.co/RC391nxsbu">pic.twitter.com/RC391nxsbu</a></p>&mdash; 잇창명 EatChangmyeong💕 (@EatChangmyeong) <a href="https://twitter.com/EatChangmyeong/status/1532074353298288640?ref_src=twsrc%5Etfw">June 1, 2022</a>
-</blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+![잇창명의 2022년 6월 2일 X 게시물: "타입을 미분할 수 있다고?????????". 아래에 링크된 위키백과 항목 중 Type theory (현재 Derivative of a type) 섹션의 스크린샷이 첨부되어 있다.](/assets/post-images/x/1532074353298288640.png)
 
-위에 인용한 이미지에서 제가 하고 싶은 말을 다 하고 있긴 한데 그래도 블로그 글로 옮겨보려고 합니다. 안 쓰고 그냥 넘어갔다가 후회하는 것보다는 낫겠죠.
+[위에 인용한 이미지](https://en.wikipedia.org/wiki/Generalizations_of_the_derivative#Derivative_of_a_type)에서 제가 하고 싶은 말을 다 하고 있긴 한데 그래도 블로그 글로 옮겨보려고 합니다. 안 쓰고 그냥 넘어갔다가 후회하는 것보다는 낫겠죠.
 
 # 의미를 유지하면 같은 타입
 

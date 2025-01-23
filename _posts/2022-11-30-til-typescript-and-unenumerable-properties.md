@@ -1,14 +1,14 @@
 ---
 layout: post
 title: "TIL: 타입스크립트와 열거 불가능한 속성"
+edited_at: 2025-01-24
 tags:
 - TypeScript
 - TIL
 comments: true
 ---
 
-<blockquote class="twitter-tweet" data-dnt="true"><p lang="ko" dir="ltr">저는 타입스크립트를 쓰면서 enumerable이 false인 속성을 넣지 않겠습니다.<br>저는 타입스크립트를 쓰면서 enumerable이 false인 속성을 넣지 않겠습니다.<br>저는 타입스크립트를 쓰면서 enumerable이 false인 속성을 넣지 않겠습니다.</p>&mdash; 잇창명 EatChangmyeong🪖 ~ 240207 (@EatChangmyeong) <a href="https://twitter.com/EatChangmyeong/status/1597830156647018498?ref_src=twsrc%5Etfw">November 30, 2022</a>
-</blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+![잇창명의 2022년 11월 30일 X 게시물: "저는 타입스크립트를 쓰면서 enumerable이 false인 속성을 넣지 않겠습니다. 저는 타입스크립트를 쓰면서 enumerable이 false인 속성을 넣지 않겠습니다. 저는 타입스크립트를 쓰면서 enumerable이 false인 속성을 넣지 않겠습니다."](/assets/post-images/x/1597830156647018498.png)
 
 오늘은 TypeScript를 쓰다가 좀 커다란 시행착오를 했습니다.
 

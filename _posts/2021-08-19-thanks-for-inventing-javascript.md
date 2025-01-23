@@ -2,7 +2,7 @@
 layout: post
 title: "Thanks for inventing JavaScript"
 image: "/assets/post-images/thanks-for-inventing-javascript.png"
-edited_at: 2024-01-11
+edited_at: 2025-01-24
 tags:
 - JavaScript
 - 언어
@@ -368,8 +368,7 @@ print_type(True - True) # <class 'int'> 0
 
 이것도 `[]+[]`처럼 JavaScript 잘못이 맞아서 제가 뭐라고 할 수가 없긴 한데, 대신 2021년 8월에 봤던 [이 글](https://algassert.com/visualization/2014/03/27/Better-JS-Equality-Table.html)(영어)을 공유해드릴 수는 있을 것 같습니다.
 
-<blockquote class="twitter-tweet" data-dnt="true"><p lang="ko" dir="ltr">TL;DR: &quot;JS의 == 연산자가 구린 건 맞지만 왼쪽만큼만 구린 걸 오른쪽처럼 만들어서 선동질하지는 마라&quot; <a href="https://t.co/Ma2tqxn10L">pic.twitter.com/Ma2tqxn10L</a></p>&mdash; 잇창명 EatChangmyeong💕 (@EatChangmyeong) <a href="https://twitter.com/EatChangmyeong/status/1426610751238590467?ref_src=twsrc%5Etfw">August 14, 2021</a>
-</blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+![잇창명의 2021년 8월 15일 X 게시물: "TL;DR: "JS의 == 연산자가 구린 건 맞지만 왼쪽만큼만 구린 걸 오른쪽처럼 만들어서 선동질하지는 마라"". 위에 링크된 글에서 게시한 주황색 표와 초록색 표가 이미지로 첨부되어 있다.](/assets/post-images/x/1426610751238590467.png)
 
 # 결론
 

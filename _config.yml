@@ -1,7 +1,5 @@
 title: "잇창명 개발 블로그"
 tagline: "잇창명이 개발하다가 배운 것들을 글로 남깁니다."
-author:
-  twitter: EatChangmyeong
 logo: "https://eatch.dev/ei/-0-f"
 locale: ko_KR
 
@@ -27,8 +25,3 @@ kramdown:
 plugins:
   - jekyll-seo-tag
   - jekyll-feed
-
-# jekyll-seo-tag
-twitter:
-  username: EatChangmyeong
-  card: summary

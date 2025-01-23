@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "마크다운 문법 치트시트"
-date: 2021-05-15
+date: 2025-01-24
 permalink: "/syntax/"
 ---
 
@@ -893,18 +893,6 @@ cf. https://eatch.dev/ example@example.com
 ```
 </div>
 </div>
-
-## 트위터 트윗 인용
-
-*<https://publish.twitter.com/>에 원하는 트윗 주소를 붙여넣고 Opt-out of tailoring Twitter를 켜서(선택) 나오는 HTML 코드를 붙여넣습니다. kramdown 오류인지는 몰라도 `</blockquote>`부터는 다음 줄에 작성해야 올바르게 파싱됩니다.*
-
-<blockquote class="twitter-tweet" data-dnt="true"><p lang="en" dir="ltr">just setting up my twttr</p>&mdash; jack (@jack) <a href="https://twitter.com/jack/status/20?ref_src=twsrc%5Etfw">March 21, 2006</a>
-</blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-
-```markdown
-<blockquote class="twitter-tweet" data-dnt="true"><p lang="en" dir="ltr">just setting up my twttr</p>&mdash; jack (@jack) <a href="https://twitter.com/jack/status/20?ref_src=twsrc%5Etfw">March 21, 2006</a>
-</blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-```
 
 ## 스크립트 삽입
 

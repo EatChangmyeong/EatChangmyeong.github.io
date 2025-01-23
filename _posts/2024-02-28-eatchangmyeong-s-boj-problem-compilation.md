@@ -860,8 +860,7 @@ $$B_H = \begin{cases}
 
 위에 언급된 대회의 삽화 중에 뭔가 은근히 귀엽고 나눔스퀘어라운드(이 블로그의 제목체입니다)가 보이면 제 작업물이라고 생각해 주세요. 특히 CHAC 2022와 CPC 2024의 모든 삽화는 제가 그렸습니다. 😜
 
-<blockquote class="twitter-tweet" data-dnt="true"><p lang="ko" dir="ltr">사실은 이번 대회 준비하면서 공을 많이 들인 3짤4짤을 보여드리고 싶었는데요 <a href="https://t.co/E9GV0GsWeQ">https://t.co/E9GV0GsWeQ</a> <a href="https://t.co/SUNUOX6BR9">pic.twitter.com/SUNUOX6BR9</a></p>&mdash; 잇창명 EatChangmyeong💕 (@EatChangmyeong) <a href="https://twitter.com/EatChangmyeong/status/1829849604579606873?ref_src=twsrc%5Etfw">August 31, 2024</a>
-</blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+![잇창명의 2024년 8월 31일 X 게시물: "사실은 이번 대회 준비하면서 공을 많이 들인 3짤4짤을 보여드리고 싶었는데요". CPC 2024의 '울타리 공사' 첫 번째 삽화, '컵 쌓기' 세 번째 삽화, '통신 시스템의 성능 저하' 첫 번째 삽화와 두 번째 삽화가 첨부되어 있다. 역시 잇창명의 2023년 10월 16일 게시물 "오랜만에 생각났으니까 올려봐야지 제가 대학교 프로그래밍 대회 운영진으로 참가하면서 그렸던 귀여운 삽화를 봐주세요."를 인용하였다.](/assets/post-images/x/1829849604579606873.png)
 
 [^fn-proof-by-ac]: 직역하면 "**맞았습니다!!**에 의한 증명". 알고리즘의 엄밀한 증명이 필요한 프로그래밍 문제에서, 엄밀한 증명 없이 제출해 AC(Accepted; 백준 온라인 저지의 **맞았습니다!!**에 해당하는 채점 결과)를 받은 것을 "증명"으로 취급하는 농담.
 [^fn-breezewiki]: Arcaea Wiki가 소속된 Fandom의 [지나친 광고](https://youtu.be/qcfuA_UAz3I) 등의 문제로 인해 미러 서비스인 BreezeWiki로 링크합니다.

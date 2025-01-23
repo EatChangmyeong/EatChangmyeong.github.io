@@ -58,8 +58,7 @@ tags:
 
 물론 이처럼 극단적인 경우를 다루지는 않지만, 여전히 이런 사람은 우리 개발팀에 있는 것은 건강하지 않습니다. RailsBridge를 창업한 사라 메이는 [이렇게 말했습니다.](https://twitter.com/sarahmei/status/673599699819958273)
 
-<blockquote class="twitter-tweet" data-dnt="true"><p lang="en" dir="ltr">Anti-social behavior in any employee invisibly &amp; silently costs you money - WAY more money than their extraordinary productivity gains you.</p>&mdash; Sarah Mei (@sarahmei) <a href="https://twitter.com/sarahmei/status/673599699819958273?ref_src=twsrc%5Etfw">December 6, 2015</a>
-</blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+![Sarah Mei의 2015년 12월 7일 X 게시물: "Anti-social behavior in any employee invisibly & silently costs you money - WAY more money than their extraordinary productivity gains you."](/assets/post-images/x/673599699819958273.png)
 
 > 어떤 직원이든 반사회적 행동에서는 보이지 않고 조용한 비용이 발생합니다. 그런 사람들의 비범한 생산성보다 정! 말! 큰 비용을 지출하게 합니다.
 
