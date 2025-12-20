@@ -6,6 +6,7 @@ tags:
 - 문화
 - 번역
 - 임시
+migrate: false
 ---
 
 *이 글은 April Wensel님의 [Tech has a Toxic Tone Problem — Let's Fix It!](https://compassionatecoding.com/blog/2016/8/25/tech-has-a-toxic-tone-problemlets-fix-it/)의 [edykim님 번역본](https://edykim.com/ko/post/tech-has-a-toxic-tone-problem-lets-fix-it/)을 수정한 번역본으로, edykim님의 사정상 원본에 반영되기 전까지 임시로 잇창명 개발 블로그에 게시합니다. edykim님의 블로그에 반영되면 이 글은 삭제한 뒤 원본 링크만 남길 예정입니다.*

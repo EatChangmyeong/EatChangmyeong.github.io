@@ -7,6 +7,7 @@ tags:
 - 함수형
 - TIL
 comments: true 
+migrate: "/2023/first-class-function"
 ---
 
 어느 순간 문득 깨달았는데, 어떤 면에서는 **C도 일급 함수를 지원하는 게 아닌가**라는 생각이 들었습니다. 정말 뚱딴지같은 소리긴 하지만 일단 들어보세요.

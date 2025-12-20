@@ -298,6 +298,22 @@ main {
 		@extend %post;
 	}
 
+	.migrate {
+		margin: 0.8rem 0 0 0.5rem;
+		padding-top: 0.01px;
+		padding-bottom: 0.5rem;
+		background-color: #f0d0ff;
+		box-shadow: 0 1px 3px #00000040,0 1px 2px -1px #00000040;
+
+		:first-child {
+			margin-top: 0.5rem;
+		}
+
+		@include if-dark {
+			background-color: #400060;
+		}
+	}
+
 	&.front-page {
 		@include narrow-layout;
 

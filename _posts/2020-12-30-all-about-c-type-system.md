@@ -6,6 +6,7 @@ tags:
 - C
 - 언어
 comments: true
+migrate: "/2020/c-type-system"
 ---
 
 **이 글은 단축링크 <https://eatch.dev/s/ctype>으로도 들어올 수 있습니다.**

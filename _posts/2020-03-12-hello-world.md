@@ -6,6 +6,7 @@ edited_at: 2021-08-09
 tags:
 - 테스트
 seo: false
+migrate: "/2020/hello-world"
 ---
 
 # 이거는 테스트용 포스트예요!

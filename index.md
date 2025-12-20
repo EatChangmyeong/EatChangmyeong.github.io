@@ -2,8 +2,6 @@
 layout: front
 ---
 
-스파게티 CSS는 제가 전부 치웠습니다. 😉
-
 [마크다운 문법 치트시트](/syntax)
 
 [외부 리소스](/thirdparty)
@@ -11,12 +9,6 @@ layout: front
 [Atom 피드](/feed.xml)
 
 [소스 코드 확인해보기](https://github.com/EatChangmyeong/EatChangmyeong.github.io)
-
-## TODO
-
-* 목차에서 지금 읽는 위치 하이라이트
-* 페이지네이션
-* 태그 클라우드?
 
 # 글 목록
 

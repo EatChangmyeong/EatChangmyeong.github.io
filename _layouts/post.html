@@ -53,6 +53,28 @@
 			<div class="toc"></div>
 
 			<article>
+				<div class="migrate">
+					{% if page.migrate == false %}
+						<p>
+							현재 블로그 이전 작업 중입니다. 이 글은 이전 대상에 포함되지 않습니다.
+						</p>
+						<p>
+							<a href="https://blog.eatch.dev">새 블로그는 이곳에서 확인하실 수 있습니다.</a>
+						</p>
+					{% elsif page.migrate == '' %}
+						<p>
+							현재 블로그 이전 작업 중입니다. 빠른 시일 내에 새 블로그로 글을 이전하도록 하겠습니다.
+						</p>
+						<p>
+							<a href="https://blog.eatch.dev">새 블로그는 이곳에서 확인하실 수 있습니다.</a>
+						</p>
+					{% else %}
+						<p>
+							현재 블로그 이전 작업 중입니다. <a href="https://blog.eatch.dev{{ page.migrate }}">새 블로그에서 글을 읽어보실 수 있습니다.</a>
+						</p>
+					{% endif %}
+				</div>
+
 				{{ content }}
 
 				<div id="end-of-post">

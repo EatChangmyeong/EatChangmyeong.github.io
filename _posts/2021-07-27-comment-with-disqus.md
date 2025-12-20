@@ -5,6 +5,7 @@ tags:
 - 업데이트
 comments: true
 seo: false
+migrate: false
 ---
 
 ![이 블로그의 투두리스트. 차례대로 'Disqus 댓글창', '목차에서 지금 읽는 위치 하이라이트', '페이지네이션', '태그 클라우드?'라고 적혀 있다.](/assets/post-images/devblog-todo-210727.png)

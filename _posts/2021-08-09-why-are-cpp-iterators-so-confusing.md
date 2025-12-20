@@ -10,6 +10,7 @@ tags:
 style: "/assets/post-styles/why-are-cpp-iterators-so-confusing.css"
 script: "/assets/post-scripts/why-are-cpp-iterators-so-confusing.js"
 comments: true
+migrate: "/2021/cpp-iter"
 ---
 
 {::comment}&#41;은 VS Code에서 맞는 괄호 하이라이팅을 부숴먹지 않기 위해 닫는 괄호 대신 사용했습니다. 혹시 EatChangmyeong/EatChangmyeong.github.io에서 오셨다면 이 건으로 이슈나 풀 리퀘를 넣지 말아 주세요.{:/}

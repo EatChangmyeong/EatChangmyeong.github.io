@@ -8,6 +8,7 @@ tags:
 - 언어
 - 투정
 comments: true
+migrate: "/2021/thanks-js"
 ---
 
 ![JavaScript의 특이한 코드 실행 결과 여러 개가 있고 그 밑에 사람의 얼굴과 "Thanks for inventing Javascript"라는 문구를 달아 두었다.](/assets/post-images/thanks-for-inventing-javascript.png)

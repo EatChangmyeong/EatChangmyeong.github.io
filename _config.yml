@@ -12,6 +12,7 @@ defaults:
       path: ""
     values:
       seo: true
+      migrate: ''
 
 markdown: kramdown
 kramdown:

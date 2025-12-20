@@ -9,6 +9,7 @@ tags:
 style: "/assets/post-styles/interest-driven-mu-recursive-functions.css"
 script: "/assets/post-scripts/interest-driven-mu-recursive-functions.js"
 comments: true
+migrate: "/2022/general-recursive-function"
 ---
 
 {::comment}&#40;과 &#41;은 VS Code에서 맞는 괄호 하이라이팅을 부숴먹지 않기 위해(애초에 왜 하이라이팅이 잘 안 되는지는 모르겠는데) 닫는 괄호 대신 사용했습니다. 혹시 EatChangmyeong/EatChangmyeong.github.io에서 오셨다면 이 건으로 이슈나 풀 리퀘를 넣지 말아 주세요.{:/}

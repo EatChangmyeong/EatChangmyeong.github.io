@@ -7,6 +7,7 @@ tags:
 - 게임개발
 - 선형대수학
 comments: true
+migrate: "/2021/honeyhouse"
 ---
 
 *2022년 6월 7일 수정: 이미지 파일의 크기를 줄였습니다.*
