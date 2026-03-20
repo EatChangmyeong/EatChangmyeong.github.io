@@ -1,5 +1,8 @@
 # 잇창명 개발 블로그
 
+> [!IMPORTANT]
+> 현재 블로그 이전 작업 중입니다. 새 블로그는 [`EatChangmyeong/blog.eatch.dev`](https://github.com/EatChangmyeong/blog.eatch.dev)에서 확인하실 수 있습니다.
+
 **<https://eatchangmyeong.github.io/>**
 
 Jekyll 기반 개인 개발 블로그입니다. 열심히 글을 쓰고 이것저것 넣어보고 있습니다.
