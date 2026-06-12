@@ -9,6 +9,7 @@ tags:
 style: "/assets/post-styles/why-is-lis-algorithm-so-confusing.css"
 script: "/assets/post-scripts/why-is-lis-algorithm-so-confusing.js"
 comments: true
+migrate: "/2022/longest-increasing-subsequence"
 ---
 
 [**가장 긴 증가하는 부분 수열**](https://ko.wikipedia.org/wiki/%EC%B5%9C%EC%9E%A5_%EC%A6%9D%EA%B0%80_%EB%B6%80%EB%B6%84_%EC%88%98%EC%97%B4)(longest increasing subsequence; LIS)은 어떤 수열이 주어질 때 그 수열의 증가하는 부분 수열(연속하지 않아도 됩니다) 중 가장 긴 것을 찾는 문제입니다. 이 문제를 푸는 여러 가지 알고리즘이 알려져 있지만 문제풀이에서 자주 사용하는 것은 $$O(n \log n)$$입니다.
